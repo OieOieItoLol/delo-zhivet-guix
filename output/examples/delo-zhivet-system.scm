@@ -1,29 +1,24 @@
-;; Example of an operating system configuration using delo-zhivet-service-type.
 (use-modules (gnu)
-             (gnu system)
-             (gnu services)
-             (gnu services web)
-             (gnu services networking)
-             (gnu services databases)
+             (gnu packages databases)
+             (gnu packages java)
+             (delo-zhivet packages)
              (delo-zhivet services)
-             (guix packages)
-             (gnu packages java))
-(use-service-modules desktop networking ssh web)
-(use-package-modules bootloaders)
+             (gnu services databases)
+             (gnu services networking)
+             (gnu services ssh)
+             (gnu services web))
 
-;; We use a dummy package just to represent the dependencies for demonstration
-(define dummy-backend (package (name "delo-zhivet-backend") (version "0") (source #f) (build-system (@ (guix build-system trivial) trivial-build-system)) (synopsis "") (description "") (license #f) (home-page "")))
-(define dummy-bot (package (name "delo-zhivet-bot") (version "0") (source #f) (build-system (@ (guix build-system trivial) trivial-build-system)) (synopsis "") (description "") (license #f) (home-page "")))
-(define dummy-frontend (package (name "delo-zhivet-frontend") (version "0") (source #f) (build-system (@ (guix build-system trivial) trivial-build-system)) (synopsis "") (description "") (license #f) (home-page "")))
+(use-service-modules databases networking ssh web)
 
 (operating-system
-  (host-name "delo-zhivet-server")
+  (host-name "delo-zhivet-host")
   (timezone "Europe/Moscow")
   (locale "en_US.utf8")
 
   (bootloader (bootloader-configuration
                (bootloader grub-bootloader)
-               (targets (list "/dev/sda"))))
+               (targets '("/dev/sda"))))
+
   (file-systems (cons (file-system
                         (device (file-system-label "my-root"))
                         (mount-point "/")
@@ -35,23 +30,34 @@
     (list (service dhcp-client-service-type)
           (service openssh-service-type
                    (openssh-configuration
-                    (permit-root-login #t)))
+                    (port-number 2222)))
 
-          ;; Example of configuring the database service, typically required for delo-zhivet
           (service postgresql-service-type
                    (postgresql-configuration
                     (postgresql postgresql-15)))
 
-          ;; Our custom delo-zhivet service
+          (service nginx-service-type (nginx-configuration))
+
           (service delo-zhivet-service-type
                    (delo-zhivet-configuration
-                    (backend-package dummy-backend)
-                    (bot-package dummy-bot)
-                    (frontend-package dummy-frontend)
+                    (backend-package delo-zhivet-backend-bin)
+                    (bot-package delo-zhivet-bot-bin)
+                    (frontend-package delo-zhivet-frontend-bin)
                     (java-package openjdk17)
-                    (server-name '("delo-zhivet.orgnarod.su"))
-                    ;; Usually we point to non-store paths for SSL certs/keys
-                    ;; (ssl-certificate (local-file "/path/to/cert.crt"))
-                    ;; (ssl-certificate-key "/etc/delo-zhivet/certs/key.key")
-                    )))
+                    (backend-env-file "/etc/delo-zhivet/backend.env")
+                    (bot-env-file "/etc/delo-zhivet/bot.env")
+                    (images-directory "/var/lib/delo-zhivet/images")
+                    (postgresql-host "127.0.0.1")
+                    (postgresql-port 5432)
+                    (postgresql-database "tracker")
+                    (postgresql-user "site")
+                    (postgresql-use-socket? #f)
+                    (local-postgresql? #t)
+                    (backend-port 9966)
+                    (bot-port 9967)
+                    (nginx? #t)
+                    (server-name '("delo-zhivet.example"))
+                    (listen '("80"))
+                    (ssl-certificate #f)
+                    (ssl-certificate-key #f))))
     %base-services)))
