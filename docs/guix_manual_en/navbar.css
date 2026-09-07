@@ -1,0 +1,276 @@
+/* Public domain 2017. All rights waived */
+
+.navbar {
+    background-color: #333;
+    border-color: #1A1A1A;
+    border-style: none none solid none;
+    border-width: thin;
+    color: white;
+    height: 55px;
+    overflow: hidden;
+}
+
+.navbar > h1 {
+    display: inline-block;
+    margin: 0px;
+}
+
+.branding {
+    position: relative;
+    overflow: hidden;
+}
+
+.branding:link,
+.branding:visited {
+    background-image: url("Guix-logo.png");
+    background-position: bottom;
+    background-repeat: no-repeat;
+    border-style: none;
+    display: inline-block;
+    height: 55px;
+    width: 170px;
+}
+
+.branding:active,
+.branding:focus,
+.branding:hover {
+    background-position: top;
+}
+
+.menu {
+    position: relative;
+}
+
+.menu ul {
+    display: block;
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+}
+
+.menu > ul > li {
+    display: block;
+    position: relative;
+}
+
+.menu-hidden-input {
+    display: none;
+}
+
+.menu-item:link,
+.menu-item:visited,
+label.menu-item {
+    background-color: transparent;
+    background-image: url("link-arrow.png");
+    background-position: 97% 50%;
+    background-repeat: no-repeat;
+    border-color: #1A1A1A;
+    border-style: solid none none none;
+    border-width: thin;
+    color: white;
+    display: block;
+    line-height: 55px;
+    padding: 0px 10px;
+    text-align: left;
+}
+
+.menu-item:active,
+.menu-item:focus,
+.menu-item:hover,
+.menu-item-active:link,
+.menu-item-active:visited {
+    color: #F4BB15;
+}
+
+.submenu .menu-item:link,
+.submenu .menu-item:visited {
+    background-color: #434343;
+    padding: 0px 25px;
+}
+
+.menu-btn:link,
+.menu-btn:visited {
+    background-image: url("menu-btn-bg.png");
+    background-position: bottom;
+    background-repeat: no-repeat;
+    border-style: none;
+    display: block;
+    height: 55px;
+    position: absolute;
+    right: 10px;
+    top: 0px;
+    width: 55px;
+}
+
+.menu-btn:active,
+.menu-btn:focus,
+.menu-btn:hover {
+    background-image: url("menu-btn-bg.png");
+    background-position: top;
+}
+
+.hskip {
+    padding-left: 10px;
+}
+
+.hline {
+    display: none;
+}
+
+.languages-dropdown-list {
+    columns: 2;
+}
+
+
+
+@media screen and (min-width: 920px) {
+    .navbar {
+	position: relative;
+	overflow: visible;
+    }
+
+    .menu {
+	display: inline-block;
+	padding-right: 10px;
+        position: absolute;
+        right: 0px;
+    }
+
+    .menu > ul > li {
+	display: inline-block;
+	line-height: 55px;
+    }
+
+    .menu-item:link,
+    .menu-item:visited {
+        background-image: none;
+        border-style: none;
+        display: inline-block;
+        margin: 0px 2px;
+        text-align: center;
+    }
+
+    a.menu-item:active,
+    a.menu-item:focus,
+    a.menu-item:hover,
+    a.menu-item-active:link,
+    a.menu-item-active:visited {
+	background-image: url("menu-item-active-bg.png");
+	background-position: bottom center;
+	background-repeat: no-repeat;
+    }
+
+    .dropdown {
+	position: relative;
+    }
+
+    .dropdown:hover .submenu {
+        min-width: 150px;
+        width: max-content;
+        height: auto;
+        overflow: visible;
+    }
+
+    /* This CSS rule is separate from the rule for :hover
+       because :hover should still be applied even when
+       the browser does not support :focus-within. */
+    .submenu:focus-within {
+        min-width: 150px;
+        width: max-content;
+        height: auto;
+        overflow: visible;
+    }
+
+    .dropdown-btn {
+	background-image: url("dropdown-bg.png");
+	background-position: bottom right;
+	background-repeat: no-repeat;
+        padding: 0px 10px;
+        cursor: pointer;
+        margin: 0px 2px;
+    }
+
+    .dropdown-btn:active,
+    .dropdown-btn:hover {
+        background-image: url("dropdown-bg.png");
+        background-position: top right;
+    }
+
+    .navbar label {
+        cursor: pointer;
+    }
+
+    label[for=all-dropdowns-hidden] {
+        text-shadow: #fff 0px -2px 15px, #fff 0px -2px 10px;
+    }
+
+    .hline {
+        display: block;
+        margin: auto;
+        width: 150px;
+        height: 1px;
+    }
+
+    .submenu {
+	background-color: transparent;
+        z-index: 10;
+        display: block;
+        overflow: hidden;
+        width: 0;
+        height: 0;
+	padding-top: 20px;
+	position: absolute;
+        right: 0px;
+    }
+
+    .submenu-triangle {
+	background-color: #333;
+	border-color: black;
+	border-style: solid none none solid;
+	border-width: thin;
+	height: 10px;
+	position: absolute;
+	right: 30px;
+	top: 15px;
+	transform: rotate(45deg);
+	width: 10px;
+    }
+
+    .submenu > ul {
+	background-color: #333;
+	border-color: black;
+	border-radius: 4px;
+	border-style: solid;
+	border-width: thin;
+	box-shadow: 0 0 4px #202020;
+	padding: 8px 0px;
+    }
+
+    .submenu li,
+    .submenu .menu-item:active,
+    .submenu .menu-item:link {
+	background-color: transparent;
+	display: block;
+	line-height: 30px;
+	margin: 0px;
+	text-align: left;
+    }
+
+    .submenu .menu-item:link,
+    .submenu .menu-item:visited {
+	font-size: 0.9em;
+    }
+
+    .submenu .menu-item:active,
+    .submenu .menu-item:focus,
+    .submenu .menu-item:hover,
+    .submenu .menu-item-active:link,
+    .submenu .menu-item-active:visited {
+	background-color: #414141;
+	background-image: none;
+    }
+
+    .menu-btn:link {
+	display: none;
+    }
+}

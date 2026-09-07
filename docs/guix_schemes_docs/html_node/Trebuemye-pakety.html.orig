@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--   Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/   -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--   Copyright (C) 2019, 2022 Ricardo Wurmus
+ Copyright (C)
+2019 Efraim Flashner
+ Copyright (C) 2019 Pierre Neidhardt
+
+Copyright (C) 2020 Oleg Pykhalov
+ Copyright (C) 2020
+Matthew Brooks
+ Copyright (C) 2020 Marcin Karpezo
+ Copyright
+(C) 2020 Brice Waegeneire
+ Copyright (C) 2020 André
+Batista
+ Copyright (C) 2020 Christine Lemmer-Webber
+ Copyright
+(C) 2021 Joshua Branson
+ Copyright (C) 2022, 2023 Maxim
+Cournoyer
+ Copyright (C) 2023-2026 Ludovic Courtès
+ Copyright
+(C) 2023 Thomas Ieong
+ Copyright (C) 2024 Florian Pelz
+
+Copyright (C) 2025 45mg
+ Copyright (C) 2023 Marek
+Felšöci
+ Copyright (C) 2023 Konrad Hinsen
+ Copyright (C)
+2023 Philippe Swartvagher
+
+
+Разрешено копирование, распространение и/или модификация этого документа на
+условиях лицензии свободной документации GNU (GNU FDL) версии 1.3 или любой
+более поздней версии, опубликованной Фондом свободного программного
+обеспечения (FSF), исключая неизменяемые секции, исключая тексты,
+размещенные на переплёте и задней стороне обложки. Копия лицензии включена в
+документ в разделе под названием "GNU Free Documentation Licens".   -->
+<title>Требуемые пакеты (GNU Guix Рецепты)</title>
+
+<meta name="description" content="Требуемые пакеты (GNU Guix Рецепты)" />
+<meta name="keywords" content="Требуемые пакеты (GNU Guix Рецепты)" />
+<meta name="resource-type" content="document" />
+<meta name="distribution" content="global" />
+<meta name="Generator" content="makeinfo" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<link href="index.html" rel="start" title="Top" />
+<link href="Terminy-i-ukazateli.html" rel="index" title="Термины и указатели" />
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents" />
+<link href="Guix-profili-na-praktike.html" rel="up" title="Guix профили на практике" />
+<link href="Profilx-po_002dumolchaniiu.html" rel="next" title="Профиль по-умолчанию" />
+<link href="Bazovaya-nastroika-s-manifestami.html" rel="prev" title="Базовая настройка с манифестами" />
+<style type="text/css">
+&amp;lt;!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+--&amp;gt;
+</style>
+<link rel="stylesheet" type="text/css" href="/themes/initial/css/manual.css" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="/themes/initial/css/manual.css" /><link rel="stylesheet" type="text/css" href="/themes/initial/css/code.css" /></head>
+
+<body lang="en"><header class="navbar"><h1><a class="branding" href=".."></a></h1><nav class="navbar-menu"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="all-dropdowns-hidden" /><ul><li class="navbar-menu-item dropdown dropdown-btn"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="visible-dropdown" /><label for="visible-dropdown">Version</label><label for="all-dropdowns-hidden">Version</label><div class="navbar-submenu" id="navbar-submenu"><div class="navbar-submenu-triangle"> </div><ul><li><a class="navbar-menu-item" href="../guix-cookbook.ru.html">single page</a></li><li><a class="navbar-menu-item" href="../guix-cookbook.ru.pdf">PDF</a></li></ul></div></li><li class="navbar-menu-item dropdown dropdown-btn"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="visible-dropdown" /><label for="visible-dropdown"><img alt="Language" src="/themes/initial/img/language-picker.svg" /></label><label for="all-dropdowns-hidden"><img alt="Language" src="/themes/initial/img/language-picker.svg" /></label><div class="navbar-submenu" id="navbar-submenu"><div class="navbar-submenu-triangle"> </div><ul><li><a class="navbar-menu-item" href="../../de/html_node">Deutsch</a></li><li><a class="navbar-menu-item" href="../../en/html_node">English</a></li><li><a class="navbar-menu-item" href="../../es/html_node">Español</a></li><li><a class="navbar-menu-item" href="../../fr/html_node">Français</a></li><li><a class="navbar-menu-item" href="../../it/html_node">Italiano</a></li><li><a class="navbar-menu-item" href="../../ko/html_node">한국어</a></li><li><a class="navbar-menu-item" href="../../pt-br/html_node">Português</a></li><li><a class="navbar-menu-item" href="../../ru/html_node">русский</a></li><li><a class="navbar-menu-item" href="../../sk/html_node">Slovenský</a></li><li><a class="navbar-menu-item" href="../../sv/html_node">Svenska</a></li><li><a class="navbar-menu-item" href="../../ta/html_node">தமிழ்</a></li><li><a class="navbar-menu-item" href="../../zh-cn/html_node">中文; 汉语; 华语</a></li><li><a class="navbar-menu-item" href="https://translate.codeberg.org/projects/guix/documentation-cookbook/">⊕</a></li></ul></div></li></ul></nav><a class="navbar-menu-btn" href="../.."></a></header>
+<div class="subsection" id="g_t_0422_0440_0435_0431_0443_0435_043c_044b_0435-_043f_0430_043a_0435_0442_044b">
+<div class="header">
+<p>
+Next: <a href="Profilx-po_002dumolchaniiu.html" accesskey="n" rel="next">Профиль по-умолчанию</a>, Previous: <a href="Bazovaya-nastroika-s-manifestami.html" accesskey="p" rel="prev">Базовая настройка с манифестами</a>, Up: <a href="Guix-profili-na-praktike.html" accesskey="u" rel="up">Guix профили на практике</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Terminy-i-ukazateli.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr />
+<span id="Trebuemye-pakety"></span><h4 class="subsection">6.1.2 Требуемые пакеты</h4>
+
+<p>Activating a profile essentially boils down to exporting a bunch of
+environmental variables.  This is the role of the &lsquo;<samp>etc/profile</samp>&rsquo; within
+the profile.
+</p>
+<p><em>Note: Only the environmental variables of the packages that consume them
+will be set.</em>
+</p>
+<p>For instance, &lsquo;<samp>MANPATH</samp>&rsquo; won&rsquo;t be set if there is no consumer
+application for man pages within the profile.  So if you need to
+transparently access man pages once the profile is loaded, you&rsquo;ve got two
+options:
+</p>
+<ul>
+<li> Either export the variable manually, e.g.
+<div class="example">
+<pre class="example">export MANPATH=/path/to/profile${MANPATH:+:}$MANPATH
+</pre></div>
+
+</li><li> Or include &lsquo;<samp>man-db</samp>&rsquo; to the profile manifest.
+</li></ul>
+
+<p>The same is true for &lsquo;<samp>INFOPATH</samp>&rsquo; (you can install &lsquo;<samp>info-reader</samp>&rsquo;),
+&lsquo;<samp>PKG_CONFIG_PATH</samp>&rsquo; (install &lsquo;<samp>pkg-config</samp>&rsquo;), etc.
+</p>
+</div>
+
+
+
+</body>
+</html>

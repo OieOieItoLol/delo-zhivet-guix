@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--   Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/   -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--   Copyright (C) 2019, 2022 Ricardo Wurmus
+ Copyright (C)
+2019 Efraim Flashner
+ Copyright (C) 2019 Pierre Neidhardt
+
+Copyright (C) 2020 Oleg Pykhalov
+ Copyright (C) 2020
+Matthew Brooks
+ Copyright (C) 2020 Marcin Karpezo
+ Copyright
+(C) 2020 Brice Waegeneire
+ Copyright (C) 2020 André
+Batista
+ Copyright (C) 2020 Christine Lemmer-Webber
+ Copyright
+(C) 2021 Joshua Branson
+ Copyright (C) 2022, 2023 Maxim
+Cournoyer
+ Copyright (C) 2023-2026 Ludovic Courtès
+ Copyright
+(C) 2023 Thomas Ieong
+ Copyright (C) 2024 Florian Pelz
+
+Copyright (C) 2025 45mg
+ Copyright (C) 2023 Marek
+Felšöci
+ Copyright (C) 2023 Konrad Hinsen
+ Copyright (C)
+2023 Philippe Swartvagher
+
+
+Разрешено копирование, распространение и/или модификация этого документа на
+условиях лицензии свободной документации GNU (GNU FDL) версии 1.3 или любой
+более поздней версии, опубликованной Фондом свободного программного
+обеспечения (FSF), исключая неизменяемые секции, исключая тексты,
+размещенные на переплёте и задней стороне обложки. Копия лицензии включена в
+документ в разделе под названием "GNU Free Documentation Licens".   -->
+<title>Каналы (GNU Guix Рецепты)</title>
+
+<meta name="description" content="Каналы (GNU Guix Рецепты)" />
+<meta name="keywords" content="Каналы (GNU Guix Рецепты)" />
+<meta name="resource-type" content="document" />
+<meta name="distribution" content="global" />
+<meta name="Generator" content="makeinfo" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<link href="index.html" rel="start" title="Top" />
+<link href="Terminy-i-ukazateli.html" rel="index" title="Термины и указатели" />
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents" />
+<link href="Nastroika.html" rel="up" title="Настройка" />
+<link href="Rabota-s-kopiei-repozitoriya-napryamuiu.html" rel="next" title="Работа с копией репозитория напрямую" />
+<link href="Lokalxnyi-fail.html" rel="prev" title="Локальный файл" />
+<style type="text/css">
+&amp;lt;!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+--&amp;gt;
+</style>
+<link rel="stylesheet" type="text/css" href="https://guix.gnu.org/themes/initial/css/manual.css" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="https://guix.gnu.org/themes/initial/css/manual.css" /><link rel="stylesheet" type="text/css" href="https://guix.gnu.org/themes/initial/css/code.css" /></head>
+
+<body lang="en"><header class="navbar"><h1><a class="branding" href="../index.html"></a></h1><nav class="navbar-menu"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="all-dropdowns-hidden" /><ul><li class="navbar-menu-item dropdown dropdown-btn"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="visible-dropdown" /><label for="visible-dropdown">Version</label><label for="all-dropdowns-hidden">Version</label><div class="navbar-submenu" id="navbar-submenu"><div class="navbar-submenu-triangle"> </div><ul><li><a class="navbar-menu-item" href="../guix-cookbook.ru.html">single page</a></li><li><a class="navbar-menu-item" href="../guix-cookbook.ru.pdf">PDF</a></li></ul></div></li><li class="navbar-menu-item dropdown dropdown-btn"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="visible-dropdown" /><label for="visible-dropdown"><img alt="Language" src="https://guix.gnu.org/themes/initial/img/language-picker.svg" /></label><label for="all-dropdowns-hidden"><img alt="Language" src="https://guix.gnu.org/themes/initial/img/language-picker.svg" /></label><div class="navbar-submenu" id="navbar-submenu"><div class="navbar-submenu-triangle"> </div><ul><li><a class="navbar-menu-item" href="https://guix.gnu.org/cookbook/de/html_node">Deutsch</a></li><li><a class="navbar-menu-item" href="https://guix.gnu.org/cookbook/en/html_node">English</a></li><li><a class="navbar-menu-item" href="https://guix.gnu.org/cookbook/es/html_node">Español</a></li><li><a class="navbar-menu-item" href="https://guix.gnu.org/cookbook/fr/html_node">Français</a></li><li><a class="navbar-menu-item" href="https://guix.gnu.org/cookbook/it/html_node">Italiano</a></li><li><a class="navbar-menu-item" href="https://guix.gnu.org/cookbook/ko/html_node">한국어</a></li><li><a class="navbar-menu-item" href="https://guix.gnu.org/cookbook/pt-br/html_node">Português</a></li><li><a class="navbar-menu-item" href="../html_node.html">русский</a></li><li><a class="navbar-menu-item" href="https://guix.gnu.org/cookbook/sk/html_node">Slovenský</a></li><li><a class="navbar-menu-item" href="https://guix.gnu.org/cookbook/sv/html_node">Svenska</a></li><li><a class="navbar-menu-item" href="https://guix.gnu.org/cookbook/ta/html_node">தமிழ்</a></li><li><a class="navbar-menu-item" href="https://guix.gnu.org/cookbook/zh-cn/html_node">中文; 汉语; 华语</a></li><li><a class="navbar-menu-item" href="https://translate.codeberg.org/projects/guix/documentation-cookbook/">⊕</a></li></ul></div></li></ul></nav><a class="navbar-menu-btn" href="https://guix.gnu.org/cookbook/"></a></header>
+<div class="subsubsection" id="g_t_041a_0430_043d_0430_043b_044b">
+<div class="header">
+<p>
+Next: <a href="Rabota-s-kopiei-repozitoriya-napryamuiu.html" accesskey="n" rel="next">Работа с копией репозитория напрямую</a>, Previous: <a href="Lokalxnyi-fail.html" accesskey="p" rel="prev">Локальный файл</a>, Up: <a href="Nastroika.html" accesskey="u" rel="up">Настройка</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Terminy-i-ukazateli.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr />
+<span id="Kanaly"></span><h4 class="subsubsection">2.1.2.2 Каналы</h4>
+
+<span id="index-kanal"></span>
+<p>Guix and its package collection can be extended through <em>channels</em>.  A
+channel is a Git repository, public or not, containing <samp>.scm</samp> files
+that provide packages (see <a data-manual="guix" href="https://guix.gnu.org/manual/devel/en/html_node/Defining-Packages.html#Defining-Packages">Defining Packages</a> in <cite>GNU Guix Reference
+Manual</cite>) or services (see <a data-manual="guix" href="https://guix.gnu.org/manual/devel/en/html_node/Defining-Services.html#Defining-Services">Defining Services</a> in <cite>GNU Guix Reference
+Manual</cite>).
+</p>
+<p>How would you go about creating a channel? First, create a directory that
+will contain your <samp>.scm</samp> files, say <samp>~/my-channel</samp>:
+</p>
+<div class="example">
+<pre class="example">mkdir ~/my-channel
+</pre></div>
+
+<p>Suppose you want to add the &lsquo;<samp>my-hello</samp>&rsquo; package we saw previously; it
+first needs some adjustments:
+</p>
+<div class="example lisp">
+<pre class="lisp"><span class="syntax-paren0">(<span class="syntax-symbol"><span class="syntax-special">define-module</span> <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">my-hello</span></span>)</span>
+  <span class="syntax-keyword">#:use-module</span> <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">guix</span> <span class="syntax-symbol">licenses</span></span>)</span>
+  <span class="syntax-keyword">#:use-module</span> <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">guix</span> <span class="syntax-symbol">packages</span></span>)</span>
+  <span class="syntax-keyword">#:use-module</span> <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">guix</span> <span class="syntax-symbol">build-system</span> <span class="syntax-symbol">gnu</span></span>)</span>
+  <span class="syntax-keyword">#:use-module</span> <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">guix</span> <span class="syntax-symbol">download</span></span>)</span></span>)</span>
+
+<span class="syntax-paren0">(<span class="syntax-symbol"><span class="syntax-special">define-public</span> <span class="syntax-symbol">my-hello</span>
+  <span class="syntax-paren1">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://guix.gnu.org/manual/devel/ru/html_node/ssylka-na-paket.html#index-package">package</a>
+    <span class="syntax-paren2">(<span class="syntax-symbol"><span class="syntax-symbol">name</span> <span class="syntax-string">"my-hello"</span></span>)</span>
+    <span class="syntax-paren2">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Build-Config.html#index-version">version</a> <span class="syntax-string">"2.10"</span></span>)</span>
+    <span class="syntax-paren2">(<span class="syntax-symbol"><span class="syntax-symbol">source</span> <span class="syntax-paren3">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://guix.gnu.org/manual/devel/ru/html_node/Interfeis-origin.html#index-origin">origin</a>
+              <span class="syntax-paren4">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Method-Definition-Internals.html#index-method">method</a> <a class="syntax-symbol" href="https://guix.gnu.org/manual/devel/ru/html_node/Interfeis-origin.html#index-url_002dfetch">url-fetch</a></span>)</span>
+              <span class="syntax-paren4">(<span class="syntax-symbol"><span class="syntax-symbol">uri</span> <span class="syntax-paren5">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Reversing-and-Appending-Strings.html#index-string_002dappend">string-append</a> <span class="syntax-string">"mirror://gnu/hello/hello-"</span> <a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Build-Config.html#index-version">version</a>
+                                  <span class="syntax-string">".tar.gz"</span></span>)</span></span>)</span>
+              <span class="syntax-paren4">(<span class="syntax-symbol"><span class="syntax-symbol">sha256</span>
+               <span class="syntax-paren5">(<span class="syntax-symbol"><span class="syntax-symbol">base32</span>
+                <span class="syntax-string">"0ssi1wpaf7plaswqqjwigppsg5fyh99vdlb9kzl7c9lng89ndq1i"</span></span>)</span></span>)</span></span>)</span></span>)</span>
+    <span class="syntax-paren2">(<span class="syntax-symbol"><span class="syntax-symbol">build-system</span> <a class="syntax-symbol" href="https://guix.gnu.org/manual/devel/ru/html_node/Sistemy-sborki.html#index-gnu_002dbuild_002dsystem">gnu-build-system</a></span>)</span>
+    <span class="syntax-paren2">(<span class="syntax-symbol"><span class="syntax-symbol">synopsis</span> <span class="syntax-string">"Hello, Guix world: An example custom Guix package"</span></span>)</span>
+    <span class="syntax-paren2">(<span class="syntax-symbol"><span class="syntax-symbol">description</span>
+     <span class="syntax-string">"GNU Hello prints the message \"Hello, world!\" and then exits.  It
+serves as an example of standard GNU coding practices.  As such, it supports
+command-line arguments, multiple languages, and so on."</span></span>)</span>
+    <span class="syntax-paren2">(<span class="syntax-symbol"><span class="syntax-symbol">home-page</span> <span class="syntax-string">"https://www.gnu.org/software/hello/"</span></span>)</span>
+    <span class="syntax-paren2">(<span class="syntax-symbol"><span class="syntax-symbol">license</span> <span class="syntax-symbol">gpl3+</span></span>)</span></span>)</span></span>)</span>
+</pre></div>
+
+<p>Note that we have assigned the package value to an exported variable name
+with <code>define-public</code>.  This is effectively assigning the package to the
+<code>my-hello</code> variable so that it can be referenced, among other as
+dependency of other packages.
+</p>
+<p>If you use <code>guix package --install-from-file=my-hello.scm</code> on the above
+file, it will fail because the last expression, <code>define-public</code>, does
+not return a package.  If you want to use <code>define-public</code> in this
+use-case nonetheless, make sure the file ends with an evaluation of
+<code>my-hello</code>:
+</p>
+<div class="example lisp">
+<pre class="lisp"><span class="syntax-comment">;; ...
+</span><span class="syntax-paren0">(<span class="syntax-symbol"><span class="syntax-special">define-public</span> <span class="syntax-symbol">my-hello</span>
+  <span class="syntax-comment">;; ...
+</span>  </span>)</span>
+
+<span class="syntax-symbol">my-hello</span>
+</pre></div>
+
+<p>This last example is not very typical.
+</p>
+<p>Now how do you make that package visible to <code>guix</code> commands so you
+can test your packages? You need to add the directory to the search path
+using the <samp>-L</samp> command-line option, as in these examples:
+</p>
+<div class="example">
+<pre class="example">guix show -L ~/my-channel my-hello
+guix build -L ~/my-channel my-hello
+</pre></div>
+
+<p>The final step is to turn <samp>~/my-channel</samp> into an actual channel, making
+your package collection seamlessly available <i>via</i> any <code>guix</code>
+command.  To do that, you first need to make it a Git repository:
+</p>
+<div class="example">
+<pre class="example">cd ~/my-channel
+git init
+git add my-hello.scm
+git commit -m "First commit of my channel."
+</pre></div>
+
+<p>And that&rsquo;s it, you have a channel! From there on, you can add this channel
+to your channel configuration in <samp>~/.config/guix/channels.scm</samp>
+(see <a data-manual="guix" href="https://guix.gnu.org/manual/devel/en/html_node/Specifying-Additional-Channels.html#Specifying-Additional-Channels">Specifying Additional Channels</a> in <cite>GNU Guix Reference Manual</cite>);
+assuming you keep your channel local for now, the <samp>channels.scm</samp> would
+look something like this:
+</p>
+<div class="example lisp">
+<pre class="lisp"><span class="syntax-paren0">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Append_002fReverse.html#index-append">append</a> <span class="syntax-paren1">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/List-Constructors.html#index-list-1">list</a> <span class="syntax-paren2">(<span class="syntax-symbol"><span class="syntax-symbol">channel</span>
+                <span class="syntax-paren3">(<span class="syntax-symbol"><span class="syntax-symbol">name</span> <span class="syntax-symbol">'my-channel</span></span>)</span>
+                <span class="syntax-paren3">(<span class="syntax-symbol"><span class="syntax-symbol">url</span> <span class="syntax-paren4">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Reversing-and-Appending-Strings.html#index-string_002dappend">string-append</a> <span class="syntax-string">"file://"</span> <span class="syntax-paren5">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Runtime-Environment.html#index-getenv">getenv</a> <span class="syntax-string">"HOME"</span></span>)</span>
+                                    <span class="syntax-string">"/my-channel"</span></span>)</span></span>)</span></span>)</span></span>)</span>
+        <span class="syntax-symbol">%default-channels</span></span>)</span>
+</pre></div>
+
+<p>Next time you run <code>guix pull</code>, your channel will be picked up and
+the packages it defines will be readily available to all the <code>guix</code>
+commands, even if you do not pass <samp>-L</samp>.  The <code>guix describe</code>
+command will show that Guix is, indeed, using both the <code>my-channel</code> and
+the <code>guix</code> channels.
+</p>
+<p>See <a data-manual="guix" href="https://guix.gnu.org/manual/devel/en/html_node/Creating-a-Channel.html#Creating-a-Channel">Creating a Channel</a> in <cite>GNU Guix Reference Manual</cite>, for details.
+</p>
+</div>
+<hr />
+<div class="header">
+<p>
+Next: <a href="Rabota-s-kopiei-repozitoriya-napryamuiu.html">Работа с копией репозитория напрямую</a>, Previous: <a href="Lokalxnyi-fail.html">Локальный файл</a>, Up: <a href="Nastroika.html">Настройка</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Terminy-i-ukazateli.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

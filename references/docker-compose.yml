@@ -1,0 +1,61 @@
+services:
+    backend:
+        build:
+            context: ./backend
+            extra_hosts:
+                - "host.docker.internal:host-gateway"
+            args:
+                PG_URL: jdbc:postgresql://host.docker.internal:5432/tracker
+                PG_USERNAME: site
+                PG_PASSWORD: ${PG_PASSWORD}
+        environment:
+            PG_URL: jdbc:postgresql://host.docker.internal:5432/tracker
+            PG_USERNAME: site
+            PG_PASSWORD: ${PG_PASSWORD}
+            STATIC_CONTENT_LOCATIONS: file:/opt/images/
+            IMAGES_ROOT_LOCATION: /opt/images/
+            BOT_URI: http://bot:9967/sendAuthCode
+            BOT_BACKEND_SECRET: ${BOT_BACKEND_SECRET}
+            BACKEND_BOT_SECRET: ${BACKEND_BOT_SECRET}
+        volumes:
+            - images:/opt/images
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
+        restart: unless-stopped
+        networks:
+            - app-network
+
+    bot:
+        build: ./bot
+        environment:
+            PG_URL: jdbc:postgresql://host.docker.internal:5432/tracker
+            PG_USERNAME: site
+            PG_PASSWORD: ${PG_PASSWORD}
+            TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN}
+            DADATA_CLIENT_TOKEN: ${DADATA_CLIENT_TOKEN}
+            APP_BACKEND_TOKEN: ${APP_BACKEND_TOKEN}
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
+        restart: unless-stopped
+        networks:
+            - app-network
+
+    frontend:
+        build:
+            context: ./frontend
+            dockerfile: Dockerfile
+        volumes:
+            - ./frontend/certs:/etc/nginx/certs:ro
+        ports:
+            - "127.0.0.1:8080:443"
+        depends_on:
+            - backend
+        restart: unless-stopped
+        networks:
+            - app-network
+
+volumes:
+    images:
+
+networks:
+    app-network:

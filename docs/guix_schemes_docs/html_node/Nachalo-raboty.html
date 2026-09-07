@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--   Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/   -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--   Copyright (C) 2019, 2022 Ricardo Wurmus
+ Copyright (C)
+2019 Efraim Flashner
+ Copyright (C) 2019 Pierre Neidhardt
+
+Copyright (C) 2020 Oleg Pykhalov
+ Copyright (C) 2020
+Matthew Brooks
+ Copyright (C) 2020 Marcin Karpezo
+ Copyright
+(C) 2020 Brice Waegeneire
+ Copyright (C) 2020 André
+Batista
+ Copyright (C) 2020 Christine Lemmer-Webber
+ Copyright
+(C) 2021 Joshua Branson
+ Copyright (C) 2022, 2023 Maxim
+Cournoyer
+ Copyright (C) 2023-2026 Ludovic Courtès
+ Copyright
+(C) 2023 Thomas Ieong
+ Copyright (C) 2024 Florian Pelz
+
+Copyright (C) 2025 45mg
+ Copyright (C) 2023 Marek
+Felšöci
+ Copyright (C) 2023 Konrad Hinsen
+ Copyright (C)
+2023 Philippe Swartvagher
+
+
+Разрешено копирование, распространение и/или модификация этого документа на
+условиях лицензии свободной документации GNU (GNU FDL) версии 1.3 или любой
+более поздней версии, опубликованной Фондом свободного программного
+обеспечения (FSF), исключая неизменяемые секции, исключая тексты,
+размещенные на переплёте и задней стороне обложки. Копия лицензии включена в
+документ в разделе под названием "GNU Free Documentation Licens".   -->
+<title>Начало работы (GNU Guix Рецепты)</title>
+
+<meta name="description" content="Начало работы (GNU Guix Рецепты)" />
+<meta name="keywords" content="Начало работы (GNU Guix Рецепты)" />
+<meta name="resource-type" content="document" />
+<meta name="distribution" content="global" />
+<meta name="Generator" content="makeinfo" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<link href="index.html" rel="start" title="Top" />
+<link href="Terminy-i-ukazateli.html" rel="index" title="Термины и указатели" />
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents" />
+<link href="Razrabotka-programmnogo-obespecheniya.html" rel="up" title="Разработка программного обеспечения" />
+<link href="Sborka-s-Guix.html" rel="next" title="Сборка с Guix" />
+<style type="text/css">
+&amp;lt;!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+--&amp;gt;
+</style>
+<link rel="stylesheet" type="text/css" href="https://guix.gnu.org/themes/initial/css/manual.css" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="https://guix.gnu.org/themes/initial/css/manual.css" /><link rel="stylesheet" type="text/css" href="https://guix.gnu.org/themes/initial/css/code.css" /></head>
+
+<body lang="en"><header class="navbar"><h1><a class="branding" href="../index.html"></a></h1><nav class="navbar-menu"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="all-dropdowns-hidden" /><ul><li class="navbar-menu-item dropdown dropdown-btn"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="visible-dropdown" /><label for="visible-dropdown">Version</label><label for="all-dropdowns-hidden">Version</label><div class="navbar-submenu" id="navbar-submenu"><div class="navbar-submenu-triangle"> </div><ul><li><a class="navbar-menu-item" href="../guix-cookbook.ru.html">single page</a></li><li><a class="navbar-menu-item" href="../guix-cookbook.ru.pdf">PDF</a></li></ul></div></li><li class="navbar-menu-item dropdown dropdown-btn"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="visible-dropdown" /><label for="visible-dropdown"><img alt="Language" src="https://guix.gnu.org/themes/initial/img/language-picker.svg" /></label><label for="all-dropdowns-hidden"><img alt="Language" src="https://guix.gnu.org/themes/initial/img/language-picker.svg" /></label><div class="navbar-submenu" id="navbar-submenu"><div class="navbar-submenu-triangle"> </div><ul><li><a class="navbar-menu-item" href="https://guix.gnu.org/cookbook/de/html_node">Deutsch</a></li><li><a class="navbar-menu-item" href="https://guix.gnu.org/cookbook/en/html_node">English</a></li><li><a class="navbar-menu-item" href="https://guix.gnu.org/cookbook/es/html_node">Español</a></li><li><a class="navbar-menu-item" href="https://guix.gnu.org/cookbook/fr/html_node">Français</a></li><li><a class="navbar-menu-item" href="https://guix.gnu.org/cookbook/it/html_node">Italiano</a></li><li><a class="navbar-menu-item" href="https://guix.gnu.org/cookbook/ko/html_node">한국어</a></li><li><a class="navbar-menu-item" href="https://guix.gnu.org/cookbook/pt-br/html_node">Português</a></li><li><a class="navbar-menu-item" href="../html_node.html">русский</a></li><li><a class="navbar-menu-item" href="https://guix.gnu.org/cookbook/sk/html_node">Slovenský</a></li><li><a class="navbar-menu-item" href="https://guix.gnu.org/cookbook/sv/html_node">Svenska</a></li><li><a class="navbar-menu-item" href="https://guix.gnu.org/cookbook/ta/html_node">தமிழ்</a></li><li><a class="navbar-menu-item" href="https://guix.gnu.org/cookbook/zh-cn/html_node">中文; 汉语; 华语</a></li><li><a class="navbar-menu-item" href="https://translate.codeberg.org/projects/guix/documentation-cookbook/">⊕</a></li></ul></div></li></ul></nav><a class="navbar-menu-btn" href="https://guix.gnu.org/cookbook/"></a></header>
+<div class="section" id="g_t_041d_0430_0447_0430_043b_043e-_0440_0430_0431_043e_0442_044b">
+<div class="header">
+<p>
+Next: <a href="Sborka-s-Guix.html" accesskey="n" rel="next">Level 1: Building with Guix</a>, Up: <a href="Razrabotka-programmnogo-obespecheniya.html" accesskey="u" rel="up">Разработка программного обеспечения</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Terminy-i-ukazateli.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr />
+<span id="Nachalo-raboty"></span><h3 class="section">7.1 Начало работы</h3>
+
+<p>How do we go about &ldquo;Guixifying&rdquo; a repository? The first step, as we&rsquo;ve
+seen, will be to add a <samp>guix.scm</samp> at the root of the repository in
+question. We&rsquo;ll take <a href="https://www.gnu.org/software/guile">Guile</a> as an
+example in this chapter: it&rsquo;s written in Scheme (mostly) and C, and has a
+number of dependencies&mdash;a C compilation tool chain, C libraries, Autoconf
+and its friends, LaTeX, and so on. The resulting <samp>guix.scm</samp> looks like
+the usual package definition (see <a data-manual="guix" href="https://guix.gnu.org/manual/devel/en/html_node/Defining-Packages.html#Defining-Packages">Defining Packages</a> in <cite>GNU Guix
+Reference Manual</cite>), just without the <code>define-public</code> bit:
+</p>
+<div class="example lisp">
+<pre class="lisp"><span class="syntax-comment">;; The ‘guix.scm’ file for Guile, for use by ‘guix shell’.
+</span>
+<span class="syntax-paren0">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Using-Guile-Modules.html#index-use_002dmodules">use-modules</a> <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">guix</span></span>)</span>
+             <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">guix</span> <span class="syntax-symbol">build-system</span> <span class="syntax-symbol">gnu</span></span>)</span>
+             <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-paren2">(<span class="syntax-symbol"><span class="syntax-symbol">guix</span> <span class="syntax-symbol">licenses</span></span>)</span> <span class="syntax-keyword">#:prefix</span> <span class="syntax-symbol">license:</span></span>)</span>
+             <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">gnu</span> <span class="syntax-symbol">packages</span> <span class="syntax-symbol">autotools</span></span>)</span>
+             <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">gnu</span> <span class="syntax-symbol">packages</span> <span class="syntax-symbol">base</span></span>)</span>
+             <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">gnu</span> <span class="syntax-symbol">packages</span> <span class="syntax-symbol">bash</span></span>)</span>
+             <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">gnu</span> <span class="syntax-symbol">packages</span> <span class="syntax-symbol">bdw-gc</span></span>)</span>
+             <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">gnu</span> <span class="syntax-symbol">packages</span> <span class="syntax-symbol">compression</span></span>)</span>
+             <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">gnu</span> <span class="syntax-symbol">packages</span> <span class="syntax-symbol">flex</span></span>)</span>
+             <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">gnu</span> <span class="syntax-symbol">packages</span> <span class="syntax-symbol">gdb</span></span>)</span>
+             <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">gnu</span> <span class="syntax-symbol">packages</span> <a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Gettext-Support.html#index-gettext">gettext</a></span>)</span>
+             <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">gnu</span> <span class="syntax-symbol">packages</span> <span class="syntax-symbol">gperf</span></span>)</span>
+             <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">gnu</span> <span class="syntax-symbol">packages</span> <span class="syntax-symbol">libffi</span></span>)</span>
+             <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">gnu</span> <span class="syntax-symbol">packages</span> <span class="syntax-symbol">libunistring</span></span>)</span>
+             <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">gnu</span> <span class="syntax-symbol">packages</span> <span class="syntax-symbol">linux</span></span>)</span>
+             <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">gnu</span> <span class="syntax-symbol">packages</span> <span class="syntax-symbol">pkg-config</span></span>)</span>
+             <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">gnu</span> <span class="syntax-symbol">packages</span> <a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Readline-Functions.html#index-readline-1">readline</a></span>)</span>
+             <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">gnu</span> <span class="syntax-symbol">packages</span> <span class="syntax-symbol">tex</span></span>)</span>
+             <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">gnu</span> <span class="syntax-symbol">packages</span> <span class="syntax-symbol">texinfo</span></span>)</span>
+             <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">gnu</span> <span class="syntax-symbol">packages</span> <span class="syntax-symbol">version-control</span></span>)</span></span>)</span>
+
+<span class="syntax-paren0">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://guix.gnu.org/manual/devel/ru/html_node/ssylka-na-paket.html#index-package">package</a>
+  <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">name</span> <span class="syntax-string">"guile"</span></span>)</span>
+  <span class="syntax-paren1">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Build-Config.html#index-version">version</a> <span class="syntax-string">"3.0.99-git"</span></span>)</span>                          <span class="syntax-comment">;funky version number
+</span>  <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">source</span> <span class="syntax-symbol">#f</span></span>)</span>                                     <span class="syntax-comment">;no source
+</span>  <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">build-system</span> <a class="syntax-symbol" href="https://guix.gnu.org/manual/devel/ru/html_node/Sistemy-sborki.html#index-gnu_002dbuild_002dsystem">gnu-build-system</a></span>)</span>
+  <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">native-inputs</span>
+   <span class="syntax-paren2">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Append_002fReverse.html#index-append">append</a> <span class="syntax-paren3">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/List-Constructors.html#index-list-1">list</a> <span class="syntax-symbol">autoconf</span>
+                 <span class="syntax-symbol">automake</span>
+                 <span class="syntax-symbol">libtool</span>
+                 <span class="syntax-symbol">gnu-gettext</span>
+                 <span class="syntax-symbol">flex</span>
+                 <span class="syntax-symbol">texinfo</span>
+                 <span class="syntax-symbol">texlive-base</span>                 <span class="syntax-comment">;for "make pdf"
+</span>                 <span class="syntax-symbol">texlive-epsf</span>
+                 <span class="syntax-symbol">gperf</span>
+                 <span class="syntax-symbol">git</span>
+                 <span class="syntax-symbol">gdb</span>
+                 <span class="syntax-symbol">strace</span>
+                 <a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Readline-Functions.html#index-readline-1">readline</a>
+                 <span class="syntax-symbol">lzip</span>
+                 <span class="syntax-symbol">pkg-config</span></span>)</span>
+
+           <span class="syntax-comment">;; When cross-compiling, a native version of Guile itself is
+</span>           <span class="syntax-comment">;; needed.
+</span>           <span class="syntax-paren3">(<span class="syntax-symbol"><span class="syntax-special">if</span> <span class="syntax-paren4">(<span class="syntax-symbol"><span class="syntax-symbol">%current-target-system</span></span>)</span>
+               <span class="syntax-paren4">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/List-Constructors.html#index-list-1">list</a> <a class="syntax-symbol" href="https://guix.gnu.org/manual/devel/ru/html_node/ssylka-na-paket.html#index-this_002dpackage">this-package</a></span>)</span>
+               <span class="syntax-symbol">'</span><span class="syntax-paren4">(<span class="syntax-symbol"></span>)</span></span>)</span></span>)</span></span>)</span>
+  <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">inputs</span>
+   <span class="syntax-paren2">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/List-Constructors.html#index-list-1">list</a> <span class="syntax-symbol">libffi</span> <span class="syntax-symbol">bash-minimal</span></span>)</span></span>)</span>
+  <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">propagated-inputs</span>
+   <span class="syntax-paren2">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/List-Constructors.html#index-list-1">list</a> <span class="syntax-symbol">libunistring</span> <span class="syntax-symbol">libgc</span></span>)</span></span>)</span>
+
+  <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">native-search-paths</span>
+   <span class="syntax-paren2">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/List-Constructors.html#index-list-1">list</a> <span class="syntax-paren3">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://guix.gnu.org/manual/devel/ru/html_node/Search-Paths.html#index-search_002dpath_002dspecification">search-path-specification</a>
+          <span class="syntax-paren4">(<span class="syntax-symbol"><span class="syntax-symbol">variable</span> <span class="syntax-string">"GUILE_LOAD_PATH"</span></span>)</span>
+          <span class="syntax-paren4">(<span class="syntax-symbol"><span class="syntax-symbol">files</span> <span class="syntax-symbol">'</span><span class="syntax-paren5">(<span class="syntax-symbol"><span class="syntax-string">"share/guile/site/3.0"</span></span>)</span></span>)</span></span>)</span>
+         <span class="syntax-paren3">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://guix.gnu.org/manual/devel/ru/html_node/Search-Paths.html#index-search_002dpath_002dspecification">search-path-specification</a>
+          <span class="syntax-paren4">(<span class="syntax-symbol"><span class="syntax-symbol">variable</span> <span class="syntax-string">"GUILE_LOAD_COMPILED_PATH"</span></span>)</span>
+          <span class="syntax-paren4">(<span class="syntax-symbol"><span class="syntax-symbol">files</span> <span class="syntax-symbol">'</span><span class="syntax-paren5">(<span class="syntax-symbol"><span class="syntax-string">"lib/guile/3.0/site-ccache"</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
+  <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">synopsis</span> <span class="syntax-string">"Scheme implementation intended especially for extensions"</span></span>)</span>
+  <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">description</span>
+   <span class="syntax-string">"Guile is the GNU Ubiquitous Intelligent Language for Extensions,
+and it's actually a full-blown Scheme implementation!"</span></span>)</span>
+  <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">home-page</span> <span class="syntax-string">"https://www.gnu.org/software/guile/"</span></span>)</span>
+  <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">license</span> <span class="syntax-symbol">license:lgpl3+</span></span>)</span></span>)</span>
+</pre></div>
+
+<p>Quite a bit of boilerplate, but now someone who&rsquo;d like to hack on Guile now
+only needs to run:
+</p>
+<div class="example lisp">
+<pre class="lisp"><span class="syntax-symbol">guix</span> <span class="syntax-symbol">shell</span>
+</pre></div>
+
+<p>That gives them a shell containing all the dependencies of Guile: those
+listed above, but also <em>implicit dependencies</em> such as the GCC tool
+chain, GNU&nbsp;Make, sed, grep, and so on.  See <a data-manual="guix" href="https://guix.gnu.org/manual/devel/en/html_node/Invoking-guix-shell.html#Invoking-guix-shell">Invoking guix shell</a> in <cite>GNU Guix Reference Manual</cite>, for more info on <code>guix shell</code>.
+</p>
+<blockquote>
+<p><b>The chef&rsquo;s recommendation:</b> Our suggestion is to create development environments like this:
+</p>
+<div class="example">
+<pre class="example">guix shell --container --link-profile
+</pre></div>
+
+<p>... or, for short:
+</p>
+<div class="example">
+<pre class="example">guix shell -CP
+</pre></div>
+
+<p>That gives a shell in an isolated container, and all the dependencies show
+up in <code>$HOME/.guix-profile</code>, which plays well with caches such as
+<samp>config.cache</samp> (see <a data-manual="autoconf" href="https://www.gnu.org/software/autoconf/manual/html_node/Cache-Files.html#Cache-Files">Cache Files</a> in <cite>Autoconf</cite>) and absolute
+file names recorded in generated <code>Makefile</code>s and the likes. The fact
+that the shell runs in a container brings peace of mind: nothing but the
+current directory and Guile&rsquo;s dependencies is visible inside the container;
+nothing from the system can possibly interfere with your development.
+</p></blockquote>
+
+</div>
+<hr />
+<div class="header">
+<p>
+Next: <a href="Sborka-s-Guix.html">Level 1: Building with Guix</a>, Up: <a href="Razrabotka-programmnogo-obespecheniya.html">Разработка программного обеспечения</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Terminy-i-ukazateli.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

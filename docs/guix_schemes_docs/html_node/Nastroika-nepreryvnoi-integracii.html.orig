@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--   Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/   -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--   Copyright (C) 2019, 2022 Ricardo Wurmus
+ Copyright (C)
+2019 Efraim Flashner
+ Copyright (C) 2019 Pierre Neidhardt
+
+Copyright (C) 2020 Oleg Pykhalov
+ Copyright (C) 2020
+Matthew Brooks
+ Copyright (C) 2020 Marcin Karpezo
+ Copyright
+(C) 2020 Brice Waegeneire
+ Copyright (C) 2020 André
+Batista
+ Copyright (C) 2020 Christine Lemmer-Webber
+ Copyright
+(C) 2021 Joshua Branson
+ Copyright (C) 2022, 2023 Maxim
+Cournoyer
+ Copyright (C) 2023-2026 Ludovic Courtès
+ Copyright
+(C) 2023 Thomas Ieong
+ Copyright (C) 2024 Florian Pelz
+
+Copyright (C) 2025 45mg
+ Copyright (C) 2023 Marek
+Felšöci
+ Copyright (C) 2023 Konrad Hinsen
+ Copyright (C)
+2023 Philippe Swartvagher
+
+
+Разрешено копирование, распространение и/или модификация этого документа на
+условиях лицензии свободной документации GNU (GNU FDL) версии 1.3 или любой
+более поздней версии, опубликованной Фондом свободного программного
+обеспечения (FSF), исключая неизменяемые секции, исключая тексты,
+размещенные на переплёте и задней стороне обложки. Копия лицензии включена в
+документ в разделе под названием "GNU Free Documentation Licens".   -->
+<title>Настройка непрерывной интеграции (GNU Guix Рецепты)</title>
+
+<meta name="description" content="Настройка непрерывной интеграции (GNU Guix Рецепты)" />
+<meta name="keywords" content="Настройка непрерывной интеграции (GNU Guix Рецепты)" />
+<meta name="resource-type" content="document" />
+<meta name="distribution" content="global" />
+<meta name="Generator" content="makeinfo" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<link href="index.html" rel="start" title="Top" />
+<link href="Terminy-i-ukazateli.html" rel="index" title="Термины и указатели" />
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents" />
+<link href="Razrabotka-programmnogo-obespecheniya.html" rel="up" title="Разработка программного обеспечения" />
+<link href="Manifest-sborki.html" rel="next" title="Манифест сборки" />
+<link href="Varianty-paketa.html" rel="prev" title="Варианты пакета" />
+<style type="text/css">
+&amp;lt;!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+--&amp;gt;
+</style>
+<link rel="stylesheet" type="text/css" href="/themes/initial/css/manual.css" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="/themes/initial/css/manual.css" /><link rel="stylesheet" type="text/css" href="/themes/initial/css/code.css" /></head>
+
+<body lang="en"><header class="navbar"><h1><a class="branding" href=".."></a></h1><nav class="navbar-menu"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="all-dropdowns-hidden" /><ul><li class="navbar-menu-item dropdown dropdown-btn"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="visible-dropdown" /><label for="visible-dropdown">Version</label><label for="all-dropdowns-hidden">Version</label><div class="navbar-submenu" id="navbar-submenu"><div class="navbar-submenu-triangle"> </div><ul><li><a class="navbar-menu-item" href="../guix-cookbook.ru.html">single page</a></li><li><a class="navbar-menu-item" href="../guix-cookbook.ru.pdf">PDF</a></li></ul></div></li><li class="navbar-menu-item dropdown dropdown-btn"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="visible-dropdown" /><label for="visible-dropdown"><img alt="Language" src="/themes/initial/img/language-picker.svg" /></label><label for="all-dropdowns-hidden"><img alt="Language" src="/themes/initial/img/language-picker.svg" /></label><div class="navbar-submenu" id="navbar-submenu"><div class="navbar-submenu-triangle"> </div><ul><li><a class="navbar-menu-item" href="../../de/html_node">Deutsch</a></li><li><a class="navbar-menu-item" href="../../en/html_node">English</a></li><li><a class="navbar-menu-item" href="../../es/html_node">Español</a></li><li><a class="navbar-menu-item" href="../../fr/html_node">Français</a></li><li><a class="navbar-menu-item" href="../../it/html_node">Italiano</a></li><li><a class="navbar-menu-item" href="../../ko/html_node">한국어</a></li><li><a class="navbar-menu-item" href="../../pt-br/html_node">Português</a></li><li><a class="navbar-menu-item" href="../../ru/html_node">русский</a></li><li><a class="navbar-menu-item" href="../../sk/html_node">Slovenský</a></li><li><a class="navbar-menu-item" href="../../sv/html_node">Svenska</a></li><li><a class="navbar-menu-item" href="../../ta/html_node">தமிழ்</a></li><li><a class="navbar-menu-item" href="../../zh-cn/html_node">中文; 汉语; 华语</a></li><li><a class="navbar-menu-item" href="https://translate.codeberg.org/projects/guix/documentation-cookbook/">⊕</a></li></ul></div></li></ul></nav><a class="navbar-menu-btn" href="../.."></a></header>
+<div class="section" id="g_t_041d_0430_0441_0442_0440_043e_0439_043a_0430-_043d_0435_043f_0440_0435_0440_044b_0432_043d_043e_0439-_0438_043d_0442_0435_0433_0440_0430_0446_0438_0438">
+<div class="header">
+<p>
+Next: <a href="Manifest-sborki.html" accesskey="n" rel="next">Bonus: Build manifest</a>, Previous: <a href="Varianty-paketa.html" accesskey="p" rel="prev">Bonus: Package Variants</a>, Up: <a href="Razrabotka-programmnogo-obespecheniya.html" accesskey="u" rel="up">Разработка программного обеспечения</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Terminy-i-ukazateli.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr />
+<span id="Level-3_003a-Setting-Up-Continuous-Integration"></span><h3 class="section">7.5 Level 3: Setting Up Continuous Integration</h3>
+
+<span id="index-nepreryvnaya-integraciya"></span>
+<p>The channel we defined above (see <a href="Repozitorii-kak-kanal.html">Level 2: The Repository as a Channel</a>)  becomes
+even more interesting once we set up
+<a href="https://en.wikipedia.org/wiki/Continuous_integration"><em>continuous
+integration</em></a> (CI). There are several ways to do that.
+</p>
+<p>You can use one of the mainstream continuous integration tools, such as
+GitLab-CI. To do that, you need to make sure you run jobs in a Docker image
+or virtual machine that has Guix installed. If we were to do that in the
+case of Guile, we&rsquo;d have a job that runs a shell command like this one:
+</p>
+<div class="example lisp">
+<pre class="lisp"><span class="syntax-symbol">guix</span> <a class="syntax-symbol" href="/manual/devel/ru/html_node/Using-Guix-Interactively.html#index-build">build</a> <span class="syntax-symbol">-L</span> <span class="syntax-symbol">$PWD/.guix/modules</span> <span class="syntax-symbol">guile@3.0.99-git</span>
+</pre></div>
+
+<p>Doing this works great and has the advantage of being easy to achieve on
+your favorite CI platform.
+</p>
+<p>That said, you&rsquo;ll really get the most of it by using
+<a href="https://guix.gnu.org/en/cuirass">Cuirass</a>, a CI tool designed for and
+tightly integrated with Guix. Using it is more work than using a hosted CI
+tool because you first need to set it up, but that setup phase is greatly
+simplified if you use its Guix System service (see <a data-manual="guix" href="https://guix.gnu.org/manual/devel/en/html_node/Continuous-Integration.html#Continuous-Integration">Continuous
+Integration</a> in <cite>GNU Guix Reference Manual</cite>).  Going back to our
+example, we give Cuirass a spec file that goes like this:
+</p>
+<div class="example lisp">
+<pre class="lisp"><span class="syntax-comment">;; Cuirass spec file to build all the packages of the ‘guile’ channel.
+</span><span class="syntax-paren0">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/List-Constructors.html#index-list-1">list</a> <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">specification</span>
+        <span class="syntax-paren2">(<span class="syntax-symbol"><span class="syntax-symbol">name</span> <span class="syntax-string">"guile"</span></span>)</span>
+        <span class="syntax-paren2">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/Using-Guix-Interactively.html#index-build">build</a> <span class="syntax-symbol">'</span><span class="syntax-paren3">(<span class="syntax-symbol"><span class="syntax-symbol">channels</span> <span class="syntax-symbol">guile</span></span>)</span></span>)</span>
+        <span class="syntax-paren2">(<span class="syntax-symbol"><span class="syntax-symbol">channels</span>
+         <span class="syntax-paren3">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Append_002fReverse.html#index-append">append</a> <span class="syntax-paren4">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/List-Constructors.html#index-list-1">list</a> <span class="syntax-paren5">(<span class="syntax-symbol"><span class="syntax-symbol">channel</span>
+                         <span class="syntax-paren6">(<span class="syntax-symbol"><span class="syntax-symbol">name</span> <span class="syntax-symbol">'guile</span></span>)</span>
+                         <span class="syntax-paren6">(<span class="syntax-symbol"><span class="syntax-symbol">url</span> <span class="syntax-string">"https://git.savannah.gnu.org/git/guile.git"</span></span>)</span>
+                         <span class="syntax-paren6">(<span class="syntax-symbol"><span class="syntax-symbol">branch</span> <span class="syntax-string">"main"</span></span>)</span></span>)</span></span>)</span>
+                 <span class="syntax-symbol">%default-channels</span></span>)</span></span>)</span></span>)</span></span>)</span>
+</pre></div>
+
+<p>It differs from what you&rsquo;d do with other CI tools in two important ways:
+</p>
+<ul>
+<li> Cuirass knows it&rsquo;s tracking <em>two</em> channels, <code>guile</code> and
+<code>guix</code>. Indeed, our own <code>guile</code> package depends on many packages
+provided by the <code>guix</code> channel&mdash;GCC, the GNU libc, libffi, and so
+on. Changes to packages from the <code>guix</code> channel can potentially
+influence our <code>guile</code> build and this is something we&rsquo;d like to see as
+soon as possible as Guile developers.
+</li><li> Build results are not thrown away: they can be distributed as
+<em>substitutes</em> so that users of our <code>guile</code> channel transparently
+get pre-built binaries! (see <a data-manual="guix" href="https://guix.gnu.org/manual/devel/en/html_node/Substitutes.html#Substitutes">Substitutes</a> in <cite>GNU Guix Reference
+Manual</cite>, for background info on substitutes.)
+</li></ul>
+
+<p>From a developer&rsquo;s viewpoint, the end result is this
+<a href="https://ci.guix.gnu.org/jobset/guile">status page</a> listing
+<em>evaluations</em>: each evaluation is a combination of commits of the
+<code>guix</code> and <code>guile</code> channels providing a number of
+<em>jobs</em>&mdash;one job per package defined in <samp>guile-package.scm</samp> times
+the number of target architectures.
+</p>
+<p>As for substitutes, they come for free! As an example, since our
+<code>guile</code> jobset is built on ci.guix.gnu.org, which runs <code>guix
+publish</code> (see <a data-manual="guix" href="https://guix.gnu.org/manual/devel/en/html_node/Invoking-guix-publish.html#Invoking-guix-publish">Invoking guix publish</a> in <cite>GNU Guix Reference Manual</cite>)
+in addition to Cuirass, one automatically gets substitutes for <code>guile</code>
+builds from ci.guix.gnu.org; no additional work is needed for that.
+</p>
+</div>
+<hr />
+<div class="header">
+<p>
+Next: <a href="Manifest-sborki.html">Bonus: Build manifest</a>, Previous: <a href="Varianty-paketa.html">Bonus: Package Variants</a>, Up: <a href="Razrabotka-programmnogo-obespecheniya.html">Разработка программного обеспечения</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Terminy-i-ukazateli.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

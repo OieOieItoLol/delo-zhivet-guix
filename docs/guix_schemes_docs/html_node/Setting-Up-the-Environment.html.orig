@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--   Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/   -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--   Copyright (C) 2019, 2022 Ricardo Wurmus
+ Copyright (C)
+2019 Efraim Flashner
+ Copyright (C) 2019 Pierre Neidhardt
+
+Copyright (C) 2020 Oleg Pykhalov
+ Copyright (C) 2020
+Matthew Brooks
+ Copyright (C) 2020 Marcin Karpezo
+ Copyright
+(C) 2020 Brice Waegeneire
+ Copyright (C) 2020 André
+Batista
+ Copyright (C) 2020 Christine Lemmer-Webber
+ Copyright
+(C) 2021 Joshua Branson
+ Copyright (C) 2022, 2023 Maxim
+Cournoyer
+ Copyright (C) 2023-2026 Ludovic Courtès
+ Copyright
+(C) 2023 Thomas Ieong
+ Copyright (C) 2024 Florian Pelz
+
+Copyright (C) 2025 45mg
+ Copyright (C) 2023 Marek
+Felšöci
+ Copyright (C) 2023 Konrad Hinsen
+ Copyright (C)
+2023 Philippe Swartvagher
+
+
+Разрешено копирование, распространение и/или модификация этого документа на
+условиях лицензии свободной документации GNU (GNU FDL) версии 1.3 или любой
+более поздней версии, опубликованной Фондом свободного программного
+обеспечения (FSF), исключая неизменяемые секции, исключая тексты,
+размещенные на переплёте и задней стороне обложки. Копия лицензии включена в
+документ в разделе под названием "GNU Free Documentation Licens".   -->
+<title>Setting Up the Environment (GNU Guix Рецепты)</title>
+
+<meta name="description" content="Setting Up the Environment (GNU Guix Рецепты)" />
+<meta name="keywords" content="Setting Up the Environment (GNU Guix Рецепты)" />
+<meta name="resource-type" content="document" />
+<meta name="distribution" content="global" />
+<meta name="Generator" content="makeinfo" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<link href="index.html" rel="start" title="Top" />
+<link href="Terminy-i-ukazateli.html" rel="index" title="Термины и указатели" />
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents" />
+<link href="Reproducible-Research.html" rel="up" title="Reproducible Research" />
+<link href="Recording-the-Environment.html" rel="next" title="Recording the Environment" />
+<style type="text/css">
+&amp;lt;!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+--&amp;gt;
+</style>
+<link rel="stylesheet" type="text/css" href="/themes/initial/css/manual.css" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="/themes/initial/css/manual.css" /><link rel="stylesheet" type="text/css" href="/themes/initial/css/code.css" /></head>
+
+<body lang="en"><header class="navbar"><h1><a class="branding" href=".."></a></h1><nav class="navbar-menu"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="all-dropdowns-hidden" /><ul><li class="navbar-menu-item dropdown dropdown-btn"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="visible-dropdown" /><label for="visible-dropdown">Version</label><label for="all-dropdowns-hidden">Version</label><div class="navbar-submenu" id="navbar-submenu"><div class="navbar-submenu-triangle"> </div><ul><li><a class="navbar-menu-item" href="../guix-cookbook.ru.html">single page</a></li><li><a class="navbar-menu-item" href="../guix-cookbook.ru.pdf">PDF</a></li></ul></div></li><li class="navbar-menu-item dropdown dropdown-btn"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="visible-dropdown" /><label for="visible-dropdown"><img alt="Language" src="/themes/initial/img/language-picker.svg" /></label><label for="all-dropdowns-hidden"><img alt="Language" src="/themes/initial/img/language-picker.svg" /></label><div class="navbar-submenu" id="navbar-submenu"><div class="navbar-submenu-triangle"> </div><ul><li><a class="navbar-menu-item" href="../../de/html_node">Deutsch</a></li><li><a class="navbar-menu-item" href="../../en/html_node">English</a></li><li><a class="navbar-menu-item" href="../../es/html_node">Español</a></li><li><a class="navbar-menu-item" href="../../fr/html_node">Français</a></li><li><a class="navbar-menu-item" href="../../it/html_node">Italiano</a></li><li><a class="navbar-menu-item" href="../../ko/html_node">한국어</a></li><li><a class="navbar-menu-item" href="../../pt-br/html_node">Português</a></li><li><a class="navbar-menu-item" href="../../ru/html_node">русский</a></li><li><a class="navbar-menu-item" href="../../sk/html_node">Slovenský</a></li><li><a class="navbar-menu-item" href="../../sv/html_node">Svenska</a></li><li><a class="navbar-menu-item" href="../../ta/html_node">தமிழ்</a></li><li><a class="navbar-menu-item" href="../../zh-cn/html_node">中文; 汉语; 华语</a></li><li><a class="navbar-menu-item" href="https://translate.codeberg.org/projects/guix/documentation-cookbook/">⊕</a></li></ul></div></li></ul></nav><a class="navbar-menu-btn" href="../.."></a></header>
+<div class="section" id="Setting-Up-the-Environment">
+<div class="header">
+<p>
+Next: <a href="Recording-the-Environment.html" accesskey="n" rel="next">Step 2: Recording the Environment</a>, Up: <a href="Reproducible-Research.html" accesskey="u" rel="up">Using Guix for Reproducible Research</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Terminy-i-ukazateli.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr />
+<span id="Step-1_003a-Setting-Up-the-Environment"></span><h3 class="section">9.1 Step 1: Setting Up the Environment</h3>
+
+<p>The first step is to identify precisely what packages you need in your
+software environment to run your computational experiment.
+</p>
+<p>Assuming you have a Python script that uses NumPy, you can start by creating
+an environment that contains these two packages and to run your code in that
+environment (see <a data-manual="guix" href="https://guix.gnu.org/manual/devel/en/html_node/Invoking-guix-shell.html#Invoking-guix-shell">Invoking guix shell</a> in <cite>GNU Guix Reference
+Manual</cite>):
+</p>
+<div class="example">
+<pre class="example">guix shell -C python python-numpy -- python3 ./myscript.py
+</pre></div>
+
+<p>The <code>-C</code> flag here (or <code>--container</code>) instructs <code>guix
+shell</code> to create that environment in an isolated container with nothing but
+the two packages you asked for.  That way, if <code>./myscript.py</code> needs
+more than these two packages, it&rsquo;ll fail to run and you&rsquo;ll immediately
+notice.  On some systems <code>--container</code> is not supported; in that case,
+you can resort to <code>--pure</code> instead.
+</p>
+<p>Perhaps you&rsquo;ll find that you also need Pandas and add it to the environment:
+</p>
+<div class="example">
+<pre class="example">guix shell -C python python-numpy python-pandas -- \
+  python3 ./myscript.py
+</pre></div>
+
+<p>If you fail to guess the name of the package (this one was easy!), try
+<code>guix search</code>.
+</p>
+<p>Environments for Python, R, and similar high-level languages are relatively
+easy to set up.  For C/C++ code, you may need more packages:
+</p>
+<div class="example">
+<pre class="example">guix shell -C gcc-toolchain cmake coreutils grep sed make -- &hellip;
+</pre></div>
+
+<p>Or perhaps you&rsquo;ll find that you could just as well provide a package
+definition for your code&mdash;see <a data-manual="guix" href="https://guix.gnu.org/manual/devel/en/html_node/Defining-Packages.html#Defining-Packages">Defining Packages</a> in <cite>GNU Guix
+Reference Manual</cite>, to learn more on how to do that.
+</p>
+<p>Eventually, you&rsquo;ll have a list of packages that satisfies your needs.
+</p>
+<blockquote>
+<p><b>What if a package is missing?:</b> Guix and the main scientific channels provide about
+<a href="https://hpc.guix.info/browse">tens of thousands of packages</a>.  Yet,
+there&rsquo;s always the possibility that the one package you need is missing.
+</p>
+<p>In that case, you will need to provide a definition for it (see <a data-manual="guix" href="https://guix.gnu.org/manual/devel/en/html_node/Defining-Packages.html#Defining-Packages">Defining
+Packages</a> in <cite>GNU Guix Reference Manual</cite>) in a dedicated channel of
+yours (see <a data-manual="guix" href="https://guix.gnu.org/manual/devel/en/html_node/Creating-a-Channel.html#Creating-a-Channel">Creating a Channel</a> in <cite>GNU Guix Reference Manual</cite>).  For
+software in Python, R, and other high-level languages, most of the work can
+usually be automated by using <code>guix import</code> (see <a data-manual="guix" href="https://guix.gnu.org/manual/devel/en/html_node/Invoking-guix-import.html#Invoking-guix-import">Invoking guix
+import</a> in <cite>GNU Guix Reference Manual</cite>).
+</p>
+<p>Join <a href="https://guix.gnu.org/contact/">the friendly Guix community</a> to get
+help!
+</p></blockquote>
+
+</div>
+<hr />
+<div class="header">
+<p>
+Next: <a href="Recording-the-Environment.html">Step 2: Recording the Environment</a>, Up: <a href="Reproducible-Research.html">Using Guix for Reproducible Research</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Terminy-i-ukazateli.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

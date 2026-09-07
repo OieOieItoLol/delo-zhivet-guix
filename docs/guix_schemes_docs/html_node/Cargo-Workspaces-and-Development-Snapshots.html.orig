@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--   Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/   -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--   Copyright (C) 2019, 2022 Ricardo Wurmus
+ Copyright (C)
+2019 Efraim Flashner
+ Copyright (C) 2019 Pierre Neidhardt
+
+Copyright (C) 2020 Oleg Pykhalov
+ Copyright (C) 2020
+Matthew Brooks
+ Copyright (C) 2020 Marcin Karpezo
+ Copyright
+(C) 2020 Brice Waegeneire
+ Copyright (C) 2020 André
+Batista
+ Copyright (C) 2020 Christine Lemmer-Webber
+ Copyright
+(C) 2021 Joshua Branson
+ Copyright (C) 2022, 2023 Maxim
+Cournoyer
+ Copyright (C) 2023-2026 Ludovic Courtès
+ Copyright
+(C) 2023 Thomas Ieong
+ Copyright (C) 2024 Florian Pelz
+
+Copyright (C) 2025 45mg
+ Copyright (C) 2023 Marek
+Felšöci
+ Copyright (C) 2023 Konrad Hinsen
+ Copyright (C)
+2023 Philippe Swartvagher
+
+
+Разрешено копирование, распространение и/или модификация этого документа на
+условиях лицензии свободной документации GNU (GNU FDL) версии 1.3 или любой
+более поздней версии, опубликованной Фондом свободного программного
+обеспечения (FSF), исключая неизменяемые секции, исключая тексты,
+размещенные на переплёте и задней стороне обложки. Копия лицензии включена в
+документ в разделе под названием "GNU Free Documentation Licens".   -->
+<title>Cargo Workspaces and Development Snapshots (GNU Guix Рецепты)</title>
+
+<meta name="description" content="Cargo Workspaces and Development Snapshots (GNU Guix Рецепты)" />
+<meta name="keywords" content="Cargo Workspaces and Development Snapshots (GNU Guix Рецепты)" />
+<meta name="resource-type" content="document" />
+<meta name="distribution" content="global" />
+<meta name="Generator" content="makeinfo" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<link href="index.html" rel="start" title="Top" />
+<link href="Terminy-i-ukazateli.html" rel="index" title="Термины и указатели" />
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents" />
+<link href="Packaging-Rust-Crates.html" rel="up" title="Packaging Rust Crates" />
+<link href="Using-Rust-Libraries-in-Other-Build-Systems.html" rel="next" title="Using Rust Libraries in Other Build Systems" />
+<link href="Common-Workflow-for-Rust-Packaging.html" rel="prev" title="Common Workflow for Rust Packaging" />
+<style type="text/css">
+&amp;lt;!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+--&amp;gt;
+</style>
+<link rel="stylesheet" type="text/css" href="/themes/initial/css/manual.css" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="/themes/initial/css/manual.css" /><link rel="stylesheet" type="text/css" href="/themes/initial/css/code.css" /></head>
+
+<body lang="en"><header class="navbar"><h1><a class="branding" href=".."></a></h1><nav class="navbar-menu"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="all-dropdowns-hidden" /><ul><li class="navbar-menu-item dropdown dropdown-btn"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="visible-dropdown" /><label for="visible-dropdown">Version</label><label for="all-dropdowns-hidden">Version</label><div class="navbar-submenu" id="navbar-submenu"><div class="navbar-submenu-triangle"> </div><ul><li><a class="navbar-menu-item" href="../guix-cookbook.ru.html">single page</a></li><li><a class="navbar-menu-item" href="../guix-cookbook.ru.pdf">PDF</a></li></ul></div></li><li class="navbar-menu-item dropdown dropdown-btn"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="visible-dropdown" /><label for="visible-dropdown"><img alt="Language" src="/themes/initial/img/language-picker.svg" /></label><label for="all-dropdowns-hidden"><img alt="Language" src="/themes/initial/img/language-picker.svg" /></label><div class="navbar-submenu" id="navbar-submenu"><div class="navbar-submenu-triangle"> </div><ul><li><a class="navbar-menu-item" href="../../de/html_node">Deutsch</a></li><li><a class="navbar-menu-item" href="../../en/html_node">English</a></li><li><a class="navbar-menu-item" href="../../es/html_node">Español</a></li><li><a class="navbar-menu-item" href="../../fr/html_node">Français</a></li><li><a class="navbar-menu-item" href="../../it/html_node">Italiano</a></li><li><a class="navbar-menu-item" href="../../ko/html_node">한국어</a></li><li><a class="navbar-menu-item" href="../../pt-br/html_node">Português</a></li><li><a class="navbar-menu-item" href="../../ru/html_node">русский</a></li><li><a class="navbar-menu-item" href="../../sk/html_node">Slovenský</a></li><li><a class="navbar-menu-item" href="../../sv/html_node">Svenska</a></li><li><a class="navbar-menu-item" href="../../ta/html_node">தமிழ்</a></li><li><a class="navbar-menu-item" href="../../zh-cn/html_node">中文; 汉语; 华语</a></li><li><a class="navbar-menu-item" href="https://translate.codeberg.org/projects/guix/documentation-cookbook/">⊕</a></li></ul></div></li></ul></nav><a class="navbar-menu-btn" href="../.."></a></header>
+<div class="subsubsection" id="Cargo-Workspaces-and-Development-Snapshots">
+<div class="header">
+<p>
+Next: <a href="Using-Rust-Libraries-in-Other-Build-Systems.html" accesskey="n" rel="next">Using Rust Libraries in Other Build Systems</a>, Previous: <a href="Common-Workflow-for-Rust-Packaging.html" accesskey="p" rel="prev">Common Workflow for Rust Packaging</a>, Up: <a href="Packaging-Rust-Crates.html" accesskey="u" rel="up">Packaging Rust Crates</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Terminy-i-ukazateli.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr />
+<span id="Cargo-Workspaces-and-Development-Snapshots-1"></span><h4 class="subsubsection">2.2.1.2 Cargo Workspaces and Development Snapshots</h4>
+
+<p>In this example, we&rsquo;ll package <code>niri</code>, which depends on development
+snapshots (also Cargo workspaces here).
+</p>
+<p>As we can&rsquo;t ensure compatibility of a development snapshot, before executing
+<code>cargo generate-lockfile</code>, we should modify <samp>Cargo.toml</samp> to pin
+it to a known working revision.
+</p>
+<p>To use our packaged development snapshots, it&rsquo;s also necessary to modify
+<samp>Cargo.toml</samp> in a build phase, with a package-specific substitution
+pattern.
+</p>
+<div class="example lisp">
+<pre class="lisp"><span class="syntax-paren0">(<span class="syntax-symbol"><span class="syntax-special">define-public</span> <span class="syntax-symbol">niri</span>
+  <span class="syntax-paren1">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/ssylka-na-paket.html#index-package">package</a>
+   <span class="syntax-paren2">(<span class="syntax-symbol"><span class="syntax-symbol">name</span> <span class="syntax-string">"niri"</span></span>)</span>
+   <span class="syntax-paren2">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Build-Config.html#index-version">version</a> <span class="syntax-string">"25.02"</span></span>)</span>
+   <span class="syntax-paren2">(<span class="syntax-symbol"><span class="syntax-symbol">source</span> <span class="syntax-paren3">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/Interfeis-origin.html#index-origin">origin</a>
+             <span class="syntax-paren4">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Method-Definition-Internals.html#index-method">method</a> <a class="syntax-symbol" href="/manual/devel/ru/html_node/Interfeis-origin.html#index-git_002dfetch">git-fetch</a></span>)</span>
+             <span class="syntax-paren4">(<span class="syntax-symbol"><span class="syntax-symbol">uri</span> <span class="syntax-paren5">(<span class="syntax-symbol"><span class="syntax-symbol">git-reference</span>
+                   <span class="syntax-paren6">(<span class="syntax-symbol"><span class="syntax-symbol">url</span> <span class="syntax-string">"https://github.com/YaLTeR/niri"</span></span>)</span>
+                   <span class="syntax-paren6">(<span class="syntax-symbol"><span class="syntax-symbol">commit</span> <span class="syntax-paren7">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Reversing-and-Appending-Strings.html#index-string_002dappend">string-append</a> <span class="syntax-string">"v"</span> <a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Build-Config.html#index-version">version</a></span>)</span></span>)</span></span>)</span></span>)</span>
+             <span class="syntax-paren4">(<span class="syntax-symbol"><span class="syntax-symbol">file-name</span> <span class="syntax-paren5">(<span class="syntax-symbol"><span class="syntax-symbol">git-file-name</span> <span class="syntax-symbol">name</span> <a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Build-Config.html#index-version">version</a></span>)</span></span>)</span>
+             <span class="syntax-paren4">(<span class="syntax-symbol"><span class="syntax-symbol">sha256</span>
+              <span class="syntax-paren5">(<span class="syntax-symbol"><span class="syntax-symbol">base32</span>
+               <span class="syntax-string">"0vzskaalcz6pcml687n54adjddzgf5r07gggc4fhfsa08h1wfd4r"</span></span>)</span></span>)</span></span>)</span></span>)</span>
+   <span class="syntax-paren2">(<span class="syntax-symbol"><span class="syntax-symbol">build-system</span> <a class="syntax-symbol" href="/manual/devel/ru/html_node/Sistemy-sborki.html#index-cargo_002dbuild_002dsystem">cargo-build-system</a></span>)</span>
+   <span class="syntax-paren2">(<span class="syntax-symbol"><span class="syntax-symbol">arguments</span>
+    <span class="syntax-paren3">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/List-Constructors.html#index-list-1">list</a> <span class="syntax-keyword">#:install-source?</span> <span class="syntax-symbol">#f</span>
+          <span class="syntax-keyword">#:phases</span>
+          <span class="syntax-symbol">#~</span><span class="syntax-paren4">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/Build-Utilities.html#index-modify_002dphases">modify-phases</a> <span class="syntax-symbol">%standard-phases</span>
+              <span class="syntax-paren5">(<span class="syntax-symbol"><span class="syntax-symbol">add-after</span> <span class="syntax-symbol">'unpack</span> <span class="syntax-symbol">'use-guix-vendored-dependencies</span>
+                <span class="syntax-paren6">(<span class="syntax-symbol"><span class="syntax-special">lambda</span> <a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Syntax-Rules.html#index-_005f">_</a>
+                  <span class="syntax-paren7">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/Build-Utilities.html#index-substitute_002a">substitute*</a> <span class="syntax-string">"Cargo.toml"</span>
+                    <span class="syntax-paren8">(<span class="syntax-symbol"><span class="syntax-paren9">(<span class="syntax-symbol"><span class="syntax-string">"# version =.*"</span></span>)</span>
+                     <span class="syntax-string">"version = \"*\""</span></span>)</span>
+                    <span class="syntax-paren8">(<span class="syntax-symbol"><span class="syntax-paren9">(<span class="syntax-symbol"><span class="syntax-string">"git.*optional"</span></span>)</span>
+                     <span class="syntax-string">"version = \"*\", optional"</span></span>)</span>
+                    <span class="syntax-paren8">(<span class="syntax-symbol"><span class="syntax-paren9">(<span class="syntax-symbol"><span class="syntax-string">"^git = .*"</span></span>)</span>
+                     <span class="syntax-string">""</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
+   <span class="syntax-paren2">(<span class="syntax-symbol"><span class="syntax-symbol">native-inputs</span>
+    <span class="syntax-paren3">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/List-Constructors.html#index-list-1">list</a> <span class="syntax-symbol">pkg-config</span></span>)</span></span>)</span>
+   <span class="syntax-paren2">(<span class="syntax-symbol"><span class="syntax-symbol">inputs</span>
+    <span class="syntax-paren3">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/List-Constructors.html#index-cons_002a">cons*</a> <span class="syntax-symbol">clang</span>
+           <span class="syntax-symbol">libdisplay-info</span>
+           <span class="syntax-symbol">libinput-minimal</span>
+           <span class="syntax-symbol">libseat</span>
+           <span class="syntax-symbol">libxkbcommon</span>
+           <span class="syntax-symbol">mesa</span>
+           <span class="syntax-symbol">pango</span>
+           <span class="syntax-symbol">pipewire</span>
+           <span class="syntax-symbol">wayland</span>
+           <span class="syntax-paren4">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/Rust-Crates-pakety.html#index-cargo_002dinputs">cargo-inputs</a> <span class="syntax-symbol">'niri</span></span>)</span></span>)</span></span>)</span>
+   <span class="syntax-paren2">(<span class="syntax-symbol"><span class="syntax-symbol">home-page</span> <span class="syntax-string">"https://github.com/YaLTeR/niri"</span></span>)</span>
+   <span class="syntax-paren2">(<span class="syntax-symbol"><span class="syntax-symbol">synopsis</span> <span class="syntax-string">"Scrollable-tiling Wayland compositor"</span></span>)</span>
+   <span class="syntax-paren2">(<span class="syntax-symbol"><span class="syntax-symbol">description</span>
+    <span class="syntax-string">"Niri is a scrollable-tiling Wayland compositor which arranges windows in a
+scrollable format.  It is considered stable for daily use and performs most
+functions expected of a Wayland compositor."</span></span>)</span>
+   <span class="syntax-paren2">(<span class="syntax-symbol"><span class="syntax-symbol">license</span> <span class="syntax-symbol">license:gpl3+</span></span>)</span></span>)</span></span>)</span>
+</pre></div>
+
+<p><code>niri</code> has Cargo workspace dependencies.  When packaging a Cargo
+workspace dependency, parameter <code>#:cargo-package-crates</code> is required.
+</p>
+<div class="example lisp">
+<pre class="lisp"><span class="syntax-paren0">(<span class="syntax-symbol"><span class="syntax-special">define-public</span> <span class="syntax-symbol">rust-pipewire-0.8.0.fd3d8f7</span>
+  <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-special">let</span> <span class="syntax-paren2">(<span class="syntax-symbol"><span class="syntax-paren3">(<span class="syntax-symbol"><span class="syntax-symbol">commit</span> <span class="syntax-string">"fd3d8f7861a29c2eeaa4c393402e013578bb36d9"</span></span>)</span>
+        <span class="syntax-paren3">(<span class="syntax-symbol"><span class="syntax-symbol">revision</span> <span class="syntax-string">"0"</span></span>)</span></span>)</span>
+    <span class="syntax-paren2">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/ssylka-na-paket.html#index-package">package</a>
+      <span class="syntax-paren3">(<span class="syntax-symbol"><span class="syntax-symbol">name</span> <span class="syntax-string">"rust-pipewire"</span></span>)</span>
+      <span class="syntax-paren3">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Build-Config.html#index-version">version</a> <span class="syntax-paren4">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/Nomera-versii.html#index-git_002dversion">git-version</a> <span class="syntax-string">"0.8.0"</span> <span class="syntax-symbol">revision</span> <span class="syntax-symbol">commit</span></span>)</span></span>)</span>
+      <span class="syntax-paren3">(<span class="syntax-symbol"><span class="syntax-symbol">source</span>
+       <span class="syntax-paren4">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/Interfeis-origin.html#index-origin">origin</a>
+         <span class="syntax-paren5">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Method-Definition-Internals.html#index-method">method</a> <a class="syntax-symbol" href="/manual/devel/ru/html_node/Interfeis-origin.html#index-git_002dfetch">git-fetch</a></span>)</span>
+         <span class="syntax-paren5">(<span class="syntax-symbol"><span class="syntax-symbol">uri</span> <span class="syntax-paren6">(<span class="syntax-symbol"><span class="syntax-symbol">git-reference</span>
+               <span class="syntax-paren7">(<span class="syntax-symbol"><span class="syntax-symbol">url</span> <span class="syntax-string">"https://gitlab.freedesktop.org/pipewire/pipewire-rs.git"</span></span>)</span>
+               <span class="syntax-paren7">(<span class="syntax-symbol"><span class="syntax-symbol">commit</span> <span class="syntax-symbol">commit</span></span>)</span></span>)</span></span>)</span>
+         <span class="syntax-paren5">(<span class="syntax-symbol"><span class="syntax-symbol">file-name</span> <span class="syntax-paren6">(<span class="syntax-symbol"><span class="syntax-symbol">git-file-name</span> <span class="syntax-symbol">name</span> <a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Build-Config.html#index-version">version</a></span>)</span></span>)</span>
+         <span class="syntax-paren5">(<span class="syntax-symbol"><span class="syntax-symbol">sha256</span>
+          <span class="syntax-paren6">(<span class="syntax-symbol"><span class="syntax-symbol">base32</span> <span class="syntax-string">"1hzyhz7xg0mz8a5y9j6yil513p1m610q3j9pzf6q55vdh5mcn79v"</span></span>)</span></span>)</span></span>)</span></span>)</span>
+      <span class="syntax-paren3">(<span class="syntax-symbol"><span class="syntax-symbol">build-system</span> <a class="syntax-symbol" href="/manual/devel/ru/html_node/Sistemy-sborki.html#index-cargo_002dbuild_002dsystem">cargo-build-system</a></span>)</span>
+      <span class="syntax-paren3">(<span class="syntax-symbol"><span class="syntax-symbol">arguments</span>
+       <span class="syntax-paren4">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/List-Constructors.html#index-list-1">list</a> <span class="syntax-keyword">#:skip-build?</span> <span class="syntax-symbol">#t</span>
+             <span class="syntax-keyword">#:cargo-package-crates</span>
+             <span class="syntax-symbol">''</span><span class="syntax-paren5">(<span class="syntax-symbol"><span class="syntax-string">"libspa-sys"</span> <span class="syntax-string">"libspa"</span> <span class="syntax-string">"pipewire-sys"</span> <span class="syntax-string">"pipewire"</span></span>)</span></span>)</span></span>)</span>
+      <span class="syntax-paren3">(<span class="syntax-symbol"><span class="syntax-symbol">inputs</span> <span class="syntax-paren4">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/Rust-Crates-pakety.html#index-cargo_002dinputs">cargo-inputs</a> <span class="syntax-symbol">'rust-pipewire-0.8.0.fd3d8f7</span></span>)</span></span>)</span>
+      <span class="syntax-paren3">(<span class="syntax-symbol"><span class="syntax-symbol">home-page</span> <span class="syntax-string">"https://pipewire.org/"</span></span>)</span>
+      <span class="syntax-paren3">(<span class="syntax-symbol"><span class="syntax-symbol">synopsis</span> <span class="syntax-string">"Rust bindings for PipeWire"</span></span>)</span>
+      <span class="syntax-paren3">(<span class="syntax-symbol"><span class="syntax-symbol">description</span> <span class="syntax-string">"This package provides Rust bindings for PipeWire."</span></span>)</span>
+      <span class="syntax-paren3">(<span class="syntax-symbol"><span class="syntax-symbol">license</span> <span class="syntax-symbol">license:expat</span></span>)</span></span>)</span></span>)</span></span>)</span>
+</pre></div>
+
+<p>Don&rsquo;t forget to modify all workspace members in <code>(gnu packages
+rust-crates)</code>:
+</p>
+<div class="example lisp">
+<pre class="lisp"><span class="syntax-paren0">(<span class="syntax-symbol"><span class="syntax-special">define</span> <span class="syntax-symbol">rust-pipewire-0.8.0.fd3d8f7</span> <span class="syntax-symbol">package:rust-pipewire-0.8.0.fd3d8f7</span></span>)</span>
+<span class="syntax-paren0">(<span class="syntax-symbol"><span class="syntax-special">define</span> <span class="syntax-symbol">rust-pipewire-sys-0.8.0.fd3d8f7</span> <span class="syntax-symbol">package:rust-pipewire-0.8.0.fd3d8f7</span></span>)</span>
+<span class="syntax-symbol">…</span>
+<span class="syntax-paren0">(<span class="syntax-symbol"><span class="syntax-special">define</span> <span class="syntax-symbol">rust-libspa-0.8.0.fd3d8f7</span> <span class="syntax-symbol">package:rust-pipewire-0.8.0.fd3d8f7</span></span>)</span>
+<span class="syntax-paren0">(<span class="syntax-symbol"><span class="syntax-special">define</span> <span class="syntax-symbol">rust-libspa-sys-0.8.0.fd3d8f7</span> <span class="syntax-symbol">package:rust-pipewire-0.8.0.fd3d8f7</span></span>)</span>
+</pre></div>
+
+</div>
+<hr />
+<div class="header">
+<p>
+Next: <a href="Using-Rust-Libraries-in-Other-Build-Systems.html">Using Rust Libraries in Other Build Systems</a>, Previous: <a href="Common-Workflow-for-Rust-Packaging.html">Common Workflow for Rust Packaging</a>, Up: <a href="Packaging-Rust-Crates.html">Packaging Rust Crates</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Terminy-i-ukazateli.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

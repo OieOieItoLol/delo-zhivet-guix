@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--   Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/   -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--   Copyright (C) 2019, 2022 Ricardo Wurmus
+ Copyright (C)
+2019 Efraim Flashner
+ Copyright (C) 2019 Pierre Neidhardt
+
+Copyright (C) 2020 Oleg Pykhalov
+ Copyright (C) 2020
+Matthew Brooks
+ Copyright (C) 2020 Marcin Karpezo
+ Copyright
+(C) 2020 Brice Waegeneire
+ Copyright (C) 2020 André
+Batista
+ Copyright (C) 2020 Christine Lemmer-Webber
+ Copyright
+(C) 2021 Joshua Branson
+ Copyright (C) 2022, 2023 Maxim
+Cournoyer
+ Copyright (C) 2023-2026 Ludovic Courtès
+ Copyright
+(C) 2023 Thomas Ieong
+ Copyright (C) 2024 Florian Pelz
+
+Copyright (C) 2025 45mg
+ Copyright (C) 2023 Marek
+Felšöci
+ Copyright (C) 2023 Konrad Hinsen
+ Copyright (C)
+2023 Philippe Swartvagher
+
+
+Разрешено копирование, распространение и/или модификация этого документа на
+условиях лицензии свободной документации GNU (GNU FDL) версии 1.3 или любой
+более поздней версии, опубликованной Фондом свободного программного
+обеспечения (FSF), исключая неизменяемые секции, исключая тексты,
+размещенные на переплёте и задней стороне обложки. Копия лицензии включена в
+документ в разделе под названием "GNU Free Documentation Licens".   -->
+<title>Преимущества манифестов (GNU Guix Рецепты)</title>
+
+<meta name="description" content="Преимущества манифестов (GNU Guix Рецепты)" />
+<meta name="keywords" content="Преимущества манифестов (GNU Guix Рецепты)" />
+<meta name="resource-type" content="document" />
+<meta name="distribution" content="global" />
+<meta name="Generator" content="makeinfo" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<link href="index.html" rel="start" title="Top" />
+<link href="Terminy-i-ukazateli.html" rel="index" title="Термины и указатели" />
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents" />
+<link href="Guix-profili-na-praktike.html" rel="up" title="Guix профили на практике" />
+<link href="Vosproizvodimye-profili.html" rel="next" title="Воспроизводимые профили" />
+<link href="Profilx-po_002dumolchaniiu.html" rel="prev" title="Профиль по-умолчанию" />
+<style type="text/css">
+&amp;lt;!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+--&amp;gt;
+</style>
+<link rel="stylesheet" type="text/css" href="/themes/initial/css/manual.css" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="/themes/initial/css/manual.css" /><link rel="stylesheet" type="text/css" href="/themes/initial/css/code.css" /></head>
+
+<body lang="en"><header class="navbar"><h1><a class="branding" href=".."></a></h1><nav class="navbar-menu"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="all-dropdowns-hidden" /><ul><li class="navbar-menu-item dropdown dropdown-btn"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="visible-dropdown" /><label for="visible-dropdown">Version</label><label for="all-dropdowns-hidden">Version</label><div class="navbar-submenu" id="navbar-submenu"><div class="navbar-submenu-triangle"> </div><ul><li><a class="navbar-menu-item" href="../guix-cookbook.ru.html">single page</a></li><li><a class="navbar-menu-item" href="../guix-cookbook.ru.pdf">PDF</a></li></ul></div></li><li class="navbar-menu-item dropdown dropdown-btn"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="visible-dropdown" /><label for="visible-dropdown"><img alt="Language" src="/themes/initial/img/language-picker.svg" /></label><label for="all-dropdowns-hidden"><img alt="Language" src="/themes/initial/img/language-picker.svg" /></label><div class="navbar-submenu" id="navbar-submenu"><div class="navbar-submenu-triangle"> </div><ul><li><a class="navbar-menu-item" href="../../de/html_node">Deutsch</a></li><li><a class="navbar-menu-item" href="../../en/html_node">English</a></li><li><a class="navbar-menu-item" href="../../es/html_node">Español</a></li><li><a class="navbar-menu-item" href="../../fr/html_node">Français</a></li><li><a class="navbar-menu-item" href="../../it/html_node">Italiano</a></li><li><a class="navbar-menu-item" href="../../ko/html_node">한국어</a></li><li><a class="navbar-menu-item" href="../../pt-br/html_node">Português</a></li><li><a class="navbar-menu-item" href="../../ru/html_node">русский</a></li><li><a class="navbar-menu-item" href="../../sk/html_node">Slovenský</a></li><li><a class="navbar-menu-item" href="../../sv/html_node">Svenska</a></li><li><a class="navbar-menu-item" href="../../ta/html_node">தமிழ்</a></li><li><a class="navbar-menu-item" href="../../zh-cn/html_node">中文; 汉语; 华语</a></li><li><a class="navbar-menu-item" href="https://translate.codeberg.org/projects/guix/documentation-cookbook/">⊕</a></li></ul></div></li></ul></nav><a class="navbar-menu-btn" href="../.."></a></header>
+<div class="subsection" id="g_t_041f_0440_0435_0438_043c_0443_0449_0435_0441_0442_0432_0430-_043c_0430_043d_0438_0444_0435_0441_0442_043e_0432">
+<div class="header">
+<p>
+Next: <a href="Vosproizvodimye-profili.html" accesskey="n" rel="next">Воспроизводимые профили</a>, Previous: <a href="Profilx-po_002dumolchaniiu.html" accesskey="p" rel="prev">Профиль по-умолчанию</a>, Up: <a href="Guix-profili-na-praktike.html" accesskey="u" rel="up">Guix профили на практике</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Terminy-i-ukazateli.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr />
+<span id="Preimushchestva-manifestov"></span><h4 class="subsection">6.1.4 Преимущества манифестов</h4>
+
+<p>Manifests let you <em>declare</em> the set of packages you&rsquo;d like to have in a
+profile (see <a data-manual="guix" href="https://guix.gnu.org/manual/devel/en/html_node/Writing-Manifests.html#Writing-Manifests">Writing Manifests</a> in <cite>GNU Guix Reference Manual</cite>).
+They are a convenient way to keep your package lists around and, say, to
+synchronize them across multiple machines using a version control system.
+</p>
+<p>A common complaint about manifests is that they can be slow to install when
+they contain large number of packages.  This is especially cumbersome when
+you just want get an upgrade for one package within a big manifest.
+</p>
+<p>This is one more reason to use multiple profiles, which happen to be just
+perfect to break down manifests into multiple sets of semantically connected
+packages.  Using multiple, small profiles provides more flexibility and
+usability.
+</p>
+<p>Manifests come with multiple benefits.  In particular, they ease
+maintenance:
+</p>
+<ul>
+<li> When a profile is set up from a manifest, the manifest itself is
+self-sufficient to keep a &ldquo;package listing&rdquo; around and reinstall the
+profile later or on a different system.  For ad-hoc profiles, we would need
+to generate a manifest specification manually and maintain the package
+versions for the packages that don&rsquo;t use the default version.
+
+</li><li> <code>guix package --upgrade</code> always tries to update the packages that have
+propagated inputs, even if there is nothing to do.  Guix manifests remove
+this problem.
+
+</li><li> When partially upgrading a profile, conflicts may arise (due to diverging
+dependencies between the updated and the non-updated packages) and they can
+be annoying to resolve manually.  Manifests remove this problem altogether
+since all packages are always upgraded at once.
+
+</li><li> As mentioned above, manifests allow for reproducible profiles, while the
+imperative <code>guix install</code>, <code>guix upgrade</code>, etc. do not, since they
+produce different profiles every time even when they hold the same
+packages.  See <a href="https://issues.guix.gnu.org/issue/33285">the related
+discussion on the matter</a>.
+
+</li><li> Manifest specifications are usable by other &lsquo;<samp>guix</samp>&rsquo; commands.  For
+example, you can run <code>guix weather -m manifest.scm</code> to see how many
+substitutes are available, which can help you decide whether you want to try
+upgrading today or wait a while.  Another example: you can run <code>guix
+pack -m manifest.scm</code> to create a pack containing all the packages in the
+manifest (and their transitive references).
+
+</li><li> Finally, manifests have a Scheme representation, the &lsquo;<samp>&lt;manifest&gt;</samp>&rsquo;
+record type.  They can be manipulated in Scheme and passed to the various
+Guix <a href="https://en.wikipedia.org/wiki/Api">APIs</a>.
+</li></ul>
+
+<p>It&rsquo;s important to understand that while manifests can be used to declare
+profiles, they are not strictly equivalent: profiles have the side effect
+that they &ldquo;pin&rdquo; packages in the store, which prevents them from being
+garbage-collected (see <a data-manual="guix" href="https://guix.gnu.org/manual/devel/en/html_node/Invoking-guix-gc.html#Invoking-guix-gc">Invoking guix gc</a> in <cite>GNU Guix Reference
+Manual</cite>)  and ensures that they will still be available at any point in the
+future.  The <code>guix shell</code> command also protects recently-used
+profiles from garbage collection; profiles that have not been used for a
+while may be garbage-collected though, along with the packages they refer
+to.
+</p>
+<p>To be 100% sure that a given profile will never be collected, install the
+manifest to a profile and use <code>GUIX_PROFILE=/the/profile;
+. "$GUIX_PROFILE"/etc/profile</code> as explained above: this guarantees that our
+hacking environment will be available at all times.
+</p>
+<p><em>Security warning:</em> While keeping old profiles around can be
+convenient, keep in mind that outdated packages may not have received the
+latest security fixes.
+</p>
+</div>
+<hr />
+<div class="header">
+<p>
+Next: <a href="Vosproizvodimye-profili.html">Воспроизводимые профили</a>, Previous: <a href="Profilx-po_002dumolchaniiu.html">Профиль по-умолчанию</a>, Up: <a href="Guix-profili-na-praktike.html">Guix профили на практике</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Terminy-i-ukazateli.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

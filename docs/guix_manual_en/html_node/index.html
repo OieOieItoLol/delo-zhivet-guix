@@ -1,0 +1,639 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--   Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/   -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--   Copyright (C) 2012-2022, 2025 Ludovic Courtès
+
+Copyright (C) 2013, 2014, 2016 Andreas Enge
+
+Copyright (C) 2013 Nikita Karetnikov
+
+Copyright (C) 2014, 2015, 2016 Alex Kost
+
+Copyright (C) 2015, 2016 Mathieu Lirzin
+
+Copyright (C) 2014 Pierre-Antoine Rault
+
+Copyright (C) 2015 Taylan Ulrich Bayırlı/Kammer
+
+Copyright (C) 2015, 2016, 2017, 2019, 2020, 2021 Leo Famulari
+
+Copyright (C) 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022 Ricardo Wurmus
+
+Copyright (C) 2016 Ben Woodcroft
+
+Copyright (C) 2016, 2017, 2018, 2021 Chris Marusich
+
+Copyright (C) 2016, 2017, 2018, 2019, 2020, 2021, 2022 Efraim Flashner
+
+Copyright (C) 2016 John Darrington
+
+Copyright (C) 2016, 2017 Nikita Gillmann
+
+Copyright (C) 2016, 2017, 2018, 2019, 2020 Jan Nieuwenhuizen
+
+Copyright (C) 2016, 2017, 2018, 2019, 2020, 2021 Julien Lepiller
+
+Copyright (C) 2016 Alex ter Weele
+
+Copyright (C) 2016, 2017, 2018, 2019, 2020, 2021 Christopher Baines
+
+Copyright (C) 2017, 2018, 2019 Clément Lassieur
+
+Copyright (C) 2017, 2018, 2020, 2021, 2022 Mathieu Othacehe
+
+Copyright (C) 2017 Federico Beffa
+
+Copyright (C) 2017, 2018 Carlo Zancanaro
+
+Copyright (C) 2017 Thomas Danckaert
+
+Copyright (C) 2017 humanitiesNerd
+
+Copyright (C) 2017, 2021 Christine Lemmer-Webber
+
+Copyright (C) 2017, 2018, 2019, 2020, 2021, 2022 Marius Bakke
+
+Copyright (C) 2017, 2019, 2020, 2022 Hartmut Goebel
+
+Copyright (C) 2017, 2019, 2020, 2021, 2022 Maxim Cournoyer
+
+Copyright (C) 2017–2022 Tobias Geerinckx-Rice
+
+Copyright (C) 2017 George Clemmer
+
+Copyright (C) 2017 Andy Wingo
+
+Copyright (C) 2017, 2018, 2019, 2020 Arun Isaac
+
+Copyright (C) 2017 nee
+
+Copyright (C) 2018 Rutger Helling
+
+Copyright (C) 2018, 2021 Oleg Pykhalov
+
+Copyright (C) 2018 Mike Gerwitz
+
+Copyright (C) 2018 Pierre-Antoine Rouby
+
+Copyright (C) 2018, 2019 Gábor Boskovits
+
+Copyright (C) 2018, 2019, 2020, 2022 Florian Pelz
+
+Copyright (C) 2018 Laura Lazzati
+
+Copyright (C) 2018 Alex Vong
+
+Copyright (C) 2019 Josh Holland
+
+Copyright (C) 2019, 2020 Diego Nicola Barbato
+
+Copyright (C) 2019 Ivan Petkov
+
+Copyright (C) 2019 Jakob L. Kreuze
+
+Copyright (C) 2019 Kyle Andrews
+
+Copyright (C) 2019 Alex Griffin
+
+Copyright (C) 2019, 2020, 2021, 2022 Guillaume Le Vaillant
+
+Copyright (C) 2020 Liliana Marie Prikler
+
+Copyright (C) 2019, 2020, 2021, 2022 Simon Tournier
+
+Copyright (C) 2020 Wiktor Żelazny
+
+Copyright (C) 2020 Damien Cassou
+
+Copyright (C) 2020 Jakub Kądziołka
+
+Copyright (C) 2020 Jack Hill
+
+Copyright (C) 2020 Naga Malleswari
+
+Copyright (C) 2020, 2021 Brice Waegeneire
+
+Copyright (C) 2020 R Veera Kumar
+
+Copyright (C) 2020, 2021 Pierre Langlois
+
+Copyright (C) 2020 pinoaffe
+
+Copyright (C) 2020 André Batista
+
+Copyright (C) 2020, 2021 Alexandru-Sergiu Marton
+
+Copyright (C) 2020 raingloom
+
+Copyright (C) 2020 Daniel Brooks
+
+Copyright (C) 2020 John Soo
+
+Copyright (C) 2020 Jonathan Brielmaier
+
+Copyright (C) 2020 Edgar Vincent
+
+Copyright (C) 2021, 2022 Maxime Devos
+
+Copyright (C) 2021 B. Wilson
+
+Copyright (C) 2021 Xinglu Chen
+
+Copyright (C) 2021 Raghav Gururajan
+
+Copyright (C) 2021 Domagoj Stolfa
+
+Copyright (C) 2021 Hui Lu
+
+Copyright (C) 2021 pukkamustard
+
+Copyright (C) 2021 Alice Brenon
+
+Copyright (C) 2021, 2022 Josselin Poiret
+
+Copyright (C) 2021 muradm
+
+Copyright (C) 2021, 2022 Andrew Tropin
+
+Copyright (C) 2021 Sarah Morgensen
+
+Copyright (C) 2022 Remco van 't Veer
+
+Copyright (C) 2022 Aleksandr Vityazev
+
+Copyright (C) 2022 Philip McGrath
+
+Copyright (C) 2022 Karl Hallsby
+
+Copyright (C) 2022 Justin Veilleux
+
+Copyright (C) 2022 Reily Siegel
+
+Copyright (C) 2022 Simon Streit
+
+Copyright (C) 2022 (
+
+Copyright (C) 2022 John Kehayias
+
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
+copy of the license is included in the section entitled "GNU Free
+Documentation License".   -->
+<title>Top (GNU Guix Reference Manual)</title>
+
+<meta name="description" content="Top (GNU Guix Reference Manual)" />
+<meta name="keywords" content="Top (GNU Guix Reference Manual)" />
+<meta name="resource-type" content="document" />
+<meta name="distribution" content="global" />
+<meta name="Generator" content="makeinfo" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<link href="index.html#Top" rel="start" title="Top" />
+<link href="Concept-Index.html" rel="index" title="Concept Index" />
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents" />
+<link href="https://guix.gnu.org/manual/1.4.0/en" rel="up" title="(dir)" />
+<link href="Introduction.html" rel="next" title="Introduction" />
+<style type="text/css">
+&amp;lt;!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+--&amp;gt;
+</style>
+<link rel="stylesheet" type="text/css" href="../manual.css" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="../manual.css" /><link rel="stylesheet" type="text/css" href="../code.css" /></head>
+
+<body lang="en"><header class="navbar"><h1><a class="branding" href="../index.html"></a></h1><nav class="navbar-menu"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="all-dropdowns-hidden" /><ul><li class="navbar-menu-item dropdown dropdown-btn"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="visible-dropdown" /><label for="visible-dropdown">Version</label><label for="all-dropdowns-hidden">Version</label><div class="navbar-submenu" id="navbar-submenu"><div class="navbar-submenu-triangle"> </div><ul><li><a class="navbar-menu-item" href="../html_node.html">1.4.0</a></li><li><a class="navbar-menu-item" href="https://guix.gnu.org/manual/devel/en/html_node">development</a></li><img class="hline" src="../h-separator.png" alt="" /><li><a class="navbar-menu-item" href="../guix.html">single page</a></li><li><a class="navbar-menu-item" href="../guix.pdf">PDF</a></li></ul></div></li><li class="navbar-menu-item dropdown dropdown-btn"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="visible-dropdown" /><label for="visible-dropdown"><img alt="Language" src="../language-picker.svg" /></label><label for="all-dropdowns-hidden"><img alt="Language" src="../language-picker.svg" /></label><div class="navbar-submenu" id="navbar-submenu"><div class="navbar-submenu-triangle"> </div><ul><li><a class="navbar-menu-item" href="https://guix.gnu.org/manual/1.4.0/de/html_node">Deutsch</a></li><li><a class="navbar-menu-item" href="../html_node.html">English</a></li><li><a class="navbar-menu-item" href="https://guix.gnu.org/manual/1.4.0/es/html_node">Español</a></li><li><a class="navbar-menu-item" href="https://guix.gnu.org/manual/1.4.0/fr/html_node">Français</a></li><li><a class="navbar-menu-item" href="https://guix.gnu.org/manual/1.4.0/pt-br/html_node">Português</a></li><li><a class="navbar-menu-item" href="https://guix.gnu.org/manual/1.4.0/ru/html_node">русский</a></li><li><a class="navbar-menu-item" href="https://guix.gnu.org/manual/1.4.0/zh-cn/html_node">中文; 汉语; 华语</a></li><li><a class="navbar-menu-item" href="https://translate.fedoraproject.org/projects/guix/documentation-manual/">⊕</a></li></ul></div></li></ul></nav><a class="navbar-menu-btn" href="https://guix.gnu.org/manual/1.4.0/"></a></header>
+<h1 class="settitle" align="center">GNU Guix Reference Manual</h1>
+
+
+
+
+
+
+
+
+
+
+
+<div class="top" id="Top">
+<div class="header">
+<p>
+Next: <a href="Introduction.html" accesskey="n" rel="next">Introduction</a>, Up: <a href="https://guix.gnu.org/manual/1.4.0/en" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr />
+<span id="GNU-Guix"></span><h1 class="top">GNU Guix</h1>
+
+<p>This document describes GNU Guix version 1.4.0, a functional
+package management tool written for the GNU system.
+</p>
+<p>This manual is also available in Simplified Chinese (see <cite><a data-manual="guix.zh_CN" href="https://guix.gnu.org/manual/1.4.0/zh-cn/html_node/index.html#Top">GNU Guix参考手册</a></cite>), French (see <cite><a data-manual="guix.fr" href="https://guix.gnu.org/manual/1.4.0/fr/html_node/index.html#Top">Manuel de référence de GNU
+Guix</a></cite>), German (see <cite><a data-manual="guix.de" href="https://guix.gnu.org/manual/1.4.0/de/html_node/index.html#Top">Referenzhandbuch zu GNU Guix</a></cite>),
+Spanish (see <cite><a data-manual="guix.es" href="https://guix.gnu.org/manual/1.4.0/es/html_node/index.html#Top">Manual de referencia de GNU Guix</a></cite>),
+Brazilian Portuguese (see <cite><a data-manual="guix.pt_BR" href="https://guix.gnu.org/manual/1.4.0/pt-br/html_node/index.html#Top">Manual de referência do
+GNU Guix</a></cite>), and Russian (see <cite><a data-manual="guix.ru" href="https://guix.gnu.org/manual/1.4.0/ru/html_node/index.html#Top">Руководство GNU Guix</a></cite>).  If you
+would like to translate it in your native language, consider joining
+<a href="https://translate.fedoraproject.org/projects/guix/documentation-manual">Weblate</a> (see <a href="Translating-Guix.html">Translating Guix</a>).
+</p>
+
+<div class="Contents_element" id="SEC_Contents">
+<h2 class="contents-heading">Table of Contents</h2>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-Introduction-1" href="Introduction.html">1 Introduction</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Managing-Software-the-Guix-Way-1" href="Managing-Software-the-Guix-Way.html">1.1 Managing Software the Guix Way</a></li>
+    <li><a id="toc-GNU-Distribution-1" href="GNU-Distribution.html">1.2 GNU Distribution</a></li>
+  </ul></li>
+  <li><a id="toc-Installation-1" href="Installation.html">2 Installation</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Binary-Installation-1" href="Binary-Installation.html">2.1 Binary Installation</a></li>
+    <li><a id="toc-Requirements-1" href="Requirements.html">2.2 Requirements</a></li>
+    <li><a id="toc-Running-the-Test-Suite-1" href="Running-the-Test-Suite.html">2.3 Running the Test Suite</a></li>
+    <li><a id="toc-Setting-Up-the-Daemon-1" href="Setting-Up-the-Daemon.html">2.4 Setting Up the Daemon</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Build-Environment-Setup-1" href="Build-Environment-Setup.html">2.4.1 Build Environment Setup</a></li>
+      <li><a id="toc-Using-the-Offload-Facility" href="Daemon-Offload-Setup.html">2.4.2 Using the Offload Facility</a></li>
+      <li><a id="toc-SELinux-Support-1" href="SELinux-Support.html">2.4.3 SELinux Support</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Installing-the-SELinux-policy" href="SELinux-Support.html#Installing-the-SELinux-policy">2.4.3.1 Installing the SELinux policy</a></li>
+        <li><a id="toc-Limitations-1" href="SELinux-Support.html#Limitations-1">2.4.3.2 Limitations</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Invoking-guix_002ddaemon-1" href="Invoking-guix_002ddaemon.html">2.5 Invoking <code>guix-daemon</code></a></li>
+    <li><a id="toc-Application-Setup-1" href="Application-Setup.html">2.6 Application Setup</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Locales-1" href="Application-Setup.html#Locales-1">2.6.1 Locales</a></li>
+      <li><a id="toc-Name-Service-Switch-1" href="Application-Setup.html#Name-Service-Switch-1">2.6.2 Name Service Switch</a></li>
+      <li><a id="toc-X11-Fonts" href="Application-Setup.html#X11-Fonts">2.6.3 X11 Fonts</a></li>
+      <li><a id="toc-X_002e509-Certificates-1" href="Application-Setup.html#X_002e509-Certificates-1">2.6.4 X.509 Certificates</a></li>
+      <li><a id="toc-Emacs-Packages-1" href="Application-Setup.html#Emacs-Packages-1">2.6.5 Emacs Packages</a></li>
+    </ul></li>
+    <li><a id="toc-Upgrading-Guix-1" href="Upgrading-Guix.html">2.7 Upgrading Guix</a></li>
+  </ul></li>
+  <li><a id="toc-System-Installation-1" href="System-Installation.html">3 System Installation</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Limitations-2" href="Limitations.html">3.1 Limitations</a></li>
+    <li><a id="toc-Hardware-Considerations-1" href="Hardware-Considerations.html">3.2 Hardware Considerations</a></li>
+    <li><a id="toc-USB-Stick-and-DVD-Installation-1" href="USB-Stick-and-DVD-Installation.html">3.3 USB Stick and DVD Installation</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Copying-to-a-USB-Stick" href="USB-Stick-and-DVD-Installation.html#Copying-to-a-USB-Stick">Copying to a USB Stick</a></li>
+      <li><a id="toc-Burning-on-a-DVD" href="USB-Stick-and-DVD-Installation.html#Burning-on-a-DVD">Burning on a DVD</a></li>
+      <li><a id="toc-Booting" href="USB-Stick-and-DVD-Installation.html#Booting">Booting</a></li>
+    </ul></li>
+    <li><a id="toc-Preparing-for-Installation-1" href="Preparing-for-Installation.html">3.4 Preparing for Installation</a></li>
+    <li><a id="toc-Guided-Graphical-Installation-1" href="Guided-Graphical-Installation.html">3.5 Guided Graphical Installation</a></li>
+    <li><a id="toc-Manual-Installation-1" href="Manual-Installation.html">3.6 Manual Installation</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Keyboard-Layout_002c-Networking_002c-and-Partitioning" href="Keyboard-Layout-and-Networking-and-Partitioning.html">3.6.1 Keyboard Layout, Networking, and Partitioning</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Keyboard-Layout-1" href="Keyboard-Layout-and-Networking-and-Partitioning.html#Keyboard-Layout-1">3.6.1.1 Keyboard Layout</a></li>
+        <li><a id="toc-Networking" href="Keyboard-Layout-and-Networking-and-Partitioning.html#Networking">3.6.1.2 Networking</a></li>
+        <li><a id="toc-Disk-Partitioning" href="Keyboard-Layout-and-Networking-and-Partitioning.html#Disk-Partitioning">3.6.1.3 Disk Partitioning</a></li>
+      </ul></li>
+      <li><a id="toc-Proceeding-with-the-Installation-1" href="Proceeding-with-the-Installation.html">3.6.2 Proceeding with the Installation</a></li>
+    </ul></li>
+    <li><a id="toc-After-System-Installation-1" href="After-System-Installation.html">3.7 After System Installation</a></li>
+    <li><a id="toc-Installing-Guix-in-a-Virtual-Machine" href="Installing-Guix-in-a-VM.html">3.8 Installing Guix in a Virtual Machine</a></li>
+    <li><a id="toc-Building-the-Installation-Image-1" href="Building-the-Installation-Image.html">3.9 Building the Installation Image</a></li>
+    <li><a id="toc-Building-the-Installation-Image-for-ARM-Boards" href="Building-the-Installation-Image.html#Building-the-Installation-Image-for-ARM-Boards">3.10 Building the Installation Image for ARM Boards</a></li>
+  </ul></li>
+  <li><a id="toc-System-Troubleshooting-Tips-1" href="System-Troubleshooting-Tips.html">4 System Troubleshooting Tips</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Chrooting-into-an-existing-system-1" href="Chrooting-into-an-existing-system.html">4.1 Chrooting into an existing system</a></li>
+  </ul></li>
+  <li><a id="toc-Getting-Started-1" href="Getting-Started.html">5 Getting Started</a></li>
+  <li><a id="toc-Package-Management-1" href="Package-Management.html">6 Package Management</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Features-1" href="Features.html">6.1 Features</a></li>
+    <li><a id="toc-Invoking-guix-package-1" href="Invoking-guix-package.html">6.2 Invoking <code>guix package</code></a></li>
+    <li><a id="toc-Substitutes-1" href="Substitutes.html">6.3 Substitutes</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Official-Substitute-Servers-1" href="Official-Substitute-Servers.html">6.3.1 Official Substitute Servers</a></li>
+      <li><a id="toc-Substitute-Server-Authorization-1" href="Substitute-Server-Authorization.html">6.3.2 Substitute Server Authorization</a></li>
+      <li><a id="toc-Getting-Substitutes-from-Other-Servers-1" href="Getting-Substitutes-from-Other-Servers.html">6.3.3 Getting Substitutes from Other Servers</a></li>
+      <li><a id="toc-Substitute-Authentication-1" href="Substitute-Authentication.html">6.3.4 Substitute Authentication</a></li>
+      <li><a id="toc-Proxy-Settings-1" href="Proxy-Settings.html">6.3.5 Proxy Settings</a></li>
+      <li><a id="toc-Substitution-Failure-1" href="Substitution-Failure.html">6.3.6 Substitution Failure</a></li>
+      <li><a id="toc-On-Trusting-Binaries-1" href="On-Trusting-Binaries.html">6.3.7 On Trusting Binaries</a></li>
+    </ul></li>
+    <li><a id="toc-Packages-with-Multiple-Outputs-1" href="Packages-with-Multiple-Outputs.html">6.4 Packages with Multiple Outputs</a></li>
+    <li><a id="toc-Invoking-guix-gc-1" href="Invoking-guix-gc.html">6.5 Invoking <code>guix gc</code></a></li>
+    <li><a id="toc-Invoking-guix-pull-1" href="Invoking-guix-pull.html">6.6 Invoking <code>guix pull</code></a></li>
+    <li><a id="toc-Invoking-guix-time_002dmachine-1" href="Invoking-guix-time_002dmachine.html">6.7 Invoking <code>guix time-machine</code></a></li>
+    <li><a id="toc-Inferiors-1" href="Inferiors.html">6.8 Inferiors</a></li>
+    <li><a id="toc-Invoking-guix-describe-1" href="Invoking-guix-describe.html">6.9 Invoking <code>guix describe</code></a></li>
+    <li><a id="toc-Invoking-guix-archive-1" href="Invoking-guix-archive.html">6.10 Invoking <code>guix archive</code></a></li>
+  </ul></li>
+  <li><a id="toc-Channels-1" href="Channels.html">7 Channels</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Specifying-Additional-Channels-1" href="Specifying-Additional-Channels.html">7.1 Specifying Additional Channels</a></li>
+    <li><a id="toc-Using-a-Custom-Guix-Channel-1" href="Using-a-Custom-Guix-Channel.html">7.2 Using a Custom Guix Channel</a></li>
+    <li><a id="toc-Replicating-Guix-1" href="Replicating-Guix.html">7.3 Replicating Guix</a></li>
+    <li><a id="toc-Channel-Authentication-1" href="Channel-Authentication.html">7.4 Channel Authentication</a></li>
+    <li><a id="toc-Channels-with-Substitutes-1" href="Channels-with-Substitutes.html">7.5 Channels with Substitutes</a></li>
+    <li><a id="toc-Creating-a-Channel-1" href="Creating-a-Channel.html">7.6 Creating a Channel</a></li>
+    <li><a id="toc-Package-Modules-in-a-Sub_002ddirectory-1" href="Package-Modules-in-a-Sub_002ddirectory.html">7.7 Package Modules in a Sub-directory</a></li>
+    <li><a id="toc-Declaring-Channel-Dependencies-1" href="Declaring-Channel-Dependencies.html">7.8 Declaring Channel Dependencies</a></li>
+    <li><a id="toc-Specifying-Channel-Authorizations-1" href="Specifying-Channel-Authorizations.html">7.9 Specifying Channel Authorizations</a></li>
+    <li><a id="toc-Primary-URL-1" href="Primary-URL.html">7.10 Primary URL</a></li>
+    <li><a id="toc-Writing-Channel-News-1" href="Writing-Channel-News.html">7.11 Writing Channel News</a></li>
+  </ul></li>
+  <li><a id="toc-Development-1" href="Development.html">8 Development</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Invoking-guix-shell-1" href="Invoking-guix-shell.html">8.1 Invoking <code>guix shell</code></a></li>
+    <li><a id="toc-Invoking-guix-environment-1" href="Invoking-guix-environment.html">8.2 Invoking <code>guix environment</code></a></li>
+    <li><a id="toc-Invoking-guix-pack-1" href="Invoking-guix-pack.html">8.3 Invoking <code>guix pack</code></a></li>
+    <li><a id="toc-The-GCC-toolchain-1" href="The-GCC-toolchain.html">8.4 The GCC toolchain</a></li>
+    <li><a id="toc-Invoking-guix-git-authenticate-1" href="Invoking-guix-git-authenticate.html">8.5 Invoking <code>guix git authenticate</code></a></li>
+  </ul></li>
+  <li><a id="toc-Programming-Interface-1" href="Programming-Interface.html">9 Programming Interface</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Package-Modules-1" href="Package-Modules.html">9.1 Package Modules</a></li>
+    <li><a id="toc-Defining-Packages-1" href="Defining-Packages.html">9.2 Defining Packages</a>
+    <ul class="no-bullet">
+      <li><a id="toc-package-Reference-1" href="package-Reference.html">9.2.1 <code>package</code> Reference</a></li>
+      <li><a id="toc-origin-Reference-1" href="origin-Reference.html">9.2.2 <code>origin</code> Reference</a></li>
+    </ul></li>
+    <li><a id="toc-Defining-Package-Variants-1" href="Defining-Package-Variants.html">9.3 Defining Package Variants</a></li>
+    <li><a id="toc-Writing-Manifests-1" href="Writing-Manifests.html">9.4 Writing Manifests</a></li>
+    <li><a id="toc-Build-Systems-1" href="Build-Systems.html">9.5 Build Systems</a></li>
+    <li><a id="toc-Build-Phases-1" href="Build-Phases.html">9.6 Build Phases</a></li>
+    <li><a id="toc-Build-Utilities-1" href="Build-Utilities.html">9.7 Build Utilities</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Dealing-with-Store-File-Names" href="Build-Utilities.html#Dealing-with-Store-File-Names">9.7.1 Dealing with Store File Names</a></li>
+      <li><a id="toc-File-Types" href="Build-Utilities.html#File-Types">9.7.2 File Types</a></li>
+      <li><a id="toc-File-Manipulation" href="Build-Utilities.html#File-Manipulation">9.7.3 File Manipulation</a></li>
+      <li><a id="toc-File-Search" href="Build-Utilities.html#File-Search">9.7.4 File Search</a></li>
+      <li><a id="toc-Program-Invocation" href="Build-Utilities.html#Program-Invocation">9.7.5 Program Invocation</a></li>
+      <li><a id="toc-Build-Phases-2" href="Build-Utilities.html#Build-Phases-2">9.7.6 Build Phases</a></li>
+      <li><a id="toc-Wrappers" href="Build-Utilities.html#Wrappers">9.7.7 Wrappers</a></li>
+    </ul></li>
+    <li><a id="toc-Search-Paths-1" href="Search-Paths.html">9.8 Search Paths</a></li>
+    <li><a id="toc-The-Store-1" href="The-Store.html">9.9 The Store</a></li>
+    <li><a id="toc-Derivations-1" href="Derivations.html">9.10 Derivations</a></li>
+    <li><a id="toc-The-Store-Monad-1" href="The-Store-Monad.html">9.11 The Store Monad</a></li>
+    <li><a id="toc-G_002dExpressions-1" href="G_002dExpressions.html">9.12 G-Expressions</a></li>
+    <li><a id="toc-Invoking-guix-repl-1" href="Invoking-guix-repl.html">9.13 Invoking <code>guix repl</code></a></li>
+    <li><a id="toc-Using-Guix-Interactively-1" href="Using-Guix-Interactively.html">9.14 Using Guix Interactively</a></li>
+  </ul></li>
+  <li><a id="toc-Utilities-1" href="Utilities.html">10 Utilities</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Invoking-guix-build-1" href="Invoking-guix-build.html">10.1 Invoking <code>guix build</code></a>
+    <ul class="no-bullet">
+      <li><a id="toc-Common-Build-Options-1" href="Common-Build-Options.html">10.1.1 Common Build Options</a></li>
+      <li><a id="toc-Package-Transformation-Options-1" href="Package-Transformation-Options.html">10.1.2 Package Transformation Options</a></li>
+      <li><a id="toc-Additional-Build-Options-1" href="Additional-Build-Options.html">10.1.3 Additional Build Options</a></li>
+      <li><a id="toc-Debugging-Build-Failures-1" href="Debugging-Build-Failures.html">10.1.4 Debugging Build Failures</a></li>
+    </ul></li>
+    <li><a id="toc-Invoking-guix-edit-1" href="Invoking-guix-edit.html">10.2 Invoking <code>guix edit</code></a></li>
+    <li><a id="toc-Invoking-guix-download-1" href="Invoking-guix-download.html">10.3 Invoking <code>guix download</code></a></li>
+    <li><a id="toc-Invoking-guix-hash-1" href="Invoking-guix-hash.html">10.4 Invoking <code>guix hash</code></a></li>
+    <li><a id="toc-Invoking-guix-import-1" href="Invoking-guix-import.html">10.5 Invoking <code>guix import</code></a></li>
+    <li><a id="toc-Invoking-guix-refresh-1" href="Invoking-guix-refresh.html">10.6 Invoking <code>guix refresh</code></a></li>
+    <li><a id="toc-Invoking-guix-style-1" href="Invoking-guix-style.html">10.7 Invoking <code>guix style</code></a></li>
+    <li><a id="toc-Invoking-guix-lint-1" href="Invoking-guix-lint.html">10.8 Invoking <code>guix lint</code></a></li>
+    <li><a id="toc-Invoking-guix-size-1" href="Invoking-guix-size.html">10.9 Invoking <code>guix size</code></a></li>
+    <li><a id="toc-Invoking-guix-graph-1" href="Invoking-guix-graph.html">10.10 Invoking <code>guix graph</code></a></li>
+    <li><a id="toc-Invoking-guix-publish-1" href="Invoking-guix-publish.html">10.11 Invoking <code>guix publish</code></a></li>
+    <li><a id="toc-Invoking-guix-challenge-1" href="Invoking-guix-challenge.html">10.12 Invoking <code>guix challenge</code></a></li>
+    <li><a id="toc-Invoking-guix-copy-1" href="Invoking-guix-copy.html">10.13 Invoking <code>guix copy</code></a></li>
+    <li><a id="toc-Invoking-guix-container-1" href="Invoking-guix-container.html">10.14 Invoking <code>guix container</code></a></li>
+    <li><a id="toc-Invoking-guix-weather-1" href="Invoking-guix-weather.html">10.15 Invoking <code>guix weather</code></a></li>
+    <li><a id="toc-Invoking-guix-processes-1" href="Invoking-guix-processes.html">10.16 Invoking <code>guix processes</code></a></li>
+  </ul></li>
+  <li><a id="toc-Foreign-Architectures-1" href="Foreign-Architectures.html">11 Foreign Architectures</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Cross_002dCompilation-1" href="Cross_002dCompilation.html">11.1 Cross-Compilation</a></li>
+    <li><a id="toc-Native-Builds-1" href="Native-Builds.html">11.2 Native Builds</a></li>
+  </ul></li>
+  <li><a id="toc-System-Configuration-1" href="System-Configuration.html">12 System Configuration</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Using-the-Configuration-System-1" href="Using-the-Configuration-System.html">12.1 Using the Configuration System</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Bootloader" href="Using-the-Configuration-System.html#Bootloader">Bootloader</a></li>
+      <li><a id="toc-Globally_002dVisible-Packages" href="Using-the-Configuration-System.html#Globally_002dVisible-Packages">Globally-Visible Packages</a></li>
+      <li><a id="toc-System-Services" href="Using-the-Configuration-System.html#System-Services">System Services</a></li>
+      <li><a id="toc-Instantiating-the-System" href="Using-the-Configuration-System.html#Instantiating-the-System">Instantiating the System</a></li>
+      <li><a id="toc-The-Programming-Interface" href="Using-the-Configuration-System.html#The-Programming-Interface">The Programming Interface</a></li>
+    </ul></li>
+    <li><a id="toc-operating_002dsystem-Reference-1" href="operating_002dsystem-Reference.html">12.2 <code>operating-system</code> Reference</a></li>
+    <li><a id="toc-File-Systems-1" href="File-Systems.html">12.3 File Systems</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Btrfs-file-system-1" href="Btrfs-file-system.html">12.3.1 Btrfs file system</a></li>
+    </ul></li>
+    <li><a id="toc-Mapped-Devices-1" href="Mapped-Devices.html">12.4 Mapped Devices</a></li>
+    <li><a id="toc-Swap-Space-1" href="Swap-Space.html">12.5 Swap Space</a></li>
+    <li><a id="toc-User-Accounts-1" href="User-Accounts.html">12.6 User Accounts</a></li>
+    <li><a id="toc-Keyboard-Layout-2" href="Keyboard-Layout.html">12.7 Keyboard Layout</a></li>
+    <li><a id="toc-Locales-2" href="Locales.html">12.8 Locales</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Locale-Data-Compatibility-Considerations" href="Locales.html#Locale-Data-Compatibility-Considerations">12.8.1 Locale Data Compatibility Considerations</a></li>
+    </ul></li>
+    <li><a id="toc-Services-1" href="Services.html">12.9 Services</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Base-Services-1" href="Base-Services.html">12.9.1 Base Services</a></li>
+      <li><a id="toc-Scheduled-Job-Execution-1" href="Scheduled-Job-Execution.html">12.9.2 Scheduled Job Execution</a></li>
+      <li><a id="toc-Log-Rotation-1" href="Log-Rotation.html">12.9.3 Log Rotation</a></li>
+      <li><a id="toc-Networking-Setup-1" href="Networking-Setup.html">12.9.4 Networking Setup</a></li>
+      <li><a id="toc-Networking-Services-1" href="Networking-Services.html">12.9.5 Networking Services</a></li>
+      <li><a id="toc-Unattended-Upgrades-1" href="Unattended-Upgrades.html">12.9.6 Unattended Upgrades</a></li>
+      <li><a id="toc-X-Window-1" href="X-Window.html">12.9.7 X Window</a></li>
+      <li><a id="toc-Printing-Services-1" href="Printing-Services.html">12.9.8 Printing Services</a></li>
+      <li><a id="toc-Desktop-Services-1" href="Desktop-Services.html">12.9.9 Desktop Services</a></li>
+      <li><a id="toc-Sound-Services-1" href="Sound-Services.html">12.9.10 Sound Services</a></li>
+      <li><a id="toc-Database-Services-1" href="Database-Services.html">12.9.11 Database Services</a></li>
+      <li><a id="toc-Mail-Services-1" href="Mail-Services.html">12.9.12 Mail Services</a></li>
+      <li><a id="toc-Messaging-Services-1" href="Messaging-Services.html">12.9.13 Messaging Services</a></li>
+      <li><a id="toc-Telephony-Services-1" href="Telephony-Services.html">12.9.14 Telephony Services</a></li>
+      <li><a id="toc-File_002dSharing-Services-1" href="File_002dSharing-Services.html">12.9.15 File-Sharing Services</a></li>
+      <li><a id="toc-Monitoring-Services-1" href="Monitoring-Services.html">12.9.16 Monitoring Services</a></li>
+      <li><a id="toc-Kerberos-Services-1" href="Kerberos-Services.html">12.9.17 Kerberos Services</a></li>
+      <li><a id="toc-LDAP-Services-1" href="LDAP-Services.html">12.9.18 LDAP Services</a></li>
+      <li><a id="toc-Web-Services-1" href="Web-Services.html">12.9.19 Web Services</a></li>
+      <li><a id="toc-Certificate-Services-1" href="Certificate-Services.html">12.9.20 Certificate Services</a></li>
+      <li><a id="toc-DNS-Services-1" href="DNS-Services.html">12.9.21 DNS Services</a></li>
+      <li><a id="toc-VNC-Services-1" href="VNC-Services.html">12.9.22 VNC Services</a></li>
+      <li><a id="toc-VPN-Services-1" href="VPN-Services.html">12.9.23 VPN Services</a></li>
+      <li><a id="toc-Network-File-System-1" href="Network-File-System.html">12.9.24 Network File System</a></li>
+      <li><a id="toc-Samba-Services-1" href="Samba-Services.html">12.9.25 Samba Services</a></li>
+      <li><a id="toc-Continuous-Integration-1" href="Continuous-Integration.html">12.9.26 Continuous Integration</a></li>
+      <li><a id="toc-Power-Management-Services-1" href="Power-Management-Services.html">12.9.27 Power Management Services</a></li>
+      <li><a id="toc-Audio-Services-1" href="Audio-Services.html">12.9.28 Audio Services</a></li>
+      <li><a id="toc-Virtualization-Services-1" href="Virtualization-Services.html">12.9.29 Virtualization Services</a></li>
+      <li><a id="toc-Version-Control-Services-1" href="Version-Control-Services.html">12.9.30 Version Control Services</a></li>
+      <li><a id="toc-Game-Services-1" href="Game-Services.html">12.9.31 Game Services</a></li>
+      <li><a id="toc-PAM-Mount-Service-1" href="PAM-Mount-Service.html">12.9.32 PAM Mount Service</a></li>
+      <li><a id="toc-Guix-Services-1" href="Guix-Services.html">12.9.33 Guix Services</a></li>
+      <li><a id="toc-Linux-Services-1" href="Linux-Services.html">12.9.34 Linux Services</a></li>
+      <li><a id="toc-Hurd-Services-1" href="Hurd-Services.html">12.9.35 Hurd Services</a></li>
+      <li><a id="toc-Miscellaneous-Services-1" href="Miscellaneous-Services.html">12.9.36 Miscellaneous Services</a></li>
+    </ul></li>
+    <li><a id="toc-Setuid-Programs-1" href="Setuid-Programs.html">12.10 Setuid Programs</a></li>
+    <li><a id="toc-X_002e509-Certificates-2" href="X_002e509-Certificates.html">12.11 X.509 Certificates</a></li>
+    <li><a id="toc-Name-Service-Switch-2" href="Name-Service-Switch.html">12.12 Name Service Switch</a></li>
+    <li><a id="toc-Initial-RAM-Disk-1" href="Initial-RAM-Disk.html">12.13 Initial RAM Disk</a></li>
+    <li><a id="toc-Bootloader-Configuration-1" href="Bootloader-Configuration.html">12.14 Bootloader Configuration</a></li>
+    <li><a id="toc-Invoking-guix-system-1" href="Invoking-guix-system.html">12.15 Invoking <code>guix system</code></a></li>
+    <li><a id="toc-Invoking-guix-deploy-1" href="Invoking-guix-deploy.html">12.16 Invoking <code>guix deploy</code></a></li>
+    <li><a id="toc-Running-Guix-in-a-Virtual-Machine" href="Running-Guix-in-a-VM.html">12.17 Running Guix in a Virtual Machine</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Connecting-Through-SSH" href="Running-Guix-in-a-VM.html#Connecting-Through-SSH">12.17.1 Connecting Through SSH</a></li>
+      <li><a id="toc-Using-virt_002dviewer-with-Spice" href="Running-Guix-in-a-VM.html#Using-virt_002dviewer-with-Spice">12.17.2 Using <code>virt-viewer</code> with Spice</a></li>
+    </ul></li>
+    <li><a id="toc-Defining-Services-1" href="Defining-Services.html">12.18 Defining Services</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Service-Composition-1" href="Service-Composition.html">12.18.1 Service Composition</a></li>
+      <li><a id="toc-Service-Types-and-Services-1" href="Service-Types-and-Services.html">12.18.2 Service Types and Services</a></li>
+      <li><a id="toc-Service-Reference-1" href="Service-Reference.html">12.18.3 Service Reference</a></li>
+      <li><a id="toc-Shepherd-Services-1" href="Shepherd-Services.html">12.18.4 Shepherd Services</a></li>
+      <li><a id="toc-Complex-Configurations-1" href="Complex-Configurations.html">12.18.5 Complex Configurations</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Home-Configuration-1" href="Home-Configuration.html">13 Home Configuration</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Declaring-the-Home-Environment-1" href="Declaring-the-Home-Environment.html">13.1 Declaring the Home Environment</a></li>
+    <li><a id="toc-Configuring-the-Shell-1" href="Configuring-the-Shell.html">13.2 Configuring the Shell</a></li>
+    <li><a id="toc-Home-Services-1" href="Home-Services.html">13.3 Home Services</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Essential-Home-Services-1" href="Essential-Home-Services.html">13.3.1 Essential Home Services</a></li>
+      <li><a id="toc-Shells" href="Shells-Home-Services.html">13.3.2 Shells</a></li>
+      <li><a id="toc-Scheduled-User_0027s-Job-Execution" href="Mcron-Home-Service.html">13.3.3 Scheduled User&rsquo;s Job Execution</a></li>
+      <li><a id="toc-Power-Management-Home-Services-1" href="Power-Management-Home-Services.html">13.3.4 Power Management Home Services</a></li>
+      <li><a id="toc-Managing-User-Daemons" href="Shepherd-Home-Service.html">13.3.5 Managing User Daemons</a></li>
+      <li><a id="toc-Secure-Shell-1" href="Secure-Shell.html">13.3.6 Secure Shell</a></li>
+      <li><a id="toc-Desktop-Home-Services-1" href="Desktop-Home-Services.html">13.3.7 Desktop Home Services</a></li>
+      <li><a id="toc-Guix-Home-Services-1" href="Guix-Home-Services.html">13.3.8 Guix Home Services</a></li>
+    </ul></li>
+    <li><a id="toc-Invoking-guix-home-1" href="Invoking-guix-home.html">13.4 Invoking <code>guix home</code></a></li>
+  </ul></li>
+  <li><a id="toc-Documentation-1" href="Documentation.html">14 Documentation</a></li>
+  <li><a id="toc-Platforms-1" href="Platforms.html">15 Platforms</a>
+  <ul class="no-bullet">
+    <li><a id="toc-platform-Reference-1" href="platform-Reference.html">15.1 <code>platform</code> Reference</a></li>
+    <li><a id="toc-Supported-Platforms-1" href="Supported-Platforms.html">15.2 Supported Platforms</a></li>
+  </ul></li>
+  <li><a id="toc-Creating-System-Images" href="System-Images.html">16 Creating System Images</a>
+  <ul class="no-bullet">
+    <li><a id="toc-image-Reference-1" href="image-Reference.html">16.1 <code>image</code> Reference</a>
+    <ul class="no-bullet">
+      <li><a id="toc-partition-Reference-1" href="partition-Reference.html">16.1.1 <code>partition</code> Reference</a></li>
+    </ul></li>
+    <li><a id="toc-Instantiate-an-Image-1" href="Instantiate-an-Image.html">16.2 Instantiate an Image</a></li>
+    <li><a id="toc-image_002dtype-Reference-1" href="image_002dtype-Reference.html">16.3 image-type Reference</a></li>
+    <li><a id="toc-Image-Modules-1" href="Image-Modules.html">16.4 Image Modules</a></li>
+  </ul></li>
+  <li><a id="toc-Installing-Debugging-Files-1" href="Installing-Debugging-Files.html">17 Installing Debugging Files</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Separate-Debug-Info-1" href="Separate-Debug-Info.html">17.1 Separate Debug Info</a></li>
+    <li><a id="toc-Rebuilding-Debug-Info-1" href="Rebuilding-Debug-Info.html">17.2 Rebuilding Debug Info</a></li>
+  </ul></li>
+  <li><a id="toc-Using-TeX-and-LaTeX-1" href="Using-TeX-and-LaTeX.html">18 Using TeX and LaTeX</a></li>
+  <li><a id="toc-Security-Updates-1" href="Security-Updates.html">19 Security Updates</a></li>
+  <li><a id="toc-Bootstrapping-1" href="Bootstrapping.html">20 Bootstrapping</a>
+  <ul class="no-bullet">
+    <li><a id="toc-The-Reduced-Binary-Seed-Bootstrap" href="Reduced-Binary-Seed-Bootstrap.html">20.1 The Reduced Binary Seed Bootstrap</a></li>
+    <li><a id="toc-Preparing-to-Use-the-Bootstrap-Binaries-1" href="Preparing-to-Use-the-Bootstrap-Binaries.html">20.2 Preparing to Use the Bootstrap Binaries</a></li>
+    <li><a id="toc-Building-the-Build-Tools" href="Preparing-to-Use-the-Bootstrap-Binaries.html#Building-the-Build-Tools">Building the Build Tools</a></li>
+    <li><a id="toc-Building-the-Bootstrap-Binaries" href="Preparing-to-Use-the-Bootstrap-Binaries.html#Building-the-Bootstrap-Binaries">Building the Bootstrap Binaries</a></li>
+    <li><a id="toc-Reducing-the-Set-of-Bootstrap-Binaries" href="Preparing-to-Use-the-Bootstrap-Binaries.html#Reducing-the-Set-of-Bootstrap-Binaries">Reducing the Set of Bootstrap Binaries</a></li>
+  </ul></li>
+  <li><a id="toc-Porting-to-a-New-Platform" href="Porting.html">21 Porting to a New Platform</a></li>
+  <li><a id="toc-Contributing-1" href="Contributing.html">22 Contributing</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Building-from-Git-1" href="Building-from-Git.html">22.1 Building from Git</a></li>
+    <li><a id="toc-Running-Guix-Before-It-Is-Installed-1" href="Running-Guix-Before-It-Is-Installed.html">22.2 Running Guix Before It Is Installed</a></li>
+    <li><a id="toc-The-Perfect-Setup-1" href="The-Perfect-Setup.html">22.3 The Perfect Setup</a></li>
+    <li><a id="toc-Packaging-Guidelines-1" href="Packaging-Guidelines.html">22.4 Packaging Guidelines</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Software-Freedom-1" href="Software-Freedom.html">22.4.1 Software Freedom</a></li>
+      <li><a id="toc-Package-Naming-1" href="Package-Naming.html">22.4.2 Package Naming</a></li>
+      <li><a id="toc-Version-Numbers-1" href="Version-Numbers.html">22.4.3 Version Numbers</a></li>
+      <li><a id="toc-Synopses-and-Descriptions-1" href="Synopses-and-Descriptions.html">22.4.4 Synopses and Descriptions</a></li>
+      <li><a id="toc-Snippets-versus-Phases-1" href="Snippets-versus-Phases.html">22.4.5 Snippets versus Phases</a></li>
+      <li><a id="toc-Emacs-Packages-2" href="Emacs-Packages.html">22.4.6 Emacs Packages</a></li>
+      <li><a id="toc-Python-Modules-1" href="Python-Modules.html">22.4.7 Python Modules</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Specifying-Dependencies" href="Python-Modules.html#Specifying-Dependencies">22.4.7.1 Specifying Dependencies</a></li>
+      </ul></li>
+      <li><a id="toc-Perl-Modules-1" href="Perl-Modules.html">22.4.8 Perl Modules</a></li>
+      <li><a id="toc-Java-Packages-1" href="Java-Packages.html">22.4.9 Java Packages</a></li>
+      <li><a id="toc-Rust-Crates-1" href="Rust-Crates.html">22.4.10 Rust Crates</a></li>
+      <li><a id="toc-Elm-Packages-1" href="Elm-Packages.html">22.4.11 Elm Packages</a></li>
+      <li><a id="toc-Fonts-1" href="Fonts.html">22.4.12 Fonts</a></li>
+    </ul></li>
+    <li><a id="toc-Coding-Style-1" href="Coding-Style.html">22.5 Coding Style</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Programming-Paradigm-1" href="Programming-Paradigm.html">22.5.1 Programming Paradigm</a></li>
+      <li><a id="toc-Modules-1" href="Modules.html">22.5.2 Modules</a></li>
+      <li><a id="toc-Data-Types-and-Pattern-Matching-1" href="Data-Types-and-Pattern-Matching.html">22.5.3 Data Types and Pattern Matching</a></li>
+      <li><a id="toc-Formatting-Code-1" href="Formatting-Code.html">22.5.4 Formatting Code</a></li>
+    </ul></li>
+    <li><a id="toc-Submitting-Patches-1" href="Submitting-Patches.html">22.6 Submitting Patches</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Configuring-Git-1" href="Configuring-Git.html">22.6.1 Configuring Git</a></li>
+      <li><a id="toc-Sending-a-Patch-Series-1" href="Sending-a-Patch-Series.html">22.6.2 Sending a Patch Series</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Single-Patches-1" href="Sending-a-Patch-Series.html#Single-Patches-1">Single Patches</a></li>
+        <li><a id="toc-Notifying-Teams-1" href="Sending-a-Patch-Series.html#Notifying-Teams-1">Notifying Teams</a></li>
+        <li><a id="toc-Multiple-Patches-1" href="Sending-a-Patch-Series.html#Multiple-Patches-1">Multiple Patches</a></li>
+      </ul></li>
+      <li><a id="toc-Teams-1" href="Teams.html">22.6.3 Teams</a></li>
+    </ul></li>
+    <li><a id="toc-Tracking-Bugs-and-Patches-1" href="Tracking-Bugs-and-Patches.html">22.7 Tracking Bugs and Patches</a>
+    <ul class="no-bullet">
+      <li><a id="toc-The-Issue-Tracker-1" href="The-Issue-Tracker.html">22.7.1 The Issue Tracker</a></li>
+      <li><a id="toc-Debbugs-User-Interfaces-1" href="Debbugs-User-Interfaces.html">22.7.2 Debbugs User Interfaces</a></li>
+      <li><a id="toc-Debbugs-Usertags-1" href="Debbugs-Usertags.html">22.7.3 Debbugs Usertags</a></li>
+    </ul></li>
+    <li><a id="toc-Commit-Access-1" href="Commit-Access.html">22.8 Commit Access</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Applying-for-Commit-Access" href="Commit-Access.html#Applying-for-Commit-Access">22.8.1 Applying for Commit Access</a></li>
+      <li><a id="toc-Commit-Policy" href="Commit-Access.html#Commit-Policy">22.8.2 Commit Policy</a></li>
+      <li><a id="toc-Addressing-Issues" href="Commit-Access.html#Addressing-Issues">22.8.3 Addressing Issues</a></li>
+      <li><a id="toc-Commit-Revocation" href="Commit-Access.html#Commit-Revocation">22.8.4 Commit Revocation</a></li>
+      <li><a id="toc-Helping-Out" href="Commit-Access.html#Helping-Out">22.8.5 Helping Out</a></li>
+    </ul></li>
+    <li><a id="toc-Updating-the-Guix-Package-1" href="Updating-the-Guix-Package.html">22.9 Updating the Guix Package</a></li>
+    <li><a id="toc-Writing-Documentation-1" href="Writing-Documentation.html">22.10 Writing Documentation</a></li>
+    <li><a id="toc-Translating-Guix-1" href="Translating-Guix.html">22.11 Translating Guix</a></li>
+  </ul></li>
+  <li><a id="toc-Acknowledgments-1" href="Acknowledgments.html">23 Acknowledgments</a></li>
+  <li><a id="toc-GNU-Free-Documentation-License-1" href="GNU-Free-Documentation-License.html">Appendix A GNU Free Documentation License</a></li>
+  <li><a id="toc-Concept-Index-1" href="Concept-Index.html" rel="index">Concept Index</a></li>
+  <li><a id="toc-Programming-Index-1" href="Programming-Index.html" rel="index">Programming Index</a></li>
+</ul>
+</div>
+</div>
+</div>
+<hr />
+<div class="header">
+<p>
+Next: <a href="Introduction.html" accesskey="n" rel="next">Introduction</a>, Up: <a href="https://guix.gnu.org/manual/1.4.0/en" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+.pages-kanban-board {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow-x: auto;
+    padding: 16px;
+
+    &>.board-control {
+        display: flex;
+        justify-content: flex-end;
+        gap: 16px;
+        max-width: calc(var(--card-width) * var(--stage-count) + var(--card-gap) * (var(--stage-count) - 1));
+
+        &>* {
+            font-size: 14px;
+            border: var(--base-border-size) solid var(--base-border-color);
+            border-radius: 30px;
+        }
+
+        &>span {
+            line-height: 20px;
+            padding: 4px 16px 4px 32px;
+            cursor: text;
+        }
+
+        &>:nth-child(1) {
+            display: flex;
+            width: 127px;
+            padding-left: 36px;
+            background: url("/public/icons/search.svg") no-repeat 16px 7px transparent;
+
+            &>input:focus {
+                outline: none;
+            }
+
+            &>input {
+                width: 74px;
+                border: none;
+
+                &>::placeholder {
+                    color: rgba(0, 0, 0, 0.25);
+                }
+            }
+        }
+
+        &>:nth-child(2) {
+            background: url("/public/icons/sort-descending.svg") no-repeat 16px 8px transparent;
+        }
+
+        &>:nth-child(3) {
+            background: url("/public/icons/filter.svg") no-repeat 16px 7px transparent;
+        }
+    }
+
+    .card-board {
+        transform: rotateX(180deg);
+        overflow-x: auto;
+        padding-bottom: 16px;
+        display: flex;
+        flex-direction: column;
+        height: calc(100vh - 78px);
+
+        &>.card-board-inner {
+            padding-left: 16px;
+            flex: 1;
+            overflow-y: auto;
+            transform: rotateX(180deg);
+            width: calc(var(--card-width) * var(--stage-count) + var(--card-gap) * (var(--stage-count)) + 12px);
+            display: flex;
+            gap: 16px;
+        }
+    }
+
+    .card-board::-webkit-scrollbar,
+    .card-board-inner::-webkit-scrollbar {
+        background: white;
+        height: 6px;
+        width: 6px;
+    }
+
+    .card-board::-webkit-scrollbar-thumb,
+    .card-board-inner::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background: var(--base-orange-color);
+    }
+
+    .option-button {
+        display: flex;
+        line-height: 14px;
+        padding: 6px 6px;
+        border-radius: 100px;
+        border: var(--base-border-size) solid rgba(0, 0, 0, 0.25);
+        /* margin-bottom: 16px; */
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    
+
+    .filter-items {
+        z-index: 1;
+        position: absolute; 
+        background-color: white;                   
+        padding: 10px;
+        right: 40px;
+        display: flex;
+        flex-direction: column;
+        /* border: 1px solid var(--base-border-color); */
+        box-shadow: 0px 0px 15px -2px rgba(0,0,0, 0.15);
+        border-radius: 12px;
+        width: 175px;
+        &>div {
+            padding: 4px;
+            display: flex;
+            align-items: center;
+            &>span {
+                margin-left: 4px;
+            }
+        }
+    }
+
+    .sort-items {
+        z-index: 1;
+        position: absolute; 
+        background-color: white;                   
+        padding: 10px;
+        right: 154px;
+        display: flex;
+        flex-direction: column;
+        /* border: 1px solid var(--base-border-color); */
+        box-shadow: 0px 0px 15px -2px rgba(0,0,0, 0.15);
+        border-radius: 12px;
+        width: 250px;
+        &>div {
+            padding: 6px;
+            display: flex;
+            align-items: center;
+            border-radius: 12px;
+        }
+        &>div:hover {
+            font-weight: bold;
+        }
+        .active {
+            background-color: var(--base-orange-color);
+            color:rgba(255, 255, 255, 1);
+            font-weight: normal;
+        }
+    }
+}

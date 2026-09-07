@@ -1,0 +1,455 @@
+/* Additional CSS for the on-line manual.
+
+   Public domain 2017, 2022, 2024.  All rights waived.  */
+
+
+/* Style-sheet to use for manuals (copied from Emacs) */
+
+@import url('gnu.css');
+
+/* Increase inter-line spacing to improve readability.  */
+p, pre, li, dt, dd, table, code, address { line-height: 1.5em; }
+
+/* makeinfo 6.7 uses <div class="header"> for navigation links above node
+   titles.  Make those links less prominent.  */
+.header {
+    line-height: 2em;
+    font-size: 87.5%;
+    color: #433;
+}
+
+/* In title and node titles, use Fira Sans if available as it is more
+   pleasant and more compact than Helvetica.  */
+.settitle, .top, .chapter, .section, .subsection, .subsubsection {
+    font-family: Fira Sans, sans-serif;
+}
+
+/* underlined links are distracting, especially within outlined tables.  */
+a { /*add :link for external links*/
+    text-decoration: none; /* don't underline links by default */
+    outline-style: none;   /* don't put dotted box around clicked links */
+}
+a:hover {
+    text-decoration: underline;
+}
+
+body {
+    /* Use a serif font for section bodies.  */
+    font-family: Linux Libertine O, serif;
+    font-size: 18px;
+
+    /* Make sure the body doesn't become too wide: long lines are hard to
+       read.  */
+    max-width: 50em;
+}
+
+
+/* Navigation bar for the language menu, copied from navbar.css with
+   minor changes.  */
+
+.navbar {
+    background-color: #333;
+    border-color: #1A1A1A;
+    border-style: none none solid none;
+    border-width: thin;
+    color: white;
+    height: 55px;
+    overflow: hidden;
+}
+
+.navbar > h1 {
+    display: inline-block;
+    margin: 0px;
+}
+
+.branding {
+    position: relative;
+    overflow: hidden;
+}
+
+.branding:link,
+.branding:visited {
+    background-image: url("Guix-logo.png");
+    background-position: bottom;
+    background-repeat: no-repeat;
+    border-style: none;
+    display: inline-block;
+    height: 55px;
+    width: 170px;
+}
+
+.branding:active,
+.branding:focus,
+.branding:hover {
+    background-position: top;
+}
+
+/* Note: Compared to navbar.css, changed 'menu' to 'navbar-menu' to
+   avoid clash with the "menu" class used in the Texinfo-generated
+   HTML.  */
+
+.navbar-menu {
+    position: relative;
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+.navbar-menu ul {
+    display: block;
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+}
+
+.navbar-menu > ul > li {
+    display: block;
+    position: relative;
+}
+
+.navbar-menu-hidden-input {
+    display: none;
+}
+
+.navbar-menu-item:link,
+.navbar-menu-item:visited,
+label.navbar-menu-item {
+    background-color: transparent;
+    background-image: url("link-arrow.png");
+    background-position: 97% 50%;
+    background-repeat: no-repeat;
+    border-color: #1A1A1A;
+    border-style: solid none none none;
+    border-width: thin;
+    color: white;
+    display: block;
+    line-height: 55px;
+    padding: 0px 10px;
+    text-align: left;
+    text-decoration: none;
+}
+
+.navbar-menu-item:active,
+.navbar-menu-item:focus,
+.navbar-menu-item:hover,
+.navbar-menu-item-active:link,
+.navbar-menu-item-active:visited {
+    color: #F4BB15;
+}
+
+.navbar-submenu .navbar-menu-item:link,
+.navbar-submenu .navbar-menu-item:visited {
+    background-color: #434343;
+    padding: 0px 25px;
+}
+
+.navbar-menu-btn:link,
+.navbar-menu-btn:visited {
+    background-image: url("menu-btn-bg.png");
+    background-position: bottom;
+    background-repeat: no-repeat;
+    border-style: none;
+    display: block;
+    height: 55px;
+    position: absolute;
+    right: 10px;
+    top: 0px;
+    width: 55px;
+}
+
+.navbar-menu-btn:active,
+.navbar-menu-btn:focus,
+.navbar-menu-btn:hover {
+    background-image: url("menu-btn-bg.png");
+    background-position: top;
+}
+
+.hskip {
+    padding-left: 10px;
+}
+
+.hline {
+    display: none;
+}
+
+@media screen and (min-width: 920px) {
+    .navbar {
+	position: relative;
+	overflow: visible;
+    }
+
+    .navbar-menu {
+	display: inline-block;
+	padding-right: 10px;
+        position: absolute;
+        right: 0px;
+    }
+
+    .navbar-menu > ul > li {
+	display: inline-block;
+	line-height: 55px;
+    }
+
+    .navbar-menu-item:link,
+    .navbar-menu-item:visited {
+        background-image: none;
+        border-style: none;
+        display: inline-block;
+        margin: 0px 2px;
+        text-align: center;
+    }
+
+    a.navbar-menu-item:active,
+    a.navbar-menu-item:focus,
+    a.navbar-menu-item:hover,
+    a.navbar-menu-item-active:link,
+    a.navbar-menu-item-active:visited {
+	background-image: url("menu-item-active-bg.png");
+	background-position: bottom center;
+	background-repeat: no-repeat;
+    }
+
+    .dropdown {
+	position: relative;
+    }
+
+    .dropdown:hover .navbar-submenu {
+        min-width: 150px;
+        width: max-content;
+        height: auto;
+        overflow: visible;
+    }
+
+    /* This CSS rule is separate from the rule for :hover
+       because :hover should still be applied even when
+       the browser does not support :focus-within. */
+    .navbar-submenu:focus-within {
+        min-width: 150px;
+        width: max-content;
+        height: auto;
+        overflow: visible;
+    }
+
+    .dropdown-btn {
+	background-image: url("dropdown-bg.png");
+	background-position: bottom right;
+	background-repeat: no-repeat;
+        padding: 0px 10px;
+        cursor: pointer;
+        margin: 0px 2px;
+    }
+
+    .dropdown-btn:active,
+    .dropdown-btn:hover {
+        background-image: url("dropdown-bg.png");
+        background-position: top right;
+    }
+
+    .navbar label {
+        cursor: pointer;
+    }
+
+    label[for=all-dropdowns-hidden] {
+        text-shadow: #fff 0px -2px 15px, #fff 0px -2px 10px;
+    }
+
+    .hline {
+        display: block;
+        margin: auto;
+        width: 150px;
+        height: 1px;
+    }
+
+    .navbar-submenu {
+	background-color: transparent;
+        z-index: 10;
+        display: block;
+        overflow: hidden;
+        width: 0;
+        height: 0;
+	padding-top: 20px;
+	position: absolute;
+        right: 0px;
+    }
+
+    .navbar-submenu-triangle {
+	background-color: #333;
+	border-color: black;
+	border-style: solid none none solid;
+	border-width: thin;
+	height: 10px;
+	position: absolute;
+	right: 30px;
+	top: 15px;
+	transform: rotate(45deg);
+	width: 10px;
+    }
+
+    .navbar-submenu > ul {
+	background-color: #333;
+	border-color: black;
+	border-radius: 4px;
+	border-style: solid;
+	border-width: thin;
+	box-shadow: 0 0 4px #202020;
+	padding: 8px 0px;
+    }
+
+    .navbar-submenu li,
+    .navbar-submenu .navbar-menu-item:active,
+    .navbar-submenu .navbar-menu-item:link {
+	background-color: transparent;
+	display: block;
+	line-height: 30px;
+	margin: 0px;
+	text-align: left;
+    }
+
+    .navbar-submenu .navbar-menu-item:link,
+    .navbar-submenu .navbar-menu-item:visited {
+	font-size: 0.9em;
+	color: white;
+    }
+
+    .navbar-submenu .navbar-menu-item:active,
+    .navbar-submenu .navbar-menu-item:focus,
+    .navbar-submenu .navbar-menu-item:hover,
+    .navbar-submenu .navbar-menu-item-active:link,
+    .navbar-submenu .navbar-menu-item-active:visited {
+	background-color: #414141;
+	background-image: none;
+	color: #F4BB15;
+    }
+
+    .navbar-menu-btn:link {
+	display: none;
+    }
+}
+
+/* Bits adapted from components.scm.  */
+
+#visible-dropdown:checked ~ #navbar-submenu {
+    min-width: 150px;
+    width: max-content;
+
+    /* reset to initial values: */
+    height: auto;
+    overflow: visible;
+}
+
+label[for=all-dropdowns-hidden] {
+    display: none;
+}
+
+#visible-dropdown:checked ~ label[for=visible-dropdown] {
+    display: none;
+}
+
+/* Fonts.  */
+
+@font-face {
+    font-family: 'Fira Sans';
+    src: url('FiraSans-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Fira Sans';
+    src: url('FiraSans-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Linux Libertine O';
+    src: url('LinLibertine_R.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Linux Libertine O';
+    src: url('LinLibertine_RI.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Linux Libertine O';
+    src: url('LinLibertine_RB.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Linux Libertine O';
+    src: url('LinLibertine_RBI.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+/* In title and node titles, use Fira Sans as it is more pleasant and
+   more compact than Helvetica.  */
+h1.settitle, h1.top, h2.chapter, h3.section, h4.subsection, h4.subsubsection, h4.footnotes-heading {
+    font-family: Fira Sans, sans;
+    font-weight: bold;
+}
+
+/* Use a serif font for section bodies: needed for HTML generated by
+   Texinfo 6.8, unnecessary for HTML generated by Texinfo 7.1 (the
+   'body' rule is enough in this case).  */
+div.settitle, div.top, div.chapter, div.section, div.subsection, div.subsubsection,
+div.unnumberedsec, div.unnumberedsubsec {
+    font-family: Linux Libertine O, serif;
+    font-size: 18px;
+}
+div.footnote {
+    font-family: Linux Libertine O, serif;
+    font-size: 16px;
+}
+
+/* Arrange so fixed-width samples don't look too big compared to Linux
+   Libertine text.  */
+samp, code, .example, .verbatim {
+    font-family: monospace;
+    font-size: 85%;
+    background: #f5f5ff;
+    padding: 3px;
+}
+
+/* Same background as for <pre class="lisp">.  */
+.example {
+    background: #f2efe4;
+}
+
+/* Texinfo footnotes are in a "footnote" <div> but each of them is
+   wrapped in <h5> (go figure).  Have them use a regular font instead
+   of bold.  */
+.footnote > h5 {
+    font-weight: normal;
+    font-size: 0.9em;
+}
+
+/* makeinfo 6.5 converts @quotation to <blockquote>.  Highlight them.  */
+blockquote {
+    font-style: normal;
+    border-left: solid 10px red;
+    padding-left: 2.5%;
+    margin-left: 0px;
+}
+
+var { font-style: italic; }
+
+/* Lay out @lisp just like @example.  Copied from what /style.css
+   does for the 'example' class.  */
+div.lisp { padding: .8em 1.2em .4em; }
+pre.lisp { padding: .8em 1.2em; }
+div.lisp, pre.lisp {
+   margin: 1em 0 1em 3% ;
+   -webkit-border-radius: .3em;
+   -moz-border-radius: .3em;
+   border-radius: .3em;
+   border: 1px solid #d4cbb6;
+   background-color: #f2efe4;
+}
+div.lisp > pre.lisp {
+   padding: 0 0 .4em;
+   margin: 0;
+   border: none;
+}

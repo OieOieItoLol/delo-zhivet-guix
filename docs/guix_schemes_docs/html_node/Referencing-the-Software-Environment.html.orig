@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--   Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/   -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--   Copyright (C) 2019, 2022 Ricardo Wurmus
+ Copyright (C)
+2019 Efraim Flashner
+ Copyright (C) 2019 Pierre Neidhardt
+
+Copyright (C) 2020 Oleg Pykhalov
+ Copyright (C) 2020
+Matthew Brooks
+ Copyright (C) 2020 Marcin Karpezo
+ Copyright
+(C) 2020 Brice Waegeneire
+ Copyright (C) 2020 André
+Batista
+ Copyright (C) 2020 Christine Lemmer-Webber
+ Copyright
+(C) 2021 Joshua Branson
+ Copyright (C) 2022, 2023 Maxim
+Cournoyer
+ Copyright (C) 2023-2026 Ludovic Courtès
+ Copyright
+(C) 2023 Thomas Ieong
+ Copyright (C) 2024 Florian Pelz
+
+Copyright (C) 2025 45mg
+ Copyright (C) 2023 Marek
+Felšöci
+ Copyright (C) 2023 Konrad Hinsen
+ Copyright (C)
+2023 Philippe Swartvagher
+
+
+Разрешено копирование, распространение и/или модификация этого документа на
+условиях лицензии свободной документации GNU (GNU FDL) версии 1.3 или любой
+более поздней версии, опубликованной Фондом свободного программного
+обеспечения (FSF), исключая неизменяемые секции, исключая тексты,
+размещенные на переплёте и задней стороне обложки. Копия лицензии включена в
+документ в разделе под названием "GNU Free Documentation Licens".   -->
+<title>Referencing the Software Environment (GNU Guix Рецепты)</title>
+
+<meta name="description" content="Referencing the Software Environment (GNU Guix Рецепты)" />
+<meta name="keywords" content="Referencing the Software Environment (GNU Guix Рецепты)" />
+<meta name="resource-type" content="document" />
+<meta name="distribution" content="global" />
+<meta name="Generator" content="makeinfo" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<link href="index.html" rel="start" title="Top" />
+<link href="Terminy-i-ukazateli.html" rel="index" title="Термины и указатели" />
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents" />
+<link href="Reproducible-Research.html" rel="up" title="Reproducible Research" />
+<link href="Ensuring-Long_002dTerm-Source-Code-Archiving.html" rel="prev" title="Ensuring Long-Term Source Code Archiving" />
+<style type="text/css">
+&amp;lt;!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+--&amp;gt;
+</style>
+<link rel="stylesheet" type="text/css" href="/themes/initial/css/manual.css" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="/themes/initial/css/manual.css" /><link rel="stylesheet" type="text/css" href="/themes/initial/css/code.css" /></head>
+
+<body lang="en"><header class="navbar"><h1><a class="branding" href=".."></a></h1><nav class="navbar-menu"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="all-dropdowns-hidden" /><ul><li class="navbar-menu-item dropdown dropdown-btn"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="visible-dropdown" /><label for="visible-dropdown">Version</label><label for="all-dropdowns-hidden">Version</label><div class="navbar-submenu" id="navbar-submenu"><div class="navbar-submenu-triangle"> </div><ul><li><a class="navbar-menu-item" href="../guix-cookbook.ru.html">single page</a></li><li><a class="navbar-menu-item" href="../guix-cookbook.ru.pdf">PDF</a></li></ul></div></li><li class="navbar-menu-item dropdown dropdown-btn"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="visible-dropdown" /><label for="visible-dropdown"><img alt="Language" src="/themes/initial/img/language-picker.svg" /></label><label for="all-dropdowns-hidden"><img alt="Language" src="/themes/initial/img/language-picker.svg" /></label><div class="navbar-submenu" id="navbar-submenu"><div class="navbar-submenu-triangle"> </div><ul><li><a class="navbar-menu-item" href="../../de/html_node">Deutsch</a></li><li><a class="navbar-menu-item" href="../../en/html_node">English</a></li><li><a class="navbar-menu-item" href="../../es/html_node">Español</a></li><li><a class="navbar-menu-item" href="../../fr/html_node">Français</a></li><li><a class="navbar-menu-item" href="../../it/html_node">Italiano</a></li><li><a class="navbar-menu-item" href="../../ko/html_node">한국어</a></li><li><a class="navbar-menu-item" href="../../pt-br/html_node">Português</a></li><li><a class="navbar-menu-item" href="../../ru/html_node">русский</a></li><li><a class="navbar-menu-item" href="../../sk/html_node">Slovenský</a></li><li><a class="navbar-menu-item" href="../../sv/html_node">Svenska</a></li><li><a class="navbar-menu-item" href="../../ta/html_node">தமிழ்</a></li><li><a class="navbar-menu-item" href="../../zh-cn/html_node">中文; 汉语; 华语</a></li><li><a class="navbar-menu-item" href="https://translate.codeberg.org/projects/guix/documentation-cookbook/">⊕</a></li></ul></div></li></ul></nav><a class="navbar-menu-btn" href="../.."></a></header>
+<div class="section" id="Referencing-the-Software-Environment">
+<div class="header">
+<p>
+Previous: <a href="Ensuring-Long_002dTerm-Source-Code-Archiving.html" accesskey="p" rel="prev">Step 3: Ensuring Long-Term Source Code Archiving</a>, Up: <a href="Reproducible-Research.html" accesskey="u" rel="up">Using Guix for Reproducible Research</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Terminy-i-ukazateli.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr />
+<span id="Step-4_003a-Referencing-the-Software-Environment"></span><h3 class="section">9.4 Step 4: Referencing the Software Environment</h3>
+
+<p>This brings us to the last step: referring to our code <em>and</em> software
+environment in our beloved paper.  We already have all our code and Guix
+files in the same repository, which is archived on SWH.  Thanks to SWH, we
+now have a SWHID, which uniquely identifies the relevant revision of our
+code.
+</p>
+<p>Following
+<a href="https://www.softwareheritage.org/howto-archive-and-reference-your-code/">SWH&rsquo;s
+own guide</a>, we&rsquo;ll pick an <code>swh:dir</code> kind of identifier, which refers to
+the directory of the relevant revision/commit of our repository, and we&rsquo;ll
+keep <em>contextual info</em> for clarity&mdash;that includes the original
+URL. Putting it all together, we&rsquo;ll conclude our paper with a sentence along
+these lines:
+</p>
+<blockquote>
+<p><b>Example:</b> The source code used to produce this study, as well as instructions to run
+it in the right software environment using GNU&nbsp;Guix, is archived on
+Software Heritage as
+<a href="https://archive.softwareheritage.org/swh:1:dir:cc8919d7705fbaa31efa677ce00bef7eb374fb80;origin=https://gitlab.inria.fr/lcourtes-phd/edcc-2006-redone;visit=swh:1:snp:71a4d08ef4a2e8455b67ef0c6b82349e82870b46;anchor=swh:1:rev:36fde7e5ba289c4c3e30d9afccebbe0cfe83853a"><code>swh:1:dir:cc8919d7705fbaa31efa677ce00bef7eb374fb80;origin=https://gitlab.inria.fr/lcourtes-phd/edcc-2006-redone;visit=swh:1:snp:71a4d08ef4a2e8455b67ef0c6b82349e82870b46;anchor=swh:1:rev:36fde7e5ba289c4c3e30d9afccebbe0cfe83853a</code></a>.
+</p></blockquote>
+
+<p>With this information, the reader can:
+</p>
+<ul>
+<li> get the source code;
+</li><li> reproduce its software environment with <code>guix time-machine</code> and run the
+code;
+</li><li> inspect and possibly modify both the code and its environment.
+</li></ul>
+
+<p>Mission accomplished!
+</p>
+</div>
+
+
+
+</body>
+</html>

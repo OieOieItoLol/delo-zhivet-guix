@@ -1,0 +1,342 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--   Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/   -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--   Copyright (C) 2019, 2022 Ricardo Wurmus
+ Copyright (C)
+2019 Efraim Flashner
+ Copyright (C) 2019 Pierre Neidhardt
+
+Copyright (C) 2020 Oleg Pykhalov
+ Copyright (C) 2020
+Matthew Brooks
+ Copyright (C) 2020 Marcin Karpezo
+ Copyright
+(C) 2020 Brice Waegeneire
+ Copyright (C) 2020 André
+Batista
+ Copyright (C) 2020 Christine Lemmer-Webber
+ Copyright
+(C) 2021 Joshua Branson
+ Copyright (C) 2022, 2023 Maxim
+Cournoyer
+ Copyright (C) 2023-2026 Ludovic Courtès
+ Copyright
+(C) 2023 Thomas Ieong
+ Copyright (C) 2024 Florian Pelz
+
+Copyright (C) 2025 45mg
+ Copyright (C) 2023 Marek
+Felšöci
+ Copyright (C) 2023 Konrad Hinsen
+ Copyright (C)
+2023 Philippe Swartvagher
+
+
+Разрешено копирование, распространение и/или модификация этого документа на
+условиях лицензии свободной документации GNU (GNU FDL) версии 1.3 или любой
+более поздней версии, опубликованной Фондом свободного программного
+обеспечения (FSF), исключая неизменяемые секции, исключая тексты,
+размещенные на переплёте и задней стороне обложки. Копия лицензии включена в
+документ в разделе под названием "GNU Free Documentation Licens".   -->
+<title>Запуск Guix на сервере Kimsufi (GNU Guix Рецепты)</title>
+
+<meta name="description" content="Запуск Guix на сервере Kimsufi (GNU Guix Рецепты)" />
+<meta name="keywords" content="Запуск Guix на сервере Kimsufi (GNU Guix Рецепты)" />
+<meta name="resource-type" content="document" />
+<meta name="distribution" content="global" />
+<meta name="Generator" content="makeinfo" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<link href="index.html" rel="start" title="Top" />
+<link href="Terminy-i-ukazateli.html" rel="index" title="Термины и указатели" />
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents" />
+<link href="Nastroika-sistemy.html" rel="up" title="Настройка системы" />
+<link href="Nastroika-privyazki.html" rel="next" title="Настройка привязки" />
+<link href="Zapusk-Guix-na-servere-Linode.html" rel="prev" title="Запуск Guix на сервере Linode" />
+<style type="text/css">
+&amp;lt;!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+--&amp;gt;
+</style>
+<link rel="stylesheet" type="text/css" href="/themes/initial/css/manual.css" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="/themes/initial/css/manual.css" /><link rel="stylesheet" type="text/css" href="/themes/initial/css/code.css" /></head>
+
+<body lang="en"><header class="navbar"><h1><a class="branding" href=".."></a></h1><nav class="navbar-menu"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="all-dropdowns-hidden" /><ul><li class="navbar-menu-item dropdown dropdown-btn"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="visible-dropdown" /><label for="visible-dropdown">Version</label><label for="all-dropdowns-hidden">Version</label><div class="navbar-submenu" id="navbar-submenu"><div class="navbar-submenu-triangle"> </div><ul><li><a class="navbar-menu-item" href="../guix-cookbook.ru.html">single page</a></li><li><a class="navbar-menu-item" href="../guix-cookbook.ru.pdf">PDF</a></li></ul></div></li><li class="navbar-menu-item dropdown dropdown-btn"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="visible-dropdown" /><label for="visible-dropdown"><img alt="Language" src="/themes/initial/img/language-picker.svg" /></label><label for="all-dropdowns-hidden"><img alt="Language" src="/themes/initial/img/language-picker.svg" /></label><div class="navbar-submenu" id="navbar-submenu"><div class="navbar-submenu-triangle"> </div><ul><li><a class="navbar-menu-item" href="../../de/html_node">Deutsch</a></li><li><a class="navbar-menu-item" href="../../en/html_node">English</a></li><li><a class="navbar-menu-item" href="../../es/html_node">Español</a></li><li><a class="navbar-menu-item" href="../../fr/html_node">Français</a></li><li><a class="navbar-menu-item" href="../../it/html_node">Italiano</a></li><li><a class="navbar-menu-item" href="../../ko/html_node">한국어</a></li><li><a class="navbar-menu-item" href="../../pt-br/html_node">Português</a></li><li><a class="navbar-menu-item" href="../../ru/html_node">русский</a></li><li><a class="navbar-menu-item" href="../../sk/html_node">Slovenský</a></li><li><a class="navbar-menu-item" href="../../sv/html_node">Svenska</a></li><li><a class="navbar-menu-item" href="../../ta/html_node">தமிழ்</a></li><li><a class="navbar-menu-item" href="../../zh-cn/html_node">中文; 汉语; 华语</a></li><li><a class="navbar-menu-item" href="https://translate.codeberg.org/projects/guix/documentation-cookbook/">⊕</a></li></ul></div></li></ul></nav><a class="navbar-menu-btn" href="../.."></a></header>
+<div class="section" id="g_t_0417_0430_043f_0443_0441_043a-Guix-_043d_0430-_0441_0435_0440_0432_0435_0440_0435-Kimsufi">
+<div class="header">
+<p>
+Next: <a href="Nastroika-privyazki.html" accesskey="n" rel="next">Настройка привязки</a>, Previous: <a href="Zapusk-Guix-na-servere-Linode.html" accesskey="p" rel="prev">Запуск Guix на сервере Linode</a>, Up: <a href="Nastroika-sistemy.html" accesskey="u" rel="up">Настройка системы</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Terminy-i-ukazateli.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr />
+<span id="Zapusk-Guix-na-servere-Kimsufi"></span><h3 class="section">3.9 Запуск Guix на сервере Kimsufi</h3>
+<span id="index-kimsufi_002c-Kimsufi_002c-OVH"></span>
+
+<p>To run Guix on a server hosted by <a href="https://www.kimsufi.com/">Kimsufi</a>,
+click on the netboot tab then select rescue64-pro and restart.
+</p>
+<p>OVH will email you the credentials required to ssh into a Debian system.
+</p>
+<p>Now you can run the "install guix from see <a data-manual="guix" href="https://guix.gnu.org/manual/devel/en/html_node/Binary-Installation.html#Binary-Installation">Binary Installation</a> in <cite>GNU Guix</cite>" steps:
+</p>
+<div class="example">
+<pre class="example">wget https://git.savannah.gnu.org/cgit/guix.git/plain/etc/guix-install.sh
+chmod +x guix-install.sh
+./guix-install.sh
+guix pull
+</pre></div>
+
+<p>Partition the drives and format them, first stop the raid array:
+</p>
+<div class="example">
+<pre class="example">mdadm --stop /dev/md127
+mdadm --zero-superblock /dev/sda2 /dev/sdb2
+</pre></div>
+
+<p>Then wipe the disks and set up the partitions, we will create a RAID 1
+array.
+</p>
+<div class="example">
+<pre class="example">wipefs -a /dev/sda
+wipefs -a /dev/sdb
+
+parted /dev/sda --align=opt -s -m -- mklabel gpt
+parted /dev/sda --align=opt -s -m -- \
+ mkpart bios_grub 1049kb 512MiB \
+ set 1 bios_grub on
+parted /dev/sda --align=opt -s -m -- \
+ mkpart primary 512MiB -512MiB
+ set 2 raid on
+parted /dev/sda --align=opt -s -m -- mkpart primary linux-swap 512MiB 100%
+
+parted /dev/sdb --align=opt -s -m -- mklabel gpt
+parted /dev/sdb --align=opt -s -m -- \
+     mkpart bios_grub 1049kb 512MiB \
+     set 1 bios_grub on
+parted /dev/sdb --align=opt -s -m -- \
+     mkpart primary 512MiB -512MiB \
+     set 2 raid on
+parted /dev/sdb --align=opt -s -m -- mkpart primary linux-swap 512MiB 100%
+</pre></div>
+
+<p>Create the array:
+</p>
+<div class="example">
+<pre class="example">mdadm --create /dev/md127 --level=1 --raid-disks=2 \
+  --metadata=0.90 /dev/sda2 /dev/sdb2
+</pre></div>
+
+<p>Now create file systems on the relevant partitions, first the boot
+partitions:
+</p>
+<div class="example">
+<pre class="example">mkfs.ext4  /dev/sda1
+mkfs.ext4  /dev/sdb1
+</pre></div>
+
+<p>Then the root partition:
+</p>
+<div class="example">
+<pre class="example">mkfs.ext4 /dev/md127
+</pre></div>
+
+<p>Initialize the swap partitions:
+</p>
+<div class="example">
+<pre class="example">mkswap /dev/sda3
+swapon /dev/sda3
+mkswap /dev/sdb3
+swapon /dev/sdb3
+</pre></div>
+
+<p>Mount the guix drive:
+</p>
+<div class="example">
+<pre class="example">mkdir /mnt/guix
+mount /dev/md127 /mnt/guix
+</pre></div>
+
+<p>Now is time to write an operating system declaration <samp>os.scm</samp> file;
+here is a sample:
+</p>
+<div class="example lisp">
+<pre class="lisp"><span class="syntax-paren0">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Using-Guile-Modules.html#index-use_002dmodules">use-modules</a> <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">gnu</span></span>)</span> <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">guix</span></span>)</span></span>)</span>
+<span class="syntax-paren0">(<span class="syntax-symbol"><span class="syntax-symbol">use-service-modules</span> <span class="syntax-symbol">networking</span> <span class="syntax-symbol">ssh</span> <span class="syntax-symbol">vpn</span> <span class="syntax-symbol">virtualization</span> <span class="syntax-symbol">sysctl</span> <span class="syntax-symbol">admin</span> <span class="syntax-symbol">mcron</span></span>)</span>
+<span class="syntax-paren0">(<span class="syntax-symbol"><span class="syntax-symbol">use-package-modules</span> <span class="syntax-symbol">ssh</span> <span class="syntax-symbol">tls</span> <span class="syntax-symbol">tmux</span> <span class="syntax-symbol">vpn</span> <span class="syntax-symbol">virtualization</span></span>)</span>
+
+<span class="syntax-paren0">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/Interfeis-operating_002dsystem.html#index-operating_002dsystem-1">operating-system</a>
+  <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">host-name</span> <span class="syntax-string">"kimsufi"</span></span>)</span>
+
+  <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">bootloader</span> <span class="syntax-paren2">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/Nastroika-zagruzchika.html#index-bootloader_002dconfiguration">bootloader-configuration</a>
+	       <span class="syntax-paren3">(<span class="syntax-symbol"><span class="syntax-symbol">bootloader</span> <span class="syntax-symbol">grub-bootloader</span></span>)</span>
+	       <span class="syntax-paren3">(<span class="syntax-symbol"><span class="syntax-symbol">targets</span> <span class="syntax-paren4">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/List-Constructors.html#index-list-1">list</a> <span class="syntax-string">"/dev/sda"</span> <span class="syntax-string">"/dev/sdb"</span></span>)</span></span>)</span>
+	       <span class="syntax-paren3">(<span class="syntax-symbol"><span class="syntax-symbol">terminal-outputs</span> <span class="syntax-symbol">'</span><span class="syntax-paren4">(<span class="syntax-symbol"><span class="syntax-symbol">console</span></span>)</span></span>)</span></span>)</span></span>)</span>
+
+  <span class="syntax-comment">;; Add a kernel module for RAID-1 (aka. "mirror").
+</span>  <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">initrd-modules</span> <span class="syntax-paren2">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/List-Constructors.html#index-cons_002a">cons*</a> <span class="syntax-string">"raid1"</span>  <a class="syntax-symbol" href="/manual/devel/ru/html_node/Nachalxnyi-RAM_002ddisk.html#index-_0025base_002dinitrd_002dmodules">%base-initrd-modules</a></span>)</span></span>)</span>
+
+  <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">mapped-devices</span>
+   <span class="syntax-paren2">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/List-Constructors.html#index-list-1">list</a> <span class="syntax-paren3">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/Razmechennye-ustroistva.html#index-mapped_002ddevice">mapped-device</a>
+          <span class="syntax-paren4">(<span class="syntax-symbol"><span class="syntax-symbol">source</span> <span class="syntax-paren5">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/List-Constructors.html#index-list-1">list</a> <span class="syntax-string">"/dev/sda2"</span> <span class="syntax-string">"/dev/sdb2"</span></span>)</span></span>)</span>
+          <span class="syntax-paren4">(<span class="syntax-symbol"><span class="syntax-symbol">target</span> <span class="syntax-string">"/dev/md127"</span></span>)</span>
+          <span class="syntax-paren4">(<span class="syntax-symbol"><span class="syntax-symbol">type</span> <a class="syntax-symbol" href="/manual/devel/ru/html_node/Razmechennye-ustroistva.html#index-raid_002ddevice_002dmapping">raid-device-mapping</a></span>)</span></span>)</span></span>)</span></span>)</span>
+
+  <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">swap-devices</span>
+   <span class="syntax-paren2">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/List-Constructors.html#index-list-1">list</a> <span class="syntax-paren3">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/Swap-Space.html#index-swap_002dspace">swap-space</a>
+          <span class="syntax-paren4">(<span class="syntax-symbol"><span class="syntax-symbol">target</span> <span class="syntax-string">"/dev/sda3"</span></span>)</span></span>)</span>
+         <span class="syntax-paren3">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/Swap-Space.html#index-swap_002dspace">swap-space</a>
+          <span class="syntax-paren4">(<span class="syntax-symbol"><span class="syntax-symbol">target</span> <span class="syntax-string">"/dev/sdb3"</span></span>)</span></span>)</span></span>)</span></span>)</span>
+
+  <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">issue</span>
+   <span class="syntax-comment">;; Default contents for /etc/issue.
+</span>   <span class="syntax-string">"\
+This is the GNU system at Kimsufi.  Welcome.\n"</span></span>)</span>
+
+  <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">file-systems</span> <span class="syntax-paren2">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/List-Constructors.html#index-cons_002a">cons*</a> <span class="syntax-paren3">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/Failovye-sistemy.html#index-file_002dsystem">file-system</a>
+		         <span class="syntax-paren4">(<span class="syntax-symbol"><span class="syntax-symbol">mount-point</span> <span class="syntax-string">"/"</span></span>)</span>
+		         <span class="syntax-paren4">(<span class="syntax-symbol"><span class="syntax-symbol">device</span> <span class="syntax-string">"/dev/md127"</span></span>)</span>
+		         <span class="syntax-paren4">(<span class="syntax-symbol"><span class="syntax-symbol">type</span> <span class="syntax-string">"ext4"</span></span>)</span>
+		         <span class="syntax-paren4">(<span class="syntax-symbol"><span class="syntax-symbol">dependencies</span> <span class="syntax-symbol">mapped-devices</span></span>)</span></span>)</span>
+		       <a class="syntax-symbol" href="/manual/devel/ru/html_node/Failovye-sistemy.html#index-_0025base_002dfile_002dsystems">%base-file-systems</a></span>)</span></span>)</span>
+
+  <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">users</span> <span class="syntax-paren2">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Pairs.html#index-cons">cons</a> <span class="syntax-paren3">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/Uchiotnye-zapisi-polxzovatelei.html#index-user_002daccount">user-account</a>
+	        <span class="syntax-paren4">(<span class="syntax-symbol"><span class="syntax-symbol">name</span> <span class="syntax-string">"guix"</span></span>)</span>
+	        <span class="syntax-paren4">(<span class="syntax-symbol"><span class="syntax-symbol">comment</span> <span class="syntax-string">"guix"</span></span>)</span>
+	        <span class="syntax-paren4">(<span class="syntax-symbol"><span class="syntax-symbol">group</span> <span class="syntax-string">"users"</span></span>)</span>
+	        <span class="syntax-paren4">(<span class="syntax-symbol"><span class="syntax-symbol">supplementary-groups</span> <span class="syntax-symbol">'</span><span class="syntax-paren5">(<span class="syntax-symbol"><span class="syntax-string">"wheel"</span></span>)</span></span>)</span>
+	        <span class="syntax-paren4">(<span class="syntax-symbol"><span class="syntax-symbol">home-directory</span> <span class="syntax-string">"/home/guix"</span></span>)</span></span>)</span>
+	       <a class="syntax-symbol" href="/manual/devel/ru/html_node/Uchiotnye-zapisi-polxzovatelei.html#index-_0025base_002duser_002daccounts">%base-user-accounts</a></span>)</span></span>)</span>
+
+  <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">sudoers-file</span>
+   <span class="syntax-paren2">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/G_002dExpressions.html#index-plain_002dfile">plain-file</a> <span class="syntax-string">"sudoers"</span> <span class="syntax-string">"\
+root ALL=(ALL) ALL
+%wheel ALL=(ALL) ALL
+guix ALL=(ALL) NOPASSWD:ALL\n"</span></span>)</span></span>)</span>
+
+  <span class="syntax-comment">;; Globally-installed packages.
+</span>  <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">packages</span> <span class="syntax-paren2">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/List-Constructors.html#index-cons_002a">cons*</a> <span class="syntax-symbol">tmux</span> <span class="syntax-symbol">gnutls</span> <span class="syntax-symbol">wireguard-tools</span> <span class="syntax-symbol">%base-packages</span></span>)</span></span>)</span>
+  <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">services</span>
+   <span class="syntax-paren2">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/List-Constructors.html#index-cons_002a">cons*</a>
+    <span class="syntax-paren3">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/Interfeis-servisa.html#index-service">service</a> <a class="syntax-symbol" href="/manual/devel/ru/html_node/Networking-Setup.html#index-static_002dnetworking_002dservice_002dtype">static-networking-service-type</a>
+	     <span class="syntax-paren4">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/List-Constructors.html#index-list-1">list</a> <span class="syntax-paren5">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/Networking-Setup.html#index-static_002dnetworking">static-networking</a>
+		    <span class="syntax-paren6">(<span class="syntax-symbol"><span class="syntax-symbol">addresses</span> <span class="syntax-paren7">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/List-Constructors.html#index-list-1">list</a> <span class="syntax-paren8">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/Networking-Setup.html#index-network_002daddress">network-address</a>
+				      <span class="syntax-paren9">(<span class="syntax-symbol"><span class="syntax-symbol">device</span> <span class="syntax-string">"enp3s0"</span></span>)</span>
+				      <span class="syntax-paren9">(<span class="syntax-symbol"><span class="syntax-symbol">value</span> <span class="syntax-string">"server-ip-address/24"</span></span>)</span></span>)</span></span>)</span></span>)</span>
+		    <span class="syntax-paren6">(<span class="syntax-symbol"><span class="syntax-symbol">routes</span> <span class="syntax-paren7">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/List-Constructors.html#index-list-1">list</a> <span class="syntax-paren8">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/Networking-Setup.html#index-network_002droute">network-route</a>
+				   <span class="syntax-paren9">(<span class="syntax-symbol"><span class="syntax-symbol">destination</span> <span class="syntax-string">"default"</span></span>)</span>
+				   <span class="syntax-paren9">(<span class="syntax-symbol"><span class="syntax-symbol">gateway</span> <span class="syntax-string">"server-gateway"</span></span>)</span></span>)</span></span>)</span></span>)</span>
+		    <span class="syntax-paren6">(<span class="syntax-symbol"><span class="syntax-symbol">name-servers</span> <span class="syntax-symbol">'</span><span class="syntax-paren7">(<span class="syntax-symbol"><span class="syntax-string">"213.186.33.99"</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
+
+    <span class="syntax-paren3">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/Interfeis-servisa.html#index-service">service</a> <a class="syntax-symbol" href="/manual/devel/ru/html_node/Avtomaticheskie-obnovleniya.html#index-unattended_002dupgrade_002dservice_002dtype">unattended-upgrade-service-type</a></span>)</span>
+
+    <span class="syntax-paren3">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/Interfeis-servisa.html#index-service">service</a> <a class="syntax-symbol" href="/manual/devel/ru/html_node/Servisy-seti.html#index-openssh_002dservice_002dtype">openssh-service-type</a>
+	     <span class="syntax-paren4">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/Servisy-seti.html#index-openssh_002dconfiguration">openssh-configuration</a>
+	      <span class="syntax-paren5">(<span class="syntax-symbol"><span class="syntax-symbol">openssh</span> <span class="syntax-symbol">openssh-sans-x</span></span>)</span>
+	      <span class="syntax-paren5">(<span class="syntax-symbol"><span class="syntax-symbol">permit-root-login</span> <span class="syntax-symbol">#f</span></span>)</span>
+	      <span class="syntax-paren5">(<span class="syntax-symbol"><span class="syntax-symbol">authorized-keys</span>
+	       <span class="syntax-symbol">`</span><span class="syntax-paren6">(<span class="syntax-symbol"><span class="syntax-paren7">(<span class="syntax-symbol"><span class="syntax-string">"guix"</span> <span class="syntax-symbol">,</span><span class="syntax-paren8">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/G_002dExpressions.html#index-plain_002dfile">plain-file</a> <span class="syntax-string">"ssh-key-name.pub"</span>
+                                      <span class="syntax-string">"ssh-public-key-content"</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
+    <span class="syntax-paren3">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/Interfeis-servisa.html#index-modify_002dservices-1">modify-services</a> <a class="syntax-symbol" href="/manual/devel/ru/html_node/Bazovye-sluzhby.html#index-_0025base_002dservices-1">%base-services</a>
+      <span class="syntax-paren4">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/Raznoobraznye-sluzhby.html#index-sysctl_002dservice_002dtype">sysctl-service-type</a>
+       <span class="syntax-symbol">config</span> <a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Syntax-Rules.html#index-_003d_003e">=&gt;</a>
+       <span class="syntax-paren5">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/Raznoobraznye-sluzhby.html#index-sysctl_002dconfiguration">sysctl-configuration</a>
+	<span class="syntax-paren6">(<span class="syntax-symbol"><span class="syntax-symbol">settings</span> <span class="syntax-paren7">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Append_002fReverse.html#index-append">append</a> <span class="syntax-symbol">'</span><span class="syntax-paren8">(<span class="syntax-symbol"><span class="syntax-paren9">(<span class="syntax-symbol"><span class="syntax-string">"net.ipv6.conf.all.autoconf"</span> <span class="syntax-symbol">.</span> <span class="syntax-string">"0"</span></span>)</span>
+			    <span class="syntax-paren9">(<span class="syntax-symbol"><span class="syntax-string">"net.ipv6.conf.all.accept_ra"</span> <span class="syntax-symbol">.</span> <span class="syntax-string">"0"</span></span>)</span></span>)</span>
+			  <a class="syntax-symbol" href="/manual/devel/ru/html_node/Raznoobraznye-sluzhby.html#index-_0025default_002dsysctl_002dsettings">%default-sysctl-settings</a></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
+</pre></div>
+
+<p>Don&rsquo;t forget to substitute the <var>server-ip-address</var>,
+<var>server-gateway</var>, <var>ssh-key-name</var> and <var>ssh-public-key-content</var>
+variables with your own values.
+</p>
+<p>The gateway is the last usable IP in your block so if you have a server with
+an IP of &lsquo;<samp>37.187.79.10</samp>&rsquo; then its gateway will be &lsquo;<samp>37.187.79.254</samp>&rsquo;.
+</p>
+<p>Transfer your operating system declaration <samp>os.scm</samp> file on the server
+via the <code>scp</code> or <code>sftp</code> commands.
+</p>
+<p>Now all that is left is to install Guix with a <code>guix system init</code> and
+restart.
+</p>
+<p>However we first need to set up a chroot, because the root partition of the
+rescue system is mounted on an aufs partition and if you try to install Guix
+it will fail at the GRUB install step complaining about the canonical path
+of "aufs".
+</p>
+<p>Install packages that will be used in the chroot:
+</p>
+<div class="example">
+<pre class="example">guix install bash-static parted util-linux-with-udev coreutils guix
+</pre></div>
+
+<p>Then run the following to create directories needed for the chroot:
+</p>
+<div class="example">
+<pre class="example">cd /mnt &amp;&amp; \
+mkdir -p bin etc gnu/store root/.guix-profile/ root/.config/guix/current \
+  var/guix proc sys dev
+</pre></div>
+
+<p>Copy the host resolv.conf in the chroot:
+</p>
+<div class="example">
+<pre class="example">cp /etc/resolv.conf etc/
+</pre></div>
+
+<p>Mount block devices, the store and its database and the current guix config:
+</p>
+<div class="example">
+<pre class="example">mount --rbind /proc /mnt/proc
+mount --rbind /sys /mnt/sys
+mount --rbind /dev /mnt/dev
+mount --rbind /var/guix/ var/guix/
+mount --rbind /gnu/store gnu/store/
+mount --rbind /root/.config/ root/.config/
+mount --rbind /root/.guix-profile/bin/ bin
+mount --rbind /root/.guix-profile root/.guix-profile/
+</pre></div>
+
+<p>Chroot in /mnt and install the system:
+</p>
+<div class="example">
+<pre class="example">chroot /mnt/ /bin/bash
+
+guix system init /root/os.scm /guix
+</pre></div>
+
+<p>Finally, from the web user interface (UI), change &lsquo;<samp>netboot</samp>&rsquo; to
+&lsquo;<samp>boot to disk</samp>&rsquo; and restart (also from the web UI).
+</p>
+<p>Wait a few minutes and try to ssh with <code>ssh
+guix@<var>server-ip-address&gt;</var> -i <var>path-to-your-ssh-key</var></code>
+</p>
+<p>You should have a Guix system up and running on Kimsufi; congratulations!
+</p>
+</div>
+<hr />
+<div class="header">
+<p>
+Next: <a href="Nastroika-privyazki.html">Настройка привязки</a>, Previous: <a href="Zapusk-Guix-na-servere-Linode.html">Запуск Guix на сервере Linode</a>, Up: <a href="Nastroika-sistemy.html">Настройка системы</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Terminy-i-ukazateli.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

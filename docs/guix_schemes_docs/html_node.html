@@ -1,0 +1,288 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--   Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/   -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--   Copyright (C) 2019, 2022 Ricardo Wurmus
+ Copyright (C)
+2019 Efraim Flashner
+ Copyright (C) 2019 Pierre Neidhardt
+
+Copyright (C) 2020 Oleg Pykhalov
+ Copyright (C) 2020
+Matthew Brooks
+ Copyright (C) 2020 Marcin Karpezo
+ Copyright
+(C) 2020 Brice Waegeneire
+ Copyright (C) 2020 André
+Batista
+ Copyright (C) 2020 Christine Lemmer-Webber
+ Copyright
+(C) 2021 Joshua Branson
+ Copyright (C) 2022, 2023 Maxim
+Cournoyer
+ Copyright (C) 2023-2026 Ludovic Courtès
+ Copyright
+(C) 2023 Thomas Ieong
+ Copyright (C) 2024 Florian Pelz
+
+Copyright (C) 2025 45mg
+ Copyright (C) 2023 Marek
+Felšöci
+ Copyright (C) 2023 Konrad Hinsen
+ Copyright (C)
+2023 Philippe Swartvagher
+
+
+Разрешено копирование, распространение и/или модификация этого документа на
+условиях лицензии свободной документации GNU (GNU FDL) версии 1.3 или любой
+более поздней версии, опубликованной Фондом свободного программного
+обеспечения (FSF), исключая неизменяемые секции, исключая тексты,
+размещенные на переплёте и задней стороне обложки. Копия лицензии включена в
+документ в разделе под названием "GNU Free Documentation Licens".   -->
+<title>Top (GNU Guix Рецепты)</title>
+
+<meta name="description" content="Top (GNU Guix Рецепты)" />
+<meta name="keywords" content="Top (GNU Guix Рецепты)" />
+<meta name="resource-type" content="document" />
+<meta name="distribution" content="global" />
+<meta name="Generator" content="makeinfo" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<link href="html_node.html#Top" rel="start" title="Top" />
+<link href="html_node/Terminy-i-ukazateli.html" rel="index" title="Термины и указатели" />
+<link href="html_node.html#SEC_Contents" rel="contents" title="Table of Contents" />
+<link href="https://guix.gnu.org/manual/1.5.0/ru" rel="up" title="(dir)" />
+<link href="html_node/Uchebnik-po-Scheme.html" rel="next" title="Учебник по Scheme" />
+<style type="text/css">
+&amp;lt;!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+--&amp;gt;
+</style>
+<link rel="stylesheet" type="text/css" href="https://guix.gnu.org/themes/initial/css/manual.css" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="https://guix.gnu.org/themes/initial/css/manual.css" /><link rel="stylesheet" type="text/css" href="https://guix.gnu.org/themes/initial/css/code.css" /></head>
+
+<body lang="en"><header class="navbar"><h1><a class="branding" href="index.html"></a></h1><nav class="navbar-menu"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="all-dropdowns-hidden" /><ul><li class="navbar-menu-item dropdown dropdown-btn"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="visible-dropdown" /><label for="visible-dropdown">Version</label><label for="all-dropdowns-hidden">Version</label><div class="navbar-submenu" id="navbar-submenu"><div class="navbar-submenu-triangle"> </div><ul><li><a class="navbar-menu-item" href="guix-cookbook.ru.html">single page</a></li><li><a class="navbar-menu-item" href="guix-cookbook.ru.pdf">PDF</a></li></ul></div></li><li class="navbar-menu-item dropdown dropdown-btn"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="visible-dropdown" /><label for="visible-dropdown"><img alt="Language" src="https://guix.gnu.org/themes/initial/img/language-picker.svg" /></label><label for="all-dropdowns-hidden"><img alt="Language" src="https://guix.gnu.org/themes/initial/img/language-picker.svg" /></label><div class="navbar-submenu" id="navbar-submenu"><div class="navbar-submenu-triangle"> </div><ul><li><a class="navbar-menu-item" href="https://guix.gnu.org/cookbook/de/html_node">Deutsch</a></li><li><a class="navbar-menu-item" href="https://guix.gnu.org/cookbook/en/html_node">English</a></li><li><a class="navbar-menu-item" href="https://guix.gnu.org/cookbook/es/html_node">Español</a></li><li><a class="navbar-menu-item" href="https://guix.gnu.org/cookbook/fr/html_node">Français</a></li><li><a class="navbar-menu-item" href="https://guix.gnu.org/cookbook/it/html_node">Italiano</a></li><li><a class="navbar-menu-item" href="https://guix.gnu.org/cookbook/ko/html_node">한국어</a></li><li><a class="navbar-menu-item" href="https://guix.gnu.org/cookbook/pt-br/html_node">Português</a></li><li><a class="navbar-menu-item" href="html_node.html">русский</a></li><li><a class="navbar-menu-item" href="https://guix.gnu.org/cookbook/sk/html_node">Slovenský</a></li><li><a class="navbar-menu-item" href="https://guix.gnu.org/cookbook/sv/html_node">Svenska</a></li><li><a class="navbar-menu-item" href="https://guix.gnu.org/cookbook/ta/html_node">தமிழ்</a></li><li><a class="navbar-menu-item" href="https://guix.gnu.org/cookbook/zh-cn/html_node">中文; 汉语; 华语</a></li><li><a class="navbar-menu-item" href="https://translate.codeberg.org/projects/guix/documentation-cookbook/">⊕</a></li></ul></div></li></ul></nav><a class="navbar-menu-btn" href="https://guix.gnu.org/cookbook/"></a></header>
+<h1 class="settitle" align="center">GNU Guix Рецепты</h1>
+
+
+
+
+
+
+<div class="top" id="Top">
+<div class="header">
+<p>
+Next: <a href="html_node/Uchebnik-po-Scheme.html" accesskey="n" rel="next">Учебник по Scheme</a>, Up: <a href="https://guix.gnu.org/manual/1.5.0/ru" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="html_node.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="html_node/Terminy-i-ukazateli.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr />
+<span id="GNU-Guix-Recepty"></span><h1 class="top">GNU Guix Рецепты</h1>
+
+<p>В этом документе представлены учебные пособия и подробные примеры для
+GNU&nbsp;Guix, инструмента для функционального управления пакетами,
+написанного для системы GNU. Пожалуйста, see <cite><a data-manual="guix.ru" href="https://guix.gnu.org/manual/devel/ru/html_node/index.html#Top">справочное
+руководство GNU Guix</a></cite> для получения подробной информации о системе, ее API и
+связанных с ней идеях.
+</p>
+<p>Это руководство также доступно на английском (see <cite><a data-manual="guix-cookbook" href="https://guix.gnu.org/cookbook/en/html_node/index.html#Top">GNU Guix Cookbook</a></cite>), (упрощённом) китайском языке (see <cite><a data-manual="guix-cookbook.zh_CN" href="https://guix.gnu.org/cookbook/zh-cn/html_node/index.html#Top">GNU Guix 烹饪书</a></cite>), французском (see <cite><a data-manual="guix-cookbook.fr" href="https://guix.gnu.org/cookbook/fr/html_node/index.html#Top">Livre de recettes de GNU Guix</a></cite>), немецком (see <cite><a data-manual="guix-cookbook.de" href="https://guix.gnu.org/cookbook/de/html_node/index.html#Top">GNU-Guix-Kochbuch</a></cite>), корейском (see <cite><a data-manual="guix-cookbook.ko" href="https://guix.gnu.org/cookbook/ko/html_node/index.html#Top">GNU Guix 쿡북</a></cite>), испанском (see <cite><a data-manual="guix-cookbook.es" href="https://guix.gnu.org/cookbook/es/html_node/index.html#Top">Libro de recetas de GNU Guix</a></cite>), итальянском (see <cite><a data-manual="guix-cookbook.it" href="https://guix.gnu.org/cookbook/it/html_node/index.html#Top">Ricettario di GNU Guix</a></cite>), бразильский португальский (see <cite><a data-manual="guix-cookbook.pt_BR" href="https://guix.gnu.org/cookbook/pt-br/html_node/index.html#Top">Livro de receitas do GNU Guix</a></cite>), словацкий
+(see <cite><a data-manual="guix-cookbook.sk" href="https://guix.gnu.org/cookbook/sk/html_node/index.html#Top">Receptár GNU Guix</a></cite>), шведский
+(see <cite><a data-manual="guix-cookbook.sv" href="https://guix.gnu.org/cookbook/sv/html_node/index.html#Top">Kokbok för GNU Guix</a></cite>) и тами́льском
+(see <cite><a data-manual="guix-cookbook.ta" href="https://guix.gnu.org/cookbook/ta/html_node/index.html#Top">GNU Guix கையேடு</a></cite>).  Если вы хотите
+перевести этот документ на свой родной язык, присоединяйтесь к
+<a href="https://translate.codeberg.org/projects/guix/documentation-cookbook">Weblate</a> (see <a data-manual="guix.ru" href="https://guix.gnu.org/manual/devel/ru/html_node/_041f_0435_0440_0435_0432_043e_0434-Guix-_043d_0430-_0434_0440_0443_0433_0438_0435-_044f_0437_044b_043a_0438.html#g_t_041f_0435_0440_0435_0432_043e_0434-Guix-_043d_0430-_0434_0440_0443_0433_0438_0435-_044f_0437_044b_043a_0438">Перевод Guix на другие языки</a> in <cite>Руководство по GNU
+Guix</cite>).
+</p>
+
+<div class="Contents_element" id="SEC_Contents">
+<h2 class="contents-heading">Table of Contents</h2>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-Uchebnik-po-Scheme" href="html_node/Uchebnik-po-Scheme.html">1 Учебник по Scheme</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Uskorennyi-kurs-po-Scheme" href="html_node/Uskorennyi-kurs-po-Scheme.html">1.1 Ускоренный курс по Scheme</a></li>
+  </ul></li>
+  <li><a id="toc-Upravlenie-paketami" href="html_node/Upravlenie-paketami.html">2 Управление пакетами</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Rukovodstvo-po-paketam" href="html_node/Rukovodstvo-po-paketam.html">2.1 Руководство по пакетам</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Paket-_0060_0060Hello-World_0027_0027" href="html_node/Paket-_0060_0060Hello-World_0027_0027.html">2.1.1 Пакет &ldquo;Hello World&rdquo;</a></li>
+      <li><a id="toc-Nastroika" href="html_node/Nastroika.html">2.1.2 Настройка</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Lokalxnyi-fail" href="html_node/Lokalxnyi-fail.html">2.1.2.1 Локальный файл</a></li>
+        <li><a id="toc-Kanaly" href="html_node/Kanaly.html">2.1.2.2 Каналы</a></li>
+        <li><a id="toc-Rabota-s-kopiei-repozitoriya-napryamuiu" href="html_node/Rabota-s-kopiei-repozitoriya-napryamuiu.html">2.1.2.3 Работа с копией репозитория напрямую</a></li>
+      </ul></li>
+      <li><a id="toc-Rasshirennyi-primer" href="html_node/Rasshirennyi-primer.html">2.1.3 Расширенный пример</a>
+      <ul class="no-bullet">
+        <li><a id="toc-git_002dfetch-method" href="html_node/Rasshirennyi-primer.html#git_002dfetch-method">2.1.3.1 <code>git-fetch</code> method</a></li>
+        <li><a id="toc-Snippets" href="html_node/Rasshirennyi-primer.html#Snippets">2.1.3.2 Snippets</a></li>
+        <li><a id="toc-Inputs" href="html_node/Rasshirennyi-primer.html#Inputs">2.1.3.3 Inputs</a></li>
+        <li><a id="toc-Rezulxtaty" href="html_node/Rasshirennyi-primer.html#Rezulxtaty">2.1.3.4 Результаты</a></li>
+        <li><a id="toc-Build-system-arguments" href="html_node/Rasshirennyi-primer.html#Build-system-arguments">2.1.3.5 Build system arguments</a></li>
+        <li><a id="toc-Code-staging" href="html_node/Rasshirennyi-primer.html#Code-staging">2.1.3.6 Code staging</a></li>
+        <li><a id="toc-Utility-functions" href="html_node/Rasshirennyi-primer.html#Utility-functions">2.1.3.7 Utility functions</a></li>
+        <li><a id="toc-Module-prefix" href="html_node/Rasshirennyi-primer.html#Module-prefix">2.1.3.8 Module prefix</a></li>
+      </ul></li>
+      <li><a id="toc-Drugie-sistemy-sborki" href="html_node/Drugie-sistemy-sborki.html">2.1.4 Другие системы сборки</a></li>
+      <li><a id="toc-Programmiruemoe-i-avtomatizirovannoe-opredelenie-paketov" href="html_node/Programmiruemoe-i-avtomatizirovannoe-opredelenie-paketov.html">2.1.5 Программируемое и автоматизированное определение пакетов</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Rekursivnye-importery" href="html_node/Rekursivnye-importery.html">2.1.5.1 Рекурсивные импортеры</a></li>
+        <li><a id="toc-Avtomaticheskoe-obnovlenie" href="html_node/Avtomaticheskoe-obnovlenie.html">2.1.5.2 Автоматическое обновление</a></li>
+        <li><a id="toc-Nasledovanie" href="html_node/Nasledovanie.html">2.1.5.3 Наследование</a></li>
+      </ul></li>
+      <li><a id="toc-Poluchitx-pomoshchx" href="html_node/Poluchitx-pomoshchx.html">2.1.6 Получить помощь</a></li>
+      <li><a id="toc-Zakliuchenie" href="html_node/Zakliuchenie.html">2.1.7 Заключение</a></li>
+      <li><a id="toc-Ssylki" href="html_node/Ssylki.html">2.1.8 Ссылки</a></li>
+    </ul></li>
+    <li><a id="toc-Packaging-Workflows-1" href="html_node/Packaging-Workflows.html">2.2 Packaging Workflows</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Packaging-Rust-Crates-1" href="html_node/Packaging-Rust-Crates.html">2.2.1 Packaging Rust Crates</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Common-Workflow-for-Rust-Packaging-1" href="html_node/Common-Workflow-for-Rust-Packaging.html">2.2.1.1 Common Workflow for Rust Packaging</a></li>
+        <li><a id="toc-Cargo-Workspaces-and-Development-Snapshots-1" href="html_node/Cargo-Workspaces-and-Development-Snapshots.html">2.2.1.2 Cargo Workspaces and Development Snapshots</a></li>
+        <li><a id="toc-Using-Rust-Libraries-in-Other-Build-Systems-1" href="html_node/Using-Rust-Libraries-in-Other-Build-Systems.html">2.2.1.3 Using Rust Libraries in Other Build Systems</a></li>
+      </ul></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Nastroika-sistemy" href="html_node/Nastroika-sistemy.html">3 Настройка системы</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Avtomaticheskii-vkhod-na-zadannyi-TTY" href="html_node/Avtomaticheskii-vkhod-na-zadannyi-TTY.html">3.1 Автоматический вход на заданный TTY</a></li>
+    <li><a id="toc-Nastroika-yadra" href="html_node/Nastroika-yadra.html">3.2 Настройка ядра</a></li>
+    <li><a id="toc-API-obraza-Guix-sistemy" href="html_node/API-obraza-Guix-sistemy.html">3.3 API образа Guix системы</a></li>
+    <li><a id="toc-Ispolxzovanie-kliuchei-bezopasnosti" href="html_node/Ispolxzovanie-kliuchei-bezopasnosti.html">3.4 Использование ключей безопасности</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Configuration-for-use-as-a-two_002dfactor-authenticator-_00282FA_0029" href="html_node/Ispolxzovanie-kliuchei-bezopasnosti.html#Configuration-for-use-as-a-two_002dfactor-authenticator-_00282FA_0029">3.4.1 Configuration for use as a two-factor authenticator (2FA)</a></li>
+      <li><a id="toc-Disabling-OTP-code-generation-for-a-Yubikey" href="html_node/Ispolxzovanie-kliuchei-bezopasnosti.html#Disabling-OTP-code-generation-for-a-Yubikey">3.4.2 Disabling OTP code generation for a Yubikey</a></li>
+      <li><a id="toc-Requiring-a-Yubikey-to-open-a-KeePassXC-database" href="html_node/Ispolxzovanie-kliuchei-bezopasnosti.html#Requiring-a-Yubikey-to-open-a-KeePassXC-database">3.4.3 Requiring a Yubikey to open a KeePassXC database</a></li>
+    </ul></li>
+    <li><a id="toc-Dinamicheskaya-zadacha-DNS-mcron" href="html_node/Dinamicheskaya-zadacha-DNS-mcron.html">3.5 Динамическая задача DNS mcron</a></li>
+    <li><a id="toc-Podkliuchenie-k-Wireguard-VPN" href="html_node/Podkliuchenie-k-Wireguard-VPN.html">3.6 Подключение к Wireguard VPN</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Using-Wireguard-tools" href="html_node/Podkliuchenie-k-Wireguard-VPN.html#Using-Wireguard-tools">3.6.1 Using Wireguard tools</a></li>
+      <li><a id="toc-Using-NetworkManager" href="html_node/Podkliuchenie-k-Wireguard-VPN.html#Using-NetworkManager">3.6.2 Using NetworkManager</a></li>
+    </ul></li>
+    <li><a id="toc-Nastroika-okonnogo-menedzhera" href="html_node/Nastroika-okonnogo-menedzhera.html">3.7 Настройка оконного менеджера</a>
+    <ul class="no-bullet">
+      <li><a id="toc-StumpWM-1" href="html_node/StumpWM.html">3.7.1 StumpWM</a></li>
+      <li><a id="toc-Blokirovka-sessii" href="html_node/Blokirovka-sessii.html">3.7.2 Блокировка сессии</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Xorg-1" href="html_node/Xorg.html">3.7.2.1 Xorg</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Zapusk-Guix-na-servere-Linode" href="html_node/Zapusk-Guix-na-servere-Linode.html">3.8 Запуск Guix на сервере Linode</a></li>
+    <li><a id="toc-Zapusk-Guix-na-servere-Kimsufi" href="html_node/Zapusk-Guix-na-servere-Kimsufi.html">3.9 Запуск Guix на сервере Kimsufi</a></li>
+    <li><a id="toc-Nastroika-privyazki" href="html_node/Nastroika-privyazki.html">3.10 Настройка привязки</a></li>
+    <li><a id="toc-Poluchenie-podmen-iz-Tor" href="html_node/Poluchenie-podmen-iz-Tor.html">3.11 Получение подмен из Tor</a></li>
+    <li><a id="toc-Nastroika-NGINX-s-Lua" href="html_node/Nastroika-NGINX-s-Lua.html">3.12 Настройка NGINX с Lua</a></li>
+    <li><a id="toc-Muzykalxnyi-server-s-Bluetooth_002daudio" href="html_node/Muzykalxnyi-server-s-Bluetooth_002daudio.html">3.13 Музыкальный сервер с Bluetooth-аудио</a></li>
+  </ul></li>
+  <li><a id="toc-Konteinery" href="html_node/Konteinery.html">4 Контейнеры</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Guix-Konteinery" href="html_node/Guix-Konteinery.html">4.1 Guix Контейнеры</a></li>
+    <li><a id="toc-Guix-System-konteinery" href="html_node/Guix-System-konteinery.html">4.2 Guix System контейнеры</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Konteiner-bazy-dannykh" href="html_node/Konteiner-bazy-dannykh.html">4.2.1 Контейнер базы данных</a></li>
+      <li><a id="toc-Rabota-s-setyami-konteinerov" href="html_node/Rabota-s-setyami-konteinerov.html">4.2.2 Работа с сетями контейнеров</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Virtualxnye-mashiny" href="html_node/Virtualxnye-mashiny.html">5 Виртуальные машины</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Setevyi-most-dlya-QEMU" href="html_node/Setevyi-most-dlya-QEMU.html">5.1 Сетевый мост для QEMU</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Creating-a-network-bridge-interface" href="html_node/Setevyi-most-dlya-QEMU.html#Creating-a-network-bridge-interface">5.1.1 Creating a network bridge interface</a></li>
+      <li><a id="toc-Configuring-the-QEMU-bridge-helper-script" href="html_node/Setevyi-most-dlya-QEMU.html#Configuring-the-QEMU-bridge-helper-script">5.1.2 Configuring the QEMU bridge helper script</a></li>
+      <li><a id="toc-Invoking-QEMU-with-the-right-command-line-options" href="html_node/Setevyi-most-dlya-QEMU.html#Invoking-QEMU-with-the-right-command-line-options">5.1.3 Invoking QEMU with the right command line options</a></li>
+      <li><a id="toc-Networking-issues-caused-by-Docker" href="html_node/Setevyi-most-dlya-QEMU.html#Networking-issues-caused-by-Docker">5.1.4 Networking issues caused by Docker</a></li>
+    </ul></li>
+    <li><a id="toc-Marshrutiziruemaya-setx-dlya-libvirt" href="html_node/Marshrutiziruemaya-setx-dlya-libvirt.html">5.2 Маршрутизируемая сеть для libvirt</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Creating-a-virtual-network-switch" href="html_node/Marshrutiziruemaya-setx-dlya-libvirt.html#Creating-a-virtual-network-switch">5.2.1 Creating a virtual network switch</a></li>
+      <li><a id="toc-Configuring-the-static-routes-for-your-virtual-bridge" href="html_node/Marshrutiziruemaya-setx-dlya-libvirt.html#Configuring-the-static-routes-for-your-virtual-bridge">5.2.2 Configuring the static routes for your virtual bridge</a></li>
+    </ul></li>
+    <li><a id="toc-Polxzovatelxskaya-setx-NAT-dlya-libvirt" href="html_node/Polxzovatelxskaya-setx-NAT-dlya-libvirt.html">5.3 Пользовательская сеть NAT для libvirt</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Creating-the-virtual-network-bridge" href="html_node/Polxzovatelxskaya-setx-NAT-dlya-libvirt.html#Creating-the-virtual-network-bridge">5.3.1 Creating the virtual network bridge</a></li>
+      <li><a id="toc-Running-dnsmasq-for-the-virtual-network-bridge" href="html_node/Polxzovatelxskaya-setx-NAT-dlya-libvirt.html#Running-dnsmasq-for-the-virtual-network-bridge">5.3.2 Running dnsmasq for the virtual network bridge</a></li>
+      <li><a id="toc-Configuring-NAT-for-the-virtual-network-switch" href="html_node/Polxzovatelxskaya-setx-NAT-dlya-libvirt.html#Configuring-NAT-for-the-virtual-network-switch">5.3.3 Configuring NAT for the virtual network switch</a></li>
+    </ul></li>
+    <li><a id="toc-Ssylki-1" href="html_node/VM-References.html">5.4 Ссылки</a></li>
+  </ul></li>
+  <li><a id="toc-Rasshirennoe-upravlenie-paketami" href="html_node/Rasshirennoe-upravlenie-paketami.html">6 Расширенное управление пакетами</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Guix-profili-na-praktike" href="html_node/Guix-profili-na-praktike.html">6.1 Guix профили на практике</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Bazovaya-nastroika-s-manifestami" href="html_node/Bazovaya-nastroika-s-manifestami.html">6.1.1 Базовая настройка с манифестами</a></li>
+      <li><a id="toc-Trebuemye-pakety" href="html_node/Trebuemye-pakety.html">6.1.2 Требуемые пакеты</a></li>
+      <li><a id="toc-Profilx-po_002dumolchaniiu" href="html_node/Profilx-po_002dumolchaniiu.html">6.1.3 Профиль по-умолчанию</a></li>
+      <li><a id="toc-Preimushchestva-manifestov" href="html_node/Preimushchestva-manifestov.html">6.1.4 Преимущества манифестов</a></li>
+      <li><a id="toc-Vosproizvodimye-profili" href="html_node/Vosproizvodimye-profili.html">6.1.5 Воспроизводимые профили</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Razrabotka-programmnogo-obespecheniya" href="html_node/Razrabotka-programmnogo-obespecheniya.html">7 Разработка программного обеспечения</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Nachalo-raboty" href="html_node/Nachalo-raboty.html">7.1 Начало работы</a></li>
+    <li><a id="toc-Level-1_003a-Building-with-Guix" href="html_node/Sborka-s-Guix.html">7.2 Level 1: Building with Guix</a></li>
+    <li><a id="toc-Level-2_003a-The-Repository-as-a-Channel" href="html_node/Repozitorii-kak-kanal.html">7.3 Level 2: The Repository as a Channel</a></li>
+    <li><a id="toc-Bonus_003a-Package-Variants" href="html_node/Varianty-paketa.html">7.4 Bonus: Package Variants</a></li>
+    <li><a id="toc-Level-3_003a-Setting-Up-Continuous-Integration" href="html_node/Nastroika-nepreryvnoi-integracii.html">7.5 Level 3: Setting Up Continuous Integration</a></li>
+    <li><a id="toc-Bonus_003a-Build-manifest" href="html_node/Manifest-sborki.html">7.6 Bonus: Build manifest</a></li>
+    <li><a id="toc-Podvodya-itogi" href="html_node/Podvodya-itogi.html">7.7 Подводя итоги</a></li>
+  </ul></li>
+  <li><a id="toc-Upravlenie-okruzhaiushchei-sredoi" href="html_node/Upravlenie-okruzhaiushchei-sredoi.html">8 Управление окружающей средой</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Okruzhenie-Guix-cherez-direnv" href="html_node/Okruzhenie-Guix-cherez-direnv.html">8.1 Окружение Guix через direnv</a></li>
+  </ul></li>
+  <li><a id="toc-Using-Guix-for-Reproducible-Research" href="html_node/Reproducible-Research.html">9 Using Guix for Reproducible Research</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Step-1_003a-Setting-Up-the-Environment" href="html_node/Setting-Up-the-Environment.html">9.1 Step 1: Setting Up the Environment</a></li>
+    <li><a id="toc-Step-2_003a-Recording-the-Environment" href="html_node/Recording-the-Environment.html">9.2 Step 2: Recording the Environment</a></li>
+    <li><a id="toc-Step-3_003a-Ensuring-Long_002dTerm-Source-Code-Archiving" href="html_node/Ensuring-Long_002dTerm-Source-Code-Archiving.html">9.3 Step 3: Ensuring Long-Term Source Code Archiving</a></li>
+    <li><a id="toc-Step-4_003a-Referencing-the-Software-Environment" href="html_node/Referencing-the-Software-Environment.html">9.4 Step 4: Referencing the Software Environment</a></li>
+  </ul></li>
+  <li><a id="toc-Installing-Guix-on-a-Cluster-1" href="html_node/Installing-Guix-on-a-Cluster.html">10 Installing Guix on a Cluster</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Nastroika-golovnogo-uzla" href="html_node/Nastroika-golovnogo-uzla.html">10.1 Настройка головного узла</a></li>
+    <li><a id="toc-Nastroika-vychislitelxnykh-uzlov" href="html_node/Nastroika-vychislitelxnykh-uzlov.html">10.2 Настройка вычислительных узлов</a></li>
+    <li><a id="toc-Setevoi-dostup" href="html_node/Dostup-v-seti-klasterov.html">10.3 Сетевой доступ</a></li>
+    <li><a id="toc-Ispolxzovanie-diska" href="html_node/Ispolxzovanie-klasternogo-diska.html">10.4 Использование диска</a></li>
+    <li><a id="toc-Security-Considerations" href="html_node/Primechaniya-po-bezopasnosti-klasterov.html">10.5 Security Considerations</a></li>
+  </ul></li>
+  <li><a id="toc-Upravlenie-sistemoi-Guix" href="html_node/Upravlenie-sistemoi-Guix.html">11 Управление системой Guix</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Obnovitx-Postgres-dlya-Cuirass" href="html_node/Obnovitx-Postgres-dlya-Cuirass.html">11.1 Обновить Postgres для Cuirass</a></li>
+  </ul></li>
+  <li><a id="toc-Blagodarnosti" href="html_node/Blagodarnosti.html">12 Благодарности</a></li>
+  <li><a id="toc-Licenziya-svobodnoi-dokumentacii-GNU" href="html_node/Licenziya-svobodnoi-dokumentacii-GNU.html">Appendix A Лицензия свободной документации GNU</a></li>
+  <li><a id="toc-Terminy-i-ukazateli" href="html_node/Terminy-i-ukazateli.html" rel="index">Термины и указатели</a></li>
+</ul>
+</div>
+</div>
+</div>
+<hr />
+<div class="header">
+<p>
+Next: <a href="html_node/Uchebnik-po-Scheme.html" accesskey="n" rel="next">Учебник по Scheme</a>, Up: <a href="https://guix.gnu.org/manual/1.5.0/ru" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="html_node.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="html_node/Terminy-i-ukazateli.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

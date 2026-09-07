@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--   Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/   -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--   Copyright (C) 2019, 2022 Ricardo Wurmus
+ Copyright (C)
+2019 Efraim Flashner
+ Copyright (C) 2019 Pierre Neidhardt
+
+Copyright (C) 2020 Oleg Pykhalov
+ Copyright (C) 2020
+Matthew Brooks
+ Copyright (C) 2020 Marcin Karpezo
+ Copyright
+(C) 2020 Brice Waegeneire
+ Copyright (C) 2020 André
+Batista
+ Copyright (C) 2020 Christine Lemmer-Webber
+ Copyright
+(C) 2021 Joshua Branson
+ Copyright (C) 2022, 2023 Maxim
+Cournoyer
+ Copyright (C) 2023-2026 Ludovic Courtès
+ Copyright
+(C) 2023 Thomas Ieong
+ Copyright (C) 2024 Florian Pelz
+
+Copyright (C) 2025 45mg
+ Copyright (C) 2023 Marek
+Felšöci
+ Copyright (C) 2023 Konrad Hinsen
+ Copyright (C)
+2023 Philippe Swartvagher
+
+
+Разрешено копирование, распространение и/или модификация этого документа на
+условиях лицензии свободной документации GNU (GNU FDL) версии 1.3 или любой
+более поздней версии, опубликованной Фондом свободного программного
+обеспечения (FSF), исключая неизменяемые секции, исключая тексты,
+размещенные на переплёте и задней стороне обложки. Копия лицензии включена в
+документ в разделе под названием "GNU Free Documentation Licens".   -->
+<title>Использование ключей безопасности (GNU Guix Рецепты)</title>
+
+<meta name="description" content="Использование ключей безопасности (GNU Guix Рецепты)" />
+<meta name="keywords" content="Использование ключей безопасности (GNU Guix Рецепты)" />
+<meta name="resource-type" content="document" />
+<meta name="distribution" content="global" />
+<meta name="Generator" content="makeinfo" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<link href="index.html" rel="start" title="Top" />
+<link href="Terminy-i-ukazateli.html" rel="index" title="Термины и указатели" />
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents" />
+<link href="Nastroika-sistemy.html" rel="up" title="Настройка системы" />
+<link href="Dinamicheskaya-zadacha-DNS-mcron.html" rel="next" title="Динамическая задача DNS mcron" />
+<link href="API-obraza-Guix-sistemy.html" rel="prev" title="API образа Guix системы" />
+<style type="text/css">
+&amp;lt;!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+--&amp;gt;
+</style>
+<link rel="stylesheet" type="text/css" href="/themes/initial/css/manual.css" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="/themes/initial/css/manual.css" /><link rel="stylesheet" type="text/css" href="/themes/initial/css/code.css" /></head>
+
+<body lang="en"><header class="navbar"><h1><a class="branding" href=".."></a></h1><nav class="navbar-menu"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="all-dropdowns-hidden" /><ul><li class="navbar-menu-item dropdown dropdown-btn"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="visible-dropdown" /><label for="visible-dropdown">Version</label><label for="all-dropdowns-hidden">Version</label><div class="navbar-submenu" id="navbar-submenu"><div class="navbar-submenu-triangle"> </div><ul><li><a class="navbar-menu-item" href="../guix-cookbook.ru.html">single page</a></li><li><a class="navbar-menu-item" href="../guix-cookbook.ru.pdf">PDF</a></li></ul></div></li><li class="navbar-menu-item dropdown dropdown-btn"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="visible-dropdown" /><label for="visible-dropdown"><img alt="Language" src="/themes/initial/img/language-picker.svg" /></label><label for="all-dropdowns-hidden"><img alt="Language" src="/themes/initial/img/language-picker.svg" /></label><div class="navbar-submenu" id="navbar-submenu"><div class="navbar-submenu-triangle"> </div><ul><li><a class="navbar-menu-item" href="../../de/html_node">Deutsch</a></li><li><a class="navbar-menu-item" href="../../en/html_node">English</a></li><li><a class="navbar-menu-item" href="../../es/html_node">Español</a></li><li><a class="navbar-menu-item" href="../../fr/html_node">Français</a></li><li><a class="navbar-menu-item" href="../../it/html_node">Italiano</a></li><li><a class="navbar-menu-item" href="../../ko/html_node">한국어</a></li><li><a class="navbar-menu-item" href="../../pt-br/html_node">Português</a></li><li><a class="navbar-menu-item" href="../../ru/html_node">русский</a></li><li><a class="navbar-menu-item" href="../../sk/html_node">Slovenský</a></li><li><a class="navbar-menu-item" href="../../sv/html_node">Svenska</a></li><li><a class="navbar-menu-item" href="../../ta/html_node">தமிழ்</a></li><li><a class="navbar-menu-item" href="../../zh-cn/html_node">中文; 汉语; 华语</a></li><li><a class="navbar-menu-item" href="https://translate.codeberg.org/projects/guix/documentation-cookbook/">⊕</a></li></ul></div></li></ul></nav><a class="navbar-menu-btn" href="../.."></a></header>
+<div class="section" id="g_t_0418_0441_043f_043e_043b_044c_0437_043e_0432_0430_043d_0438_0435-_043a_043b_044e_0447_0435_0439-_0431_0435_0437_043e_043f_0430_0441_043d_043e_0441_0442_0438">
+<div class="header">
+<p>
+Next: <a href="Dinamicheskaya-zadacha-DNS-mcron.html" accesskey="n" rel="next">Динамическая задача DNS mcron</a>, Previous: <a href="API-obraza-Guix-sistemy.html" accesskey="p" rel="prev">API образа Guix системы</a>, Up: <a href="Nastroika-sistemy.html" accesskey="u" rel="up">Настройка системы</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Terminy-i-ukazateli.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr />
+<span id="Ispolxzovanie-kliuchei-bezopasnosti"></span><h3 class="section">3.4 Использование ключей безопасности</h3>
+<span id="index-2FA_002c-two_002dfactor-authentication"></span>
+<span id="index-U2F_002c-Universal-2nd-Factor"></span>
+<span id="index-security-key_002c-configuration"></span>
+
+<p>The use of security keys can improve your security by providing a second
+authentication source that cannot be easily stolen or copied, at least for a
+remote adversary (something that you have), to the main secret (a passphrase
+&ndash; something that you know), reducing the risk of impersonation.
+</p>
+<p>The example configuration detailed below showcases what minimal
+configuration needs to be made on your Guix System to allow the use of a
+Yubico security key.  It is hoped the configuration can be useful for other
+security keys as well, with minor adjustments.
+</p>
+<ul class="section-toc">
+<li><a href="#Configuration-for-use-as-a-two_002dfactor-authenticator-_00282FA_0029" accesskey="1">Configuration for use as a two-factor authenticator (2FA)</a></li>
+<li><a href="#Disabling-OTP-code-generation-for-a-Yubikey" accesskey="2">Disabling OTP code generation for a Yubikey</a></li>
+<li><a href="#Requiring-a-Yubikey-to-open-a-KeePassXC-database" accesskey="3">Requiring a Yubikey to open a KeePassXC database</a></li>
+</ul>
+<div class="subsection" id="Configuration-for-use-as-a-two_002dfactor-authenticator-_00282FA_0029">
+<h4 class="subsection">3.4.1 Configuration for use as a two-factor authenticator (2FA)</h4>
+
+<p>To be usable, the udev rules of the system should be extended with
+key-specific rules.  The following shows how to extend your udev rules with
+the <samp>lib/udev/rules.d/70-u2f.rules</samp> udev rule file provided by the
+<code>libfido2</code> package from the <code>(gnu packages security-token)</code> module
+and add your user to the &lsquo;<samp>"plugdev"</samp>&rsquo; group it uses:
+</p>
+<div class="example lisp">
+<pre class="lisp"><span class="syntax-paren0">(<span class="syntax-symbol"><span class="syntax-symbol">use-package-modules</span> <a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Syntax-Rules.html#index-_002e_002e_002e">...</a> <span class="syntax-symbol">security-token</span> <a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Syntax-Rules.html#index-_002e_002e_002e">...</a></span>)</span>
+<a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Syntax-Rules.html#index-_002e_002e_002e">...</a>
+<span class="syntax-paren0">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/Interfeis-operating_002dsystem.html#index-operating_002dsystem-1">operating-system</a>
+ <a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Syntax-Rules.html#index-_002e_002e_002e">...</a>
+ <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">users</span> <span class="syntax-paren2">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/List-Constructors.html#index-cons_002a">cons*</a> <span class="syntax-paren3">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/Uchiotnye-zapisi-polxzovatelei.html#index-user_002daccount">user-account</a>
+               <span class="syntax-paren4">(<span class="syntax-symbol"><span class="syntax-symbol">name</span> <span class="syntax-string">"your-user"</span></span>)</span>
+               <span class="syntax-paren4">(<span class="syntax-symbol"><span class="syntax-symbol">group</span> <span class="syntax-string">"users"</span></span>)</span>
+               <span class="syntax-paren4">(<span class="syntax-symbol"><span class="syntax-symbol">supplementary-groups</span>
+		<span class="syntax-symbol">'</span><span class="syntax-paren5">(<span class="syntax-symbol"><span class="syntax-string">"wheel"</span> <span class="syntax-string">"netdev"</span> <span class="syntax-string">"audio"</span> <span class="syntax-string">"video"</span>
+                  <span class="syntax-string">"plugdev"</span></span>)</span></span>)</span>           <span class="syntax-comment">;&lt;- added system group
+</span>               <span class="syntax-paren4">(<span class="syntax-symbol"><span class="syntax-symbol">home-directory</span> <span class="syntax-string">"/home/your-user"</span></span>)</span></span>)</span>
+              <a class="syntax-symbol" href="/manual/devel/ru/html_node/Uchiotnye-zapisi-polxzovatelei.html#index-_0025base_002duser_002daccounts">%base-user-accounts</a></span>)</span></span>)</span>
+ <a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Syntax-Rules.html#index-_002e_002e_002e">...</a>
+ <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">services</span>
+  <span class="syntax-paren2">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/List-Constructors.html#index-cons_002a">cons*</a>
+   <a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Syntax-Rules.html#index-_002e_002e_002e">...</a>
+   <span class="syntax-paren3">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/Bazovye-sluzhby.html#index-udev_002drules_002dservice">udev-rules-service</a> <span class="syntax-symbol">'fido2</span> <span class="syntax-symbol">libfido2</span> <span class="syntax-keyword">#:groups</span> <span class="syntax-symbol">'</span><span class="syntax-paren4">(<span class="syntax-symbol"><span class="syntax-string">"plugdev"</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
+</pre></div>
+
+<p>After re-configuring your system and re-logging in your graphical session so
+that the new group is in effect for your user, you can verify that your key
+is usable by launching:
+</p>
+<div class="example">
+<pre class="example">guix shell ungoogled-chromium -- chromium chrome://settings/securityKeys
+</pre></div>
+
+<p>and validating that the security key can be reset via the &ldquo;Reset your
+security key&rdquo; menu.  If it works, congratulations, your security key is
+ready to be used with applications supporting two-factor authentication
+(2FA).
+</p>
+</div>
+<div class="subsection" id="Disabling-OTP-code-generation-for-a-Yubikey">
+<h4 class="subsection">3.4.2 Disabling OTP code generation for a Yubikey</h4>
+<span id="index-disabling-yubikey-OTP"></span>
+<p>If you use a Yubikey security key and are irritated by the spurious OTP
+codes it generates when inadvertently touching the key (e.g. causing you to
+become a spammer in the &lsquo;<samp>#guix</samp>&rsquo; channel when discussing from your
+favorite IRC client!), you can disable it via the following <code>ykman</code>
+command:
+</p>
+<div class="example">
+<pre class="example">guix shell python-yubikey-manager -- ykman config usb --force --disable OTP
+</pre></div>
+
+<p>Alternatively, you could use the <code>ykman-gui</code> command provided by the
+<code>yubikey-manager-qt</code> package and either wholly disable the &lsquo;<samp>OTP</samp>&rsquo;
+application for the USB interface or, from the &lsquo;<samp>Applications -&gt; OTP</samp>&rsquo;
+view, delete the slot 1 configuration, which comes pre-configured with the
+Yubico OTP application.
+</p>
+</div>
+<div class="subsection" id="Requiring-a-Yubikey-to-open-a-KeePassXC-database">
+<h4 class="subsection">3.4.3 Requiring a Yubikey to open a KeePassXC database</h4>
+<span id="index-yubikey_002c-keepassxc-integration"></span>
+<p>The KeePassXC password manager application has support for Yubikeys, but it
+requires installing a udev rules for your Guix System and some configuration
+of the Yubico OTP application on the key.
+</p>
+<p>The necessary udev rules file comes from the <code>yubikey-personalization</code>
+package, and can be installed like:
+</p>
+<div class="example lisp">
+<pre class="lisp"><span class="syntax-paren0">(<span class="syntax-symbol"><span class="syntax-symbol">use-package-modules</span> <a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Syntax-Rules.html#index-_002e_002e_002e">...</a> <span class="syntax-symbol">security-token</span> <a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Syntax-Rules.html#index-_002e_002e_002e">...</a></span>)</span>
+<a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Syntax-Rules.html#index-_002e_002e_002e">...</a>
+<span class="syntax-paren0">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/Interfeis-operating_002dsystem.html#index-operating_002dsystem-1">operating-system</a>
+ <a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Syntax-Rules.html#index-_002e_002e_002e">...</a>
+ <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">services</span>
+  <span class="syntax-paren2">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/List-Constructors.html#index-cons_002a">cons*</a>
+   <a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Syntax-Rules.html#index-_002e_002e_002e">...</a>
+   <span class="syntax-paren3">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/Bazovye-sluzhby.html#index-udev_002drules_002dservice">udev-rules-service</a> <span class="syntax-symbol">'yubikey</span> <span class="syntax-symbol">yubikey-personalization</span></span>)</span></span>)</span></span>)</span></span>)</span>
+</pre></div>
+
+<p>After reconfiguring your system (and reconnecting your Yubikey), you&rsquo;ll then
+want to configure the OTP challenge/response application of your Yubikey on
+its slot 2, which is what KeePassXC uses.  It&rsquo;s easy to do so via the
+Yubikey Manager graphical configuration tool, which can be invoked with:
+</p>
+<div class="example">
+<pre class="example">guix shell yubikey-manager-qt -- ykman-gui
+</pre></div>
+
+<p>First, ensure &lsquo;<samp>OTP</samp>&rsquo; is enabled under the &lsquo;<samp>Interfaces</samp>&rsquo; tab, then
+navigate to &lsquo;<samp>Applications -&gt; OTP</samp>&rsquo;, and click the &lsquo;<samp>Configure</samp>&rsquo;
+button under the &lsquo;<samp>Long Touch (Slot 2)</samp>&rsquo; section.  Select
+&lsquo;<samp>Challenge-response</samp>&rsquo;, input or generate a secret key, and click the
+&lsquo;<samp>Finish</samp>&rsquo; button.  If you have a second Yubikey you&rsquo;d like to use as a
+backup, you should configure it the same way, using the <em>same</em> secret
+key.
+</p>
+<p>Your Yubikey should now be detected by KeePassXC.  It can be added to a
+database by navigating to KeePassXC&rsquo;s &lsquo;<samp>Database -&gt; Database
+Security...</samp>&rsquo; menu, then clicking the &lsquo;<samp>Add additional protection...</samp>&rsquo;
+button, then &lsquo;<samp>Add Challenge-Response</samp>&rsquo;, selecting the security key from
+the drop-down menu and clicking the &lsquo;<samp>OK</samp>&rsquo; button to complete the setup.
+</p>
+</div>
+</div>
+<hr />
+<div class="header">
+<p>
+Next: <a href="Dinamicheskaya-zadacha-DNS-mcron.html">Динамическая задача DNS mcron</a>, Previous: <a href="API-obraza-Guix-sistemy.html">API образа Guix системы</a>, Up: <a href="Nastroika-sistemy.html">Настройка системы</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Terminy-i-ukazateli.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

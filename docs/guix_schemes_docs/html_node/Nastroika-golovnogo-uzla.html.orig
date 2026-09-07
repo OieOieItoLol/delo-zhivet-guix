@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--   Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/   -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--   Copyright (C) 2019, 2022 Ricardo Wurmus
+ Copyright (C)
+2019 Efraim Flashner
+ Copyright (C) 2019 Pierre Neidhardt
+
+Copyright (C) 2020 Oleg Pykhalov
+ Copyright (C) 2020
+Matthew Brooks
+ Copyright (C) 2020 Marcin Karpezo
+ Copyright
+(C) 2020 Brice Waegeneire
+ Copyright (C) 2020 André
+Batista
+ Copyright (C) 2020 Christine Lemmer-Webber
+ Copyright
+(C) 2021 Joshua Branson
+ Copyright (C) 2022, 2023 Maxim
+Cournoyer
+ Copyright (C) 2023-2026 Ludovic Courtès
+ Copyright
+(C) 2023 Thomas Ieong
+ Copyright (C) 2024 Florian Pelz
+
+Copyright (C) 2025 45mg
+ Copyright (C) 2023 Marek
+Felšöci
+ Copyright (C) 2023 Konrad Hinsen
+ Copyright (C)
+2023 Philippe Swartvagher
+
+
+Разрешено копирование, распространение и/или модификация этого документа на
+условиях лицензии свободной документации GNU (GNU FDL) версии 1.3 или любой
+более поздней версии, опубликованной Фондом свободного программного
+обеспечения (FSF), исключая неизменяемые секции, исключая тексты,
+размещенные на переплёте и задней стороне обложки. Копия лицензии включена в
+документ в разделе под названием "GNU Free Documentation Licens".   -->
+<title>Настройка головного узла (GNU Guix Рецепты)</title>
+
+<meta name="description" content="Настройка головного узла (GNU Guix Рецепты)" />
+<meta name="keywords" content="Настройка головного узла (GNU Guix Рецепты)" />
+<meta name="resource-type" content="document" />
+<meta name="distribution" content="global" />
+<meta name="Generator" content="makeinfo" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<link href="index.html" rel="start" title="Top" />
+<link href="Terminy-i-ukazateli.html" rel="index" title="Термины и указатели" />
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents" />
+<link href="Installing-Guix-on-a-Cluster.html" rel="up" title="Installing Guix on a Cluster" />
+<link href="Nastroika-vychislitelxnykh-uzlov.html" rel="next" title="Настройка вычислительных узлов" />
+<style type="text/css">
+&amp;lt;!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+--&amp;gt;
+</style>
+<link rel="stylesheet" type="text/css" href="/themes/initial/css/manual.css" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="/themes/initial/css/manual.css" /><link rel="stylesheet" type="text/css" href="/themes/initial/css/code.css" /></head>
+
+<body lang="en"><header class="navbar"><h1><a class="branding" href=".."></a></h1><nav class="navbar-menu"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="all-dropdowns-hidden" /><ul><li class="navbar-menu-item dropdown dropdown-btn"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="visible-dropdown" /><label for="visible-dropdown">Version</label><label for="all-dropdowns-hidden">Version</label><div class="navbar-submenu" id="navbar-submenu"><div class="navbar-submenu-triangle"> </div><ul><li><a class="navbar-menu-item" href="../guix-cookbook.ru.html">single page</a></li><li><a class="navbar-menu-item" href="../guix-cookbook.ru.pdf">PDF</a></li></ul></div></li><li class="navbar-menu-item dropdown dropdown-btn"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="visible-dropdown" /><label for="visible-dropdown"><img alt="Language" src="/themes/initial/img/language-picker.svg" /></label><label for="all-dropdowns-hidden"><img alt="Language" src="/themes/initial/img/language-picker.svg" /></label><div class="navbar-submenu" id="navbar-submenu"><div class="navbar-submenu-triangle"> </div><ul><li><a class="navbar-menu-item" href="../../de/html_node">Deutsch</a></li><li><a class="navbar-menu-item" href="../../en/html_node">English</a></li><li><a class="navbar-menu-item" href="../../es/html_node">Español</a></li><li><a class="navbar-menu-item" href="../../fr/html_node">Français</a></li><li><a class="navbar-menu-item" href="../../it/html_node">Italiano</a></li><li><a class="navbar-menu-item" href="../../ko/html_node">한국어</a></li><li><a class="navbar-menu-item" href="../../pt-br/html_node">Português</a></li><li><a class="navbar-menu-item" href="../../ru/html_node">русский</a></li><li><a class="navbar-menu-item" href="../../sk/html_node">Slovenský</a></li><li><a class="navbar-menu-item" href="../../sv/html_node">Svenska</a></li><li><a class="navbar-menu-item" href="../../ta/html_node">தமிழ்</a></li><li><a class="navbar-menu-item" href="../../zh-cn/html_node">中文; 汉语; 华语</a></li><li><a class="navbar-menu-item" href="https://translate.codeberg.org/projects/guix/documentation-cookbook/">⊕</a></li></ul></div></li></ul></nav><a class="navbar-menu-btn" href="../.."></a></header>
+<div class="section" id="g_t_041d_0430_0441_0442_0440_043e_0439_043a_0430-_0433_043e_043b_043e_0432_043d_043e_0433_043e-_0443_0437_043b_0430">
+<div class="header">
+<p>
+Next: <a href="Nastroika-vychislitelxnykh-uzlov.html" accesskey="n" rel="next">Настройка вычислительных узлов</a>, Up: <a href="Installing-Guix-on-a-Cluster.html" accesskey="u" rel="up">Installing Guix on a Cluster</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Terminy-i-ukazateli.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr />
+<span id="Nastroika-golovnogo-uzla"></span><h3 class="section">10.1 Настройка головного узла</h3>
+
+<p>The recommended approach is to set up one <em>head node</em> running
+<code>guix-daemon</code> and exporting <samp>/gnu/store</samp> over NFS to compute
+nodes.
+</p>
+<p>Remember that <code>guix-daemon</code> is responsible for spawning build
+processes and downloads on behalf of clients (see <a data-manual="guix" href="https://guix.gnu.org/manual/devel/en/html_node/Invoking-guix_002ddaemon.html#Invoking-guix_002ddaemon">Invoking guix-daemon</a> in <cite>GNU Guix Reference Manual</cite>), and more generally accessing
+<samp>/gnu/store</samp>, which contains all the package binaries built by all the
+users (see <a data-manual="guix" href="https://guix.gnu.org/manual/devel/en/html_node/The-Store.html#The-Store">The Store</a> in <cite>GNU Guix Reference Manual</cite>).  &ldquo;Client&rdquo;
+here refers to all the Guix commands that users see, such as <code>guix
+install</code>.  On a cluster, these commands may be running on the compute nodes
+and we&rsquo;ll want them to talk to the head node&rsquo;s <code>guix-daemon</code> instance.
+</p>
+<p>To begin with, the head node can be installed following the usual binary
+installation instructions (see <a data-manual="guix" href="https://guix.gnu.org/manual/devel/en/html_node/Binary-Installation.html#Binary-Installation">Binary Installation</a> in <cite>GNU Guix
+Reference Manual</cite>).  Thanks to the installation script, this should be
+quick.  Once installation is complete, we need to make some adjustments.
+</p>
+<blockquote>
+<p><b>Примечание:</b> Starting from Guix version 1.5.0, <code>guix-daemon</code> runs without root
+privileges by default; previously installed systems can also be migrated to
+this &ldquo;rootless&rdquo; mode (see <a data-manual="guix" href="https://guix.gnu.org/manual/devel/en/html_node/Build-Environment-Setup.html#Build-Environment-Setup">Build Environment Setup</a> in <cite>GNU Guix
+Reference Manual</cite>).  Learn more about this change in a
+<a href="https://hpc.guix.info/blog/2025/03/build-daemon-drops-its-privileges/">2025 blog post</a>.
+</p></blockquote>
+
+<p>Since we want <code>guix-daemon</code> to be reachable not just from the head node
+but also from the compute nodes, we need to arrange so that it listens for
+connections over TCP/IP.  To do that, we&rsquo;ll edit the systemd startup file
+for <code>guix-daemon</code>, <samp>/etc/systemd/system/guix-daemon.service</samp>,
+and add a <code>--listen</code> argument to the <code>ExecStart</code> line so that it
+looks something like this:
+</p>
+<div class="example">
+<pre class="example">ExecStart=/var/guix/profiles/per-user/root/current-guix/bin/guix-daemon --listen=/var/guix/daemon-socket/socket --listen=0.0.0.0
+</pre></div>
+
+<p>For these changes to take effect, the service needs to be restarted:
+</p>
+<div class="example">
+<pre class="example">systemctl daemon-reload
+systemctl restart guix-daemon.service
+</pre></div>
+
+<blockquote>
+<p><b>Примечание:</b> The <code>--listen=0.0.0.0</code> bit means that <code>guix-daemon</code> will process
+<em>all</em> incoming TCP connections on port 44146 (see <a data-manual="guix" href="https://guix.gnu.org/manual/devel/en/html_node/Invoking-guix_002ddaemon.html#Invoking-guix_002ddaemon">Invoking
+guix-daemon</a> in <cite>GNU Guix Reference Manual</cite>). This is usually fine in a
+cluster setup where the head node is reachable exclusively from the
+cluster&rsquo;s local area network&mdash;you don&rsquo;t want that to be exposed to the
+Internet!
+</p></blockquote>
+
+<p>The next step is to define our NFS exports in
+<a href="https://linux.die.net/man/5/exports"><samp>/etc/exports</samp></a> by adding
+something along these lines:
+</p>
+<div class="example">
+<pre class="example">/gnu/store    *(ro)
+/var/guix     *(rw, async)
+/var/log/guix *(ro)
+</pre></div>
+
+<p>The <samp>/gnu/store</samp> directory can be exported read-only since only
+<code>guix-daemon</code> on the master node will ever modify it.
+<samp>/var/guix</samp> contains <em>user profiles</em> as managed by <code>guix
+package</code>; thus, to allow users to install packages with <code>guix package</code>,
+this must be read-write.
+</p>
+<blockquote>
+<p><b>Примечание:</b> Although it is rarely used, Guix allows for the creation of profiles in
+non-default locations.  For instance, <code>guix package -p ~/dev/python-dev
+-i python</code> installs Python in a profile reachable from the
+<code>~/dev/python-dev</code> symlink instead of the default
+<samp>~/.guix-profile</samp>.
+</p>
+<p>To make sure that this profile is protected from garbage collection&mdash;i.e.,
+that Python will not be removed from <samp>/gnu/store</samp> while this profile
+exists&mdash;, <em>home directories should be mounted on the head node</em> as
+well so that <code>guix-daemon</code> knows about these non-standard profiles and
+avoids collecting software they refer to.
+</p>
+<p>Doing so is optional though: profiles created by default by <code>guix
+package</code>, <code>guix pull</code>, and <code>guix shell</code> are all stored under
+<samp>/var/guix</samp> and thus protected from garbage collection.
+</p></blockquote>
+
+<p>It may be a good idea to periodically remove unused bits from
+<samp>/gnu/store</samp> by running <code>guix gc</code> (see <a data-manual="guix" href="https://guix.gnu.org/manual/devel/en/html_node/Invoking-guix-gc.html#Invoking-guix-gc">Invoking guix gc</a> in <cite>GNU Guix Reference Manual</cite>).  This can be done by adding a systemd
+timer based on the one shipped with Guix:
+</p>
+<div class="example">
+<pre class="example">cp \
+ /var/guix/profiles/per-user/root/current-guix/lib/systemd/system/guix-gc.* \
+ /etc/systemd/system
+</pre></div>
+
+<p>Make sure to edit <samp>guix-gc.service</samp> and <samp>guix-gc.timer</samp> under
+<samp>/etc/systemd/system</samp> to adjust the parameters to your need: timer
+frequency, amount of free space, and whether to delete user&rsquo;s old
+generations.  We recommend executing <code>guix gc -F50G</code> every night,
+which will ensure that at least 50&nbsp;GiB are available, without deleting
+user generations.  Once you&rsquo;re satisfied, you can start the timer:
+</p>
+<div class="example">
+<pre class="example">systemctl daemon-reload
+systemctl start guix-gc.timer
+</pre></div>
+
+<p>We&rsquo;re done with the head node! Let&rsquo;s look at compute nodes now.
+</p>
+</div>
+<hr />
+<div class="header">
+<p>
+Next: <a href="Nastroika-vychislitelxnykh-uzlov.html">Настройка вычислительных узлов</a>, Up: <a href="Installing-Guix-on-a-Cluster.html">Installing Guix on a Cluster</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Terminy-i-ukazateli.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

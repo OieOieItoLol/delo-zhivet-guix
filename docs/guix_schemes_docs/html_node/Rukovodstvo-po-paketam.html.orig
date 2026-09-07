@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--   Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/   -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--   Copyright (C) 2019, 2022 Ricardo Wurmus
+ Copyright (C)
+2019 Efraim Flashner
+ Copyright (C) 2019 Pierre Neidhardt
+
+Copyright (C) 2020 Oleg Pykhalov
+ Copyright (C) 2020
+Matthew Brooks
+ Copyright (C) 2020 Marcin Karpezo
+ Copyright
+(C) 2020 Brice Waegeneire
+ Copyright (C) 2020 André
+Batista
+ Copyright (C) 2020 Christine Lemmer-Webber
+ Copyright
+(C) 2021 Joshua Branson
+ Copyright (C) 2022, 2023 Maxim
+Cournoyer
+ Copyright (C) 2023-2026 Ludovic Courtès
+ Copyright
+(C) 2023 Thomas Ieong
+ Copyright (C) 2024 Florian Pelz
+
+Copyright (C) 2025 45mg
+ Copyright (C) 2023 Marek
+Felšöci
+ Copyright (C) 2023 Konrad Hinsen
+ Copyright (C)
+2023 Philippe Swartvagher
+
+
+Разрешено копирование, распространение и/или модификация этого документа на
+условиях лицензии свободной документации GNU (GNU FDL) версии 1.3 или любой
+более поздней версии, опубликованной Фондом свободного программного
+обеспечения (FSF), исключая неизменяемые секции, исключая тексты,
+размещенные на переплёте и задней стороне обложки. Копия лицензии включена в
+документ в разделе под названием "GNU Free Documentation Licens".   -->
+<title>Руководство по пакетам (GNU Guix Рецепты)</title>
+
+<meta name="description" content="Руководство по пакетам (GNU Guix Рецепты)" />
+<meta name="keywords" content="Руководство по пакетам (GNU Guix Рецепты)" />
+<meta name="resource-type" content="document" />
+<meta name="distribution" content="global" />
+<meta name="Generator" content="makeinfo" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<link href="index.html" rel="start" title="Top" />
+<link href="Terminy-i-ukazateli.html" rel="index" title="Термины и указатели" />
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents" />
+<link href="Upravlenie-paketami.html" rel="up" title="Управление пакетами" />
+<link href="Packaging-Workflows.html" rel="next" title="Packaging Workflows" />
+<style type="text/css">
+&amp;lt;!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+--&amp;gt;
+</style>
+<link rel="stylesheet" type="text/css" href="/themes/initial/css/manual.css" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="/themes/initial/css/manual.css" /><link rel="stylesheet" type="text/css" href="/themes/initial/css/code.css" /></head>
+
+<body lang="en"><header class="navbar"><h1><a class="branding" href=".."></a></h1><nav class="navbar-menu"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="all-dropdowns-hidden" /><ul><li class="navbar-menu-item dropdown dropdown-btn"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="visible-dropdown" /><label for="visible-dropdown">Version</label><label for="all-dropdowns-hidden">Version</label><div class="navbar-submenu" id="navbar-submenu"><div class="navbar-submenu-triangle"> </div><ul><li><a class="navbar-menu-item" href="../guix-cookbook.ru.html">single page</a></li><li><a class="navbar-menu-item" href="../guix-cookbook.ru.pdf">PDF</a></li></ul></div></li><li class="navbar-menu-item dropdown dropdown-btn"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="visible-dropdown" /><label for="visible-dropdown"><img alt="Language" src="/themes/initial/img/language-picker.svg" /></label><label for="all-dropdowns-hidden"><img alt="Language" src="/themes/initial/img/language-picker.svg" /></label><div class="navbar-submenu" id="navbar-submenu"><div class="navbar-submenu-triangle"> </div><ul><li><a class="navbar-menu-item" href="../../de/html_node">Deutsch</a></li><li><a class="navbar-menu-item" href="../../en/html_node">English</a></li><li><a class="navbar-menu-item" href="../../es/html_node">Español</a></li><li><a class="navbar-menu-item" href="../../fr/html_node">Français</a></li><li><a class="navbar-menu-item" href="../../it/html_node">Italiano</a></li><li><a class="navbar-menu-item" href="../../ko/html_node">한국어</a></li><li><a class="navbar-menu-item" href="../../pt-br/html_node">Português</a></li><li><a class="navbar-menu-item" href="../../ru/html_node">русский</a></li><li><a class="navbar-menu-item" href="../../sk/html_node">Slovenský</a></li><li><a class="navbar-menu-item" href="../../sv/html_node">Svenska</a></li><li><a class="navbar-menu-item" href="../../ta/html_node">தமிழ்</a></li><li><a class="navbar-menu-item" href="../../zh-cn/html_node">中文; 汉语; 华语</a></li><li><a class="navbar-menu-item" href="https://translate.codeberg.org/projects/guix/documentation-cookbook/">⊕</a></li></ul></div></li></ul></nav><a class="navbar-menu-btn" href="../.."></a></header>
+<div class="section" id="g_t_0420_0443_043a_043e_0432_043e_0434_0441_0442_0432_043e-_043f_043e-_043f_0430_043a_0435_0442_0430_043c">
+<div class="header">
+<p>
+Next: <a href="Packaging-Workflows.html" accesskey="n" rel="next">Packaging Workflows</a>, Up: <a href="Upravlenie-paketami.html" accesskey="u" rel="up">Управление пакетами</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Terminy-i-ukazateli.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr />
+<span id="Rukovodstvo-po-paketam"></span><h3 class="section">2.1 Руководство по пакетам</h3>
+
+<p>GNU Guix stands out as the <em>hackable</em> package manager, mostly because
+it uses <a href="https://www.gnu.org/software/guile/">GNU Guile</a>, a powerful
+high-level programming language, one of the
+<a href="https://en.wikipedia.org/wiki/Scheme_%28programming_language%29">Scheme</a> dialects from the
+<a href="https://en.wikipedia.org/wiki/Lisp_%28programming_language%29">Lisp
+family</a>.
+</p>
+<p>Package definitions are also written in Scheme, which empowers Guix in some
+very unique ways, unlike most other package managers that use shell scripts
+or simple languages.
+</p>
+<ul>
+<li> Use functions, structures, macros and all of Scheme expressiveness for your
+package definitions.
+
+</li><li> Inheritance makes it easy to customize a package by inheriting from it and
+modifying only what is needed.
+
+</li><li> Batch processing: the whole package collection can be parsed, filtered and
+processed.  Building a headless server with all graphical interfaces
+stripped out? It&rsquo;s possible.  Want to rebuild everything from source using
+specific compiler optimization flags? Pass the <code>#:make-flags "..."</code>
+argument to the list of packages.  It wouldn&rsquo;t be a stretch to think
+<a href="https://wiki.gentoo.org/wiki/USE_flag">Gentoo USE flags</a> here, but
+this goes even further: the changes don&rsquo;t have to be thought out beforehand
+by the packager, they can be <em>programmed</em> by the user!
+</li></ul>
+
+<p>The following tutorial covers all the basics around package creation with
+Guix.  It does not assume much knowledge of the Guix system nor of the Lisp
+language.  The reader is only expected to be familiar with the command line
+and to have some basic programming knowledge.
+</p>
+
+<ul class="section-toc">
+<li><a href="Paket-_0060_0060Hello-World_0027_0027.html" accesskey="1">Пакет &ldquo;Hello World&rdquo;</a></li>
+<li><a href="Nastroika.html" accesskey="2">Настройка</a></li>
+<li><a href="Rasshirennyi-primer.html" accesskey="3">Расширенный пример</a></li>
+<li><a href="Drugie-sistemy-sborki.html" accesskey="4">Другие системы сборки</a></li>
+<li><a href="Programmiruemoe-i-avtomatizirovannoe-opredelenie-paketov.html" accesskey="5">Программируемое и автоматизированное определение пакетов</a></li>
+<li><a href="Poluchitx-pomoshchx.html" accesskey="6">Получить помощь</a></li>
+<li><a href="Zakliuchenie.html" accesskey="7">Заключение</a></li>
+<li><a href="Ssylki.html" accesskey="8">Ссылки</a></li>
+</ul>
+</div>
+
+
+
+</body>
+</html>

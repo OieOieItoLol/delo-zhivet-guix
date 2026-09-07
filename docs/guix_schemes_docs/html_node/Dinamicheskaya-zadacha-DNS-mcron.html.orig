@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--   Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/   -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--   Copyright (C) 2019, 2022 Ricardo Wurmus
+ Copyright (C)
+2019 Efraim Flashner
+ Copyright (C) 2019 Pierre Neidhardt
+
+Copyright (C) 2020 Oleg Pykhalov
+ Copyright (C) 2020
+Matthew Brooks
+ Copyright (C) 2020 Marcin Karpezo
+ Copyright
+(C) 2020 Brice Waegeneire
+ Copyright (C) 2020 André
+Batista
+ Copyright (C) 2020 Christine Lemmer-Webber
+ Copyright
+(C) 2021 Joshua Branson
+ Copyright (C) 2022, 2023 Maxim
+Cournoyer
+ Copyright (C) 2023-2026 Ludovic Courtès
+ Copyright
+(C) 2023 Thomas Ieong
+ Copyright (C) 2024 Florian Pelz
+
+Copyright (C) 2025 45mg
+ Copyright (C) 2023 Marek
+Felšöci
+ Copyright (C) 2023 Konrad Hinsen
+ Copyright (C)
+2023 Philippe Swartvagher
+
+
+Разрешено копирование, распространение и/или модификация этого документа на
+условиях лицензии свободной документации GNU (GNU FDL) версии 1.3 или любой
+более поздней версии, опубликованной Фондом свободного программного
+обеспечения (FSF), исключая неизменяемые секции, исключая тексты,
+размещенные на переплёте и задней стороне обложки. Копия лицензии включена в
+документ в разделе под названием "GNU Free Documentation Licens".   -->
+<title>Динамическая задача DNS mcron (GNU Guix Рецепты)</title>
+
+<meta name="description" content="Динамическая задача DNS mcron (GNU Guix Рецепты)" />
+<meta name="keywords" content="Динамическая задача DNS mcron (GNU Guix Рецепты)" />
+<meta name="resource-type" content="document" />
+<meta name="distribution" content="global" />
+<meta name="Generator" content="makeinfo" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<link href="index.html" rel="start" title="Top" />
+<link href="Terminy-i-ukazateli.html" rel="index" title="Термины и указатели" />
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents" />
+<link href="Nastroika-sistemy.html" rel="up" title="Настройка системы" />
+<link href="Podkliuchenie-k-Wireguard-VPN.html" rel="next" title="Подключение к Wireguard VPN" />
+<link href="Ispolxzovanie-kliuchei-bezopasnosti.html" rel="prev" title="Использование ключей безопасности" />
+<style type="text/css">
+&amp;lt;!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+--&amp;gt;
+</style>
+<link rel="stylesheet" type="text/css" href="/themes/initial/css/manual.css" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="/themes/initial/css/manual.css" /><link rel="stylesheet" type="text/css" href="/themes/initial/css/code.css" /></head>
+
+<body lang="en"><header class="navbar"><h1><a class="branding" href=".."></a></h1><nav class="navbar-menu"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="all-dropdowns-hidden" /><ul><li class="navbar-menu-item dropdown dropdown-btn"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="visible-dropdown" /><label for="visible-dropdown">Version</label><label for="all-dropdowns-hidden">Version</label><div class="navbar-submenu" id="navbar-submenu"><div class="navbar-submenu-triangle"> </div><ul><li><a class="navbar-menu-item" href="../guix-cookbook.ru.html">single page</a></li><li><a class="navbar-menu-item" href="../guix-cookbook.ru.pdf">PDF</a></li></ul></div></li><li class="navbar-menu-item dropdown dropdown-btn"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="visible-dropdown" /><label for="visible-dropdown"><img alt="Language" src="/themes/initial/img/language-picker.svg" /></label><label for="all-dropdowns-hidden"><img alt="Language" src="/themes/initial/img/language-picker.svg" /></label><div class="navbar-submenu" id="navbar-submenu"><div class="navbar-submenu-triangle"> </div><ul><li><a class="navbar-menu-item" href="../../de/html_node">Deutsch</a></li><li><a class="navbar-menu-item" href="../../en/html_node">English</a></li><li><a class="navbar-menu-item" href="../../es/html_node">Español</a></li><li><a class="navbar-menu-item" href="../../fr/html_node">Français</a></li><li><a class="navbar-menu-item" href="../../it/html_node">Italiano</a></li><li><a class="navbar-menu-item" href="../../ko/html_node">한국어</a></li><li><a class="navbar-menu-item" href="../../pt-br/html_node">Português</a></li><li><a class="navbar-menu-item" href="../../ru/html_node">русский</a></li><li><a class="navbar-menu-item" href="../../sk/html_node">Slovenský</a></li><li><a class="navbar-menu-item" href="../../sv/html_node">Svenska</a></li><li><a class="navbar-menu-item" href="../../ta/html_node">தமிழ்</a></li><li><a class="navbar-menu-item" href="../../zh-cn/html_node">中文; 汉语; 华语</a></li><li><a class="navbar-menu-item" href="https://translate.codeberg.org/projects/guix/documentation-cookbook/">⊕</a></li></ul></div></li></ul></nav><a class="navbar-menu-btn" href="../.."></a></header>
+<div class="section" id="g_t_0414_0438_043d_0430_043c_0438_0447_0435_0441_043a_0430_044f-_0437_0430_0434_0430_0447_0430-DNS-mcron">
+<div class="header">
+<p>
+Next: <a href="Podkliuchenie-k-Wireguard-VPN.html" accesskey="n" rel="next">Подключение к Wireguard VPN</a>, Previous: <a href="Ispolxzovanie-kliuchei-bezopasnosti.html" accesskey="p" rel="prev">Использование ключей безопасности</a>, Up: <a href="Nastroika-sistemy.html" accesskey="u" rel="up">Настройка системы</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Terminy-i-ukazateli.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr />
+<span id="Dinamicheskaya-zadacha-DNS-mcron"></span><h3 class="section">3.5 Динамическая задача DNS mcron</h3>
+
+<span id="index-dynamic-DNS_002c-DDNS"></span>
+<p>If your <acronym title="Internet Service Provider">ISP</acronym> (Internet Service Provider) only provides dynamic IP
+addresses, it can be useful to setup a dynamic <acronym title="Domain Name
+System">DNS</acronym> (Domain Name
+System) (also known as <acronym title="Dynamic DNS">DDNS</acronym> (Dynamic DNS)) service to associate a
+static host name to a public but dynamic (often changing) IP address.  There
+are multiple existing services that can be used for this; in the following
+mcron job, <a href="https://duckdns.org">DuckDNS</a> is used.  It should also work
+with other dynamic DNS services that offer a similar interface to update the
+IP address, such as <a href="https://freedns.afraid.org/">https://freedns.afraid.org/</a>, with minor
+adjustments.
+</p>
+<p>The mcron job is provided below, where <var>DOMAIN</var> should be substituted
+for your own domain prefix, and the DuckDNS provided token associated to
+<var>DOMAIN</var> added to the <samp>/etc/duckdns/<var>DOMAIN</var>.token</samp> file.
+</p>
+<div class="example lisp">
+<pre class="lisp"><span class="syntax-paren0">(<span class="syntax-symbol"><span class="syntax-special">define</span> <span class="syntax-symbol">duckdns-job</span>
+  <span class="syntax-comment">;; Update personal domain IP every 5 minutes.
+</span>  <span class="syntax-symbol">#~</span><span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">job</span> <span class="syntax-symbol">'</span><span class="syntax-paren2">(<span class="syntax-symbol"><span class="syntax-symbol">next-minute</span> <span class="syntax-paren3">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/HTTP-Headers.html#index-range">range</a> <span class="syntax-symbol">0</span> <span class="syntax-symbol">60</span> <span class="syntax-symbol">5</span></span>)</span></span>)</span>
+	 <span class="syntax-symbol">#$</span><span class="syntax-paren2">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/G_002dExpressions.html#index-program_002dfile">program-file</a>
+            <span class="syntax-string">"duckdns-update"</span>
+            <span class="syntax-paren3">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/G_002dExpressions.html#index-with_002dextensions-1">with-extensions</a> <span class="syntax-paren4">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/List-Constructors.html#index-list-1">list</a> <span class="syntax-symbol">guile-gnutls</span></span>)</span> <span class="syntax-comment">;required by (web client)
+</span>              <span class="syntax-symbol">#~</span><span class="syntax-paren4">(<span class="syntax-symbol"><span class="syntax-special">begin</span>
+                  <span class="syntax-paren5">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Using-Guile-Modules.html#index-use_002dmodules">use-modules</a> <span class="syntax-paren6">(<span class="syntax-symbol"><span class="syntax-symbol">ice-9</span> <span class="syntax-symbol">textual-ports</span></span>)</span>
+                               <span class="syntax-paren6">(<span class="syntax-symbol"><span class="syntax-symbol">web</span> <span class="syntax-symbol">client</span></span>)</span></span>)</span>
+                  <span class="syntax-paren5">(<span class="syntax-symbol"><span class="syntax-special">let</span> <span class="syntax-paren6">(<span class="syntax-symbol"><span class="syntax-paren7">(<span class="syntax-symbol"><span class="syntax-symbol">token</span> <span class="syntax-paren8">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/String-Selection.html#index-string_002dtrim_002dboth">string-trim-both</a>
+                                <span class="syntax-paren9">(<span class="syntax-symbol"><span class="syntax-special">call-with-input-file</span> <span class="syntax-string">"/etc/duckdns/DOMAIN.token"</span>
+                                  <a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Textual-I_002fO.html#index-get_002dstring_002dall">get-string-all</a></span>)</span></span>)</span></span>)</span>
+                        <span class="syntax-paren7">(<span class="syntax-symbol"><span class="syntax-symbol">query-template</span> <span class="syntax-paren8">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Reversing-and-Appending-Strings.html#index-string_002dappend">string-append</a> <span class="syntax-string">"https://www.duckdns.org/"</span>
+                                                       <span class="syntax-string">"update?domains=DOMAIN"</span>
+                                                       <span class="syntax-string">"&amp;token=~a&amp;ip="</span></span>)</span></span>)</span></span>)</span>
+                    <span class="syntax-paren6">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Web-Client.html#index-http_002dget">http-get</a> <span class="syntax-paren7">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Formatted-Output.html#index-format-1">format</a> <span class="syntax-symbol">#f</span> <span class="syntax-symbol">query-template</span> <span class="syntax-symbol">token</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
+         <span class="syntax-string">"duckdns-update"</span>
+         <span class="syntax-keyword">#:user</span> <span class="syntax-string">"nobody"</span></span>)</span></span>)</span>
+</pre></div>
+
+<p>The job then needs to be added to the list of mcron jobs for your system,
+using something like:
+</p>
+<div class="example lisp">
+<pre class="lisp"><span class="syntax-paren0">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/Interfeis-operating_002dsystem.html#index-operating_002dsystem-1">operating-system</a>
+ <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">services</span>
+  <span class="syntax-paren2">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/List-Constructors.html#index-cons_002a">cons*</a> <span class="syntax-paren3">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/Interfeis-servisa.html#index-service">service</a> <a class="syntax-symbol" href="/manual/devel/ru/html_node/Zaplanirovannoe-ispolneniya-zadach.html#index-mcron_002dservice_002dtype">mcron-service-type</a>
+           <span class="syntax-paren4">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/Zaplanirovannoe-ispolneniya-zadach.html#index-mcron_002dconfiguration">mcron-configuration</a>
+             <span class="syntax-paren5">(<span class="syntax-symbol"><span class="syntax-symbol">jobs</span> <span class="syntax-paren6">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/List-Constructors.html#index-list-1">list</a> <span class="syntax-symbol">duckdns-job</span> <a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Syntax-Rules.html#index-_002e_002e_002e">...</a></span>)</span></span>)</span></span>)</span></span>)</span>
+         <a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Syntax-Rules.html#index-_002e_002e_002e">...</a>
+         <a class="syntax-symbol" href="/manual/devel/ru/html_node/Bazovye-sluzhby.html#index-_0025base_002dservices-1">%base-services</a></span>)</span></span>)</span></span>)</span>
+</pre></div>
+
+</div>
+
+
+
+</body>
+</html>

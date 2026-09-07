@@ -1,0 +1,44 @@
+:root {
+    --base-border-color: rgba(0, 0, 0, 0.25);
+    --base-border-size: 1px;
+    --base-orange-color: #F87244;
+    --base-orange-ligth-color: #F872441A;
+    --card-width: 230px;
+    --card-gap: 16px;
+    --stage-count: 5;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body,
+input {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-optical-sizing: auto;
+    /* font-weight: <weight>; */
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+}
+
+.leaflet-control-attribution>a>.leaflet-attribution-flag {
+    display: none !important;
+}
+
+.app {
+    display: flex;
+
+    &>div:last-child {
+        width: calc(100vw - 266px);
+        padding: 24px;
+        overflow-y: auto;
+        height: 100vh;
+    }
+}

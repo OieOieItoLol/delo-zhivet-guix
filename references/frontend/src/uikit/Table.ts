@@ -1,0 +1,66 @@
+import { css } from "../lib";
+
+export const stTable = css`
+    border-collapse: separate;
+    border-spacing: 0px;
+    width: 100%;
+    min-width: 100px;
+
+    &>thead {
+        &>th {
+            font-weight: 600;
+            padding: 8px;
+            border-top: 1px solid var(--base-orange-color);
+            border-bottom: 1px solid var(--base-orange-color);
+            margin-bottom: 32px;
+        }
+
+        &>th:nth-child(1) {
+            padding-left: 24px;
+            border-left: 1px solid var(--base-orange-color);
+            border-radius: 30px 0px 0px 30px;
+        }
+
+        &>th:nth-last-child(1) {
+            padding-right: 24px;
+            border-right: 1px solid var(--base-orange-color);
+            border-radius: 0px 30px 30px 0px;
+        }
+    }
+
+    &>tbody {
+        &::before {
+            content: "@";
+            display: block;
+            line-height: 16px;
+            visibility: hidden;
+        }
+
+        &>tr {
+            &>td {
+                text-align: center;
+                line-height: 56px;
+                border-bottom: 1px solid var(--base-border-color);
+                padding-left: 8px;
+                padding-right: 8px;
+
+                &>a {
+                    display: block;
+                    max-width: 200px;
+                    color: black;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
+    }
+`
+
+export const stTableRowInactive = css`
+    background-color: #F872441A;
+    color: rgba(0, 0, 0, 0.5);
+    &>td>a {
+       color: rgba(0, 0, 0, 0.5) !important;
+    }
+`

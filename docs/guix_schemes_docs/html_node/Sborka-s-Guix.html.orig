@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--   Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/   -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--   Copyright (C) 2019, 2022 Ricardo Wurmus
+ Copyright (C)
+2019 Efraim Flashner
+ Copyright (C) 2019 Pierre Neidhardt
+
+Copyright (C) 2020 Oleg Pykhalov
+ Copyright (C) 2020
+Matthew Brooks
+ Copyright (C) 2020 Marcin Karpezo
+ Copyright
+(C) 2020 Brice Waegeneire
+ Copyright (C) 2020 André
+Batista
+ Copyright (C) 2020 Christine Lemmer-Webber
+ Copyright
+(C) 2021 Joshua Branson
+ Copyright (C) 2022, 2023 Maxim
+Cournoyer
+ Copyright (C) 2023-2026 Ludovic Courtès
+ Copyright
+(C) 2023 Thomas Ieong
+ Copyright (C) 2024 Florian Pelz
+
+Copyright (C) 2025 45mg
+ Copyright (C) 2023 Marek
+Felšöci
+ Copyright (C) 2023 Konrad Hinsen
+ Copyright (C)
+2023 Philippe Swartvagher
+
+
+Разрешено копирование, распространение и/или модификация этого документа на
+условиях лицензии свободной документации GNU (GNU FDL) версии 1.3 или любой
+более поздней версии, опубликованной Фондом свободного программного
+обеспечения (FSF), исключая неизменяемые секции, исключая тексты,
+размещенные на переплёте и задней стороне обложки. Копия лицензии включена в
+документ в разделе под названием "GNU Free Documentation Licens".   -->
+<title>Сборка с Guix (GNU Guix Рецепты)</title>
+
+<meta name="description" content="Сборка с Guix (GNU Guix Рецепты)" />
+<meta name="keywords" content="Сборка с Guix (GNU Guix Рецепты)" />
+<meta name="resource-type" content="document" />
+<meta name="distribution" content="global" />
+<meta name="Generator" content="makeinfo" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<link href="index.html" rel="start" title="Top" />
+<link href="Terminy-i-ukazateli.html" rel="index" title="Термины и указатели" />
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents" />
+<link href="Razrabotka-programmnogo-obespecheniya.html" rel="up" title="Разработка программного обеспечения" />
+<link href="Repozitorii-kak-kanal.html" rel="next" title="Репозиторий как канал" />
+<link href="Nachalo-raboty.html" rel="prev" title="Начало работы" />
+<style type="text/css">
+&amp;lt;!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+--&amp;gt;
+</style>
+<link rel="stylesheet" type="text/css" href="/themes/initial/css/manual.css" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" href="/themes/initial/css/manual.css" /><link rel="stylesheet" type="text/css" href="/themes/initial/css/code.css" /></head>
+
+<body lang="en"><header class="navbar"><h1><a class="branding" href=".."></a></h1><nav class="navbar-menu"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="all-dropdowns-hidden" /><ul><li class="navbar-menu-item dropdown dropdown-btn"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="visible-dropdown" /><label for="visible-dropdown">Version</label><label for="all-dropdowns-hidden">Version</label><div class="navbar-submenu" id="navbar-submenu"><div class="navbar-submenu-triangle"> </div><ul><li><a class="navbar-menu-item" href="../guix-cookbook.ru.html">single page</a></li><li><a class="navbar-menu-item" href="../guix-cookbook.ru.pdf">PDF</a></li></ul></div></li><li class="navbar-menu-item dropdown dropdown-btn"><input class="navbar-menu-hidden-input" type="radio" name="dropdown" id="visible-dropdown" /><label for="visible-dropdown"><img alt="Language" src="/themes/initial/img/language-picker.svg" /></label><label for="all-dropdowns-hidden"><img alt="Language" src="/themes/initial/img/language-picker.svg" /></label><div class="navbar-submenu" id="navbar-submenu"><div class="navbar-submenu-triangle"> </div><ul><li><a class="navbar-menu-item" href="../../de/html_node">Deutsch</a></li><li><a class="navbar-menu-item" href="../../en/html_node">English</a></li><li><a class="navbar-menu-item" href="../../es/html_node">Español</a></li><li><a class="navbar-menu-item" href="../../fr/html_node">Français</a></li><li><a class="navbar-menu-item" href="../../it/html_node">Italiano</a></li><li><a class="navbar-menu-item" href="../../ko/html_node">한국어</a></li><li><a class="navbar-menu-item" href="../../pt-br/html_node">Português</a></li><li><a class="navbar-menu-item" href="../../ru/html_node">русский</a></li><li><a class="navbar-menu-item" href="../../sk/html_node">Slovenský</a></li><li><a class="navbar-menu-item" href="../../sv/html_node">Svenska</a></li><li><a class="navbar-menu-item" href="../../ta/html_node">தமிழ்</a></li><li><a class="navbar-menu-item" href="../../zh-cn/html_node">中文; 汉语; 华语</a></li><li><a class="navbar-menu-item" href="https://translate.codeberg.org/projects/guix/documentation-cookbook/">⊕</a></li></ul></div></li></ul></nav><a class="navbar-menu-btn" href="../.."></a></header>
+<div class="section" id="g_t_0421_0431_043e_0440_043a_0430-_0441-Guix">
+<div class="header">
+<p>
+Next: <a href="Repozitorii-kak-kanal.html" accesskey="n" rel="next">Level 2: The Repository as a Channel</a>, Previous: <a href="Nachalo-raboty.html" accesskey="p" rel="prev">Начало работы</a>, Up: <a href="Razrabotka-programmnogo-obespecheniya.html" accesskey="u" rel="up">Разработка программного обеспечения</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Terminy-i-ukazateli.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr />
+<span id="Level-1_003a-Building-with-Guix"></span><h3 class="section">7.2 Level 1: Building with Guix</h3>
+
+<p>Now that we have a package definition (see <a href="Nachalo-raboty.html">Начало работы</a>), why not
+also take advantage of it so we can build Guile with Guix? We had left the
+<code>source</code> field empty, because <code>guix shell</code> above only cares
+about the <em>inputs</em> of our package&mdash;so it can set up the development
+environment&mdash;not about the package itself.
+</p>
+<p>To build the package with Guix, we&rsquo;ll need to fill out the <code>source</code>
+field, along these lines:
+</p>
+<div class="example lisp">
+<pre class="lisp"><span class="syntax-paren0">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Using-Guile-Modules.html#index-use_002dmodules">use-modules</a> <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">guix</span></span>)</span>
+             <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">guix</span> <span class="syntax-symbol">git-download</span></span>)</span>  <span class="syntax-comment">;for ‘git-predicate’
+</span>             <span class="syntax-symbol">…</span></span>)</span>
+
+<span class="syntax-paren0">(<span class="syntax-symbol"><span class="syntax-special">define</span> <span class="syntax-symbol">vcs-file?</span>
+  <span class="syntax-comment">;; Return true if the given file is under version control.
+</span>  <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-special">or</span> <span class="syntax-paren2">(<span class="syntax-symbol"><span class="syntax-symbol">git-predicate</span> <span class="syntax-paren3">(<span class="syntax-symbol"><span class="syntax-symbol">current-source-directory</span></span>)</span></span>)</span>
+      <span class="syntax-paren2">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Higher_002dOrder-Functions.html#index-const">const</a> <span class="syntax-symbol">#t</span></span>)</span></span>)</span></span>)</span>                                <span class="syntax-comment">;not in a Git checkout
+</span>
+<span class="syntax-paren0">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/ssylka-na-paket.html#index-package">package</a>
+  <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">name</span> <span class="syntax-string">"guile"</span></span>)</span>
+  <span class="syntax-paren1">(<span class="syntax-symbol"><a class="syntax-symbol" href="https://www.gnu.org/software/guile/manual/html_node/Build-Config.html#index-version">version</a> <span class="syntax-string">"3.0.99-git"</span></span>)</span>                          <span class="syntax-comment">;funky version number
+</span>  <span class="syntax-paren1">(<span class="syntax-symbol"><span class="syntax-symbol">source</span> <span class="syntax-paren2">(<span class="syntax-symbol"><a class="syntax-symbol" href="/manual/devel/ru/html_node/G_002dExpressions.html#index-local_002dfile">local-file</a> <span class="syntax-string">"."</span> <span class="syntax-string">"guile-checkout"</span>
+                      <span class="syntax-keyword">#:recursive?</span> <span class="syntax-symbol">#t</span>
+                      <span class="syntax-keyword">#:select?</span> <span class="syntax-symbol">vcs-file?</span></span>)</span></span>)</span>
+  <span class="syntax-symbol">…</span></span>)</span>
+</pre></div>
+
+<p>Here&rsquo;s what we changed compared to the previous section:
+</p>
+<ol>
+<li> We added <code>(guix git-download)</code> to our set of imported modules, so we
+can use its <code>git-predicate</code> procedure.
+</li><li> We defined <code>vcs-file?</code> as a procedure that returns true when passed a
+file that is under version control. For good measure, we add a fallback case
+for when we&rsquo;re not in a Git checkout: always return true.
+</li><li> We set <code>source</code> to a
+<a href="https://guix.gnu.org/manual/devel/en/html_node/G_002dExpressions.html#index-local_002dfile"><code>local-file</code></a>&mdash;a
+recursive copy of the current directory (<code>"."</code>), limited to files under
+version control (the <code>#:select?</code> bit).
+</li></ol>
+
+<p>From there on, our <samp>guix.scm</samp> file serves a second purpose: it lets us
+build the software with Guix. The whole point of building with Guix is that
+it&rsquo;s a &ldquo;clean&rdquo; build&mdash;you can be sure nothing from your working tree or
+system interferes with the build result&mdash;and it lets you test a variety of
+things. First, you can do a plain native build:
+</p>
+<div class="example">
+<pre class="example">guix build -f guix.scm
+</pre></div>
+
+<p>But you can also build for another system (possibly after setting up
+see <a data-manual="guix" href="https://guix.gnu.org/manual/devel/en/html_node/Daemon-Offload-Setup.html#Daemon-Offload-Setup">offloading</a> in <cite>GNU Guix Reference Manual</cite>
+or see <a data-manual="guix" href="https://guix.gnu.org/manual/devel/en/html_node/Virtualization-Services.html#Virtualization-Services">transparent emulation</a> in <cite>GNU Guix
+Reference Manual</cite>):
+</p>
+<div class="example lisp">
+<pre class="lisp"><span class="syntax-symbol">guix</span> <a class="syntax-symbol" href="/manual/devel/ru/html_node/Using-Guix-Interactively.html#index-build">build</a> <span class="syntax-symbol">-f</span> <span class="syntax-symbol">guix.scm</span> <span class="syntax-symbol">-s</span> <a class="syntax-symbol" href="/manual/devel/ru/html_node/Supported-Platforms.html#index-aarch64_002dlinux">aarch64-linux</a> <span class="syntax-symbol">-s</span> <a class="syntax-symbol" href="/manual/devel/ru/html_node/Supported-Platforms.html#index-riscv64_002dlinux">riscv64-linux</a>
+</pre></div>
+
+<p>&hellip; or cross-compile:
+</p>
+<div class="example lisp">
+<pre class="lisp"><span class="syntax-symbol">guix</span> <a class="syntax-symbol" href="/manual/devel/ru/html_node/Using-Guix-Interactively.html#index-build">build</a> <span class="syntax-symbol">-f</span> <span class="syntax-symbol">guix.scm</span> <span class="syntax-symbol">--target=x86_64-w64-mingw32</span>
+</pre></div>
+
+<p>You can also use <em>package transformations</em> to test package variants
+(see <a data-manual="guix" href="https://guix.gnu.org/manual/devel/en/html_node/Package-Transformation-Options.html#Package-Transformation-Options">Package Transformation Options</a> in <cite>GNU Guix Reference Manual</cite>):
+</p>
+<div class="example">
+<pre class="example"># What if we built with Clang instead of GCC?
+guix build -f guix.scm \
+  --with-c-toolchain=guile@3.0.99-git=clang-toolchain
+
+# What about that under-tested configure flag?
+guix build -f guix.scm \
+  --with-configure-flag=guile@3.0.99-git=--disable-networking
+</pre></div>
+
+<p>Handy!
+</p>
+</div>
+<hr />
+<div class="header">
+<p>
+Next: <a href="Repozitorii-kak-kanal.html">Level 2: The Repository as a Channel</a>, Previous: <a href="Nachalo-raboty.html">Начало работы</a>, Up: <a href="Razrabotka-programmnogo-obespecheniya.html">Разработка программного обеспечения</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Terminy-i-ukazateli.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

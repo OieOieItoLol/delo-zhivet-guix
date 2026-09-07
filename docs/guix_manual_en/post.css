@@ -1,0 +1,45 @@
+/* Public domain 2017. All rights waived. */
+
+h4 {
+    font-size: 2em;
+}
+
+h5 {
+    font-size: 1.5em;
+}
+
+article audio,
+article img,
+article video {
+    display: block;
+    margin: 50px auto;
+    max-width: 100%;
+}
+
+article {
+    line-height: 1.4em;
+}
+
+.post-metadata {
+    color: #4D4D4D;
+    margin-bottom: 50px;
+}
+
+.tag-list {
+    margin: 50px 0px;
+}
+
+.tag-list p {
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+/* Aim for ~12 words per line for good readability.  */
+article.limit-width {
+    max-width: 720px;
+}
+
+.license {
+    font-size: 0.8em;
+    line-height: 1.4em;
+}

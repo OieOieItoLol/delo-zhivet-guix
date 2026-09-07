@@ -1,0 +1,28 @@
+.tag {
+    text-wrap: nowrap;
+    font-size: 10px;
+    font-weight: bold;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 30px;
+}
+
+.tag.color-0 {
+    background-color: #30B0C7;
+}
+
+.tag.color-1 {
+    background-color: #34C759;
+}
+
+.tag.color-2 {
+    background-color: #FF3B30;
+}
+
+.tag.color-3 {
+    background-color: #FF2D55;
+}
+
+.tag.color-4 {
+    background-color: #007AFF;
+}
