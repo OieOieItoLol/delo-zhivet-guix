@@ -4,23 +4,26 @@
   #:use-module (guix build-system copy)
   #:use-module (guix build-system trivial)
   #:use-module (gnu packages java)
-  #:use-module (guix licenses))
+  #:use-module ((guix licenses) #:prefix license:)
+  #:export (delo-zhivet-backend-bin
+            delo-zhivet-bot-bin
+            delo-zhivet-frontend-bin))
 
-;; delo-zhivet-backend
-;; Это временное deployment-решение (package из release artifact'а).
-;; Для полноценной Guix-native сборки необходимо упаковать все Maven-зависимости (порядка 150)
-;; как отдельные Guix packages, что невозможно сделать в рамках текущей задачи.
-;; Сетевые запросы во время build в Guix запрещены, поэтому мы берем уже
-;; собранный локально release jar.
-(define-public delo-zhivet-backend
+;; Это временный деплоймент-пакет.
+;; Он устанавливает заранее собранный release artifact.
+;; Полноценная Guix-сборка потребует упаковки всех зависимостей проекта,
+;; что пока невозможно в рамках текущей задачи.
+(define-public delo-zhivet-backend-bin
   (package
-    (name "delo-zhivet-backend")
+    (name "delo-zhivet-backend-bin")
     (version "1.0.0")
     (source
      (origin
        (method url-fetch)
-       ;; Пример URL, откуда скачивается release jar (надо обновить после релиза)
-       (uri (string-append "https://releases.example.com/backend-" version ".jar"))
+       ;; URL-MARKER: delo-zhivet-backend-bin
+       ;; TODO: заменить на реальный GitHub release asset URL.
+       (uri "https://github.com/OWNER/REPO/releases/download/TAG/backend-1.0.0.jar")
+       ;; HASH-MARKER: delo-zhivet-backend-bin
        (sha256 (base32 "0000000000000000000000000000000000000000000000000000"))))
     (build-system trivial-build-system)
     (arguments
@@ -33,26 +36,26 @@
                 (src (assoc-ref %build-inputs "source")))
            (mkdir-p jar-dir)
            (copy-file src (string-append jar-dir "/delo-zhivet-backend.jar"))))))
-    (inputs (list openjdk))
-    (synopsis "Backend service for delo-zhivet")
+    (synopsis "Backend service for delo-zhivet (pre-built JAR)")
     (description "Backend service for delo-zhivet. Uses a pre-built JAR.")
-    (home-page "https://example.com")
-    (license agpl3)))
+    (home-page "https://github.com/OWNER/REPO")
+    (license license:agpl3)))
 
-;; delo-zhivet-bot
-;; Это временное deployment-решение (package из release artifact'а).
-;; Как и с backend, полноценная сборка требует Guix-native упаковки
-;; всех зависимостей. Для обхода ограничений на сетевой доступ во время
-;; сборки, используется заранее собранный jar.
-(define-public delo-zhivet-bot
+;; Это временный деплоймент-пакет.
+;; Он устанавливает заранее собранный release artifact.
+;; Полноценная Guix-сборка потребует упаковки всех зависимостей проекта,
+;; что пока невозможно в рамках текущей задачи.
+(define-public delo-zhivet-bot-bin
   (package
-    (name "delo-zhivet-bot")
+    (name "delo-zhivet-bot-bin")
     (version "1.0.0")
     (source
      (origin
        (method url-fetch)
-       ;; Пример URL, откуда скачивается release jar
-       (uri (string-append "https://releases.example.com/bot-" version ".jar"))
+       ;; URL-MARKER: delo-zhivet-bot-bin
+       ;; TODO: заменить на реальный GitHub release asset URL.
+       (uri "https://github.com/OWNER/REPO/releases/download/TAG/bot-1.0.0.jar")
+       ;; HASH-MARKER: delo-zhivet-bot-bin
        (sha256 (base32 "0000000000000000000000000000000000000000000000000000"))))
     (build-system trivial-build-system)
     (arguments
@@ -65,32 +68,31 @@
                 (src (assoc-ref %build-inputs "source")))
            (mkdir-p jar-dir)
            (copy-file src (string-append jar-dir "/delo-zhivet-bot.jar"))))))
-    (inputs (list openjdk))
-    (synopsis "Telegram bot service for delo-zhivet")
+    (synopsis "Telegram bot service for delo-zhivet (pre-built JAR)")
     (description "Telegram bot service for delo-zhivet. Uses a pre-built JAR.")
-    (home-page "https://example.com")
-    (license agpl3)))
+    (home-page "https://github.com/OWNER/REPO")
+    (license license:agpl3)))
 
-;; delo-zhivet-frontend
-;; Это временное deployment-решение.
-;; Для сборки frontend требуется NPM и сеть для загрузки зависимостей,
-;; что запрещено в Guix build environment.
-;; Данный пакет берет заранее собранный (через npm run build)
-;; набор статики из архива dist и помещает в share/delo-zhivet-frontend/.
-(define-public delo-zhivet-frontend
+;; Это временный деплоймент-пакет.
+;; Он устанавливает заранее собранный release artifact.
+;; Полноценная Guix-сборка потребует упаковки всех зависимостей проекта,
+;; что пока невозможно в рамках текущей задачи.
+(define-public delo-zhivet-frontend-bin
   (package
-    (name "delo-zhivet-frontend")
+    (name "delo-zhivet-frontend-bin")
     (version "1.0.0")
     (source
      (origin
        (method url-fetch)
-       ;; Пример URL для загрузки собранной статики
-       (uri (string-append "https://releases.example.com/frontend-" version ".tar.gz"))
+       ;; URL-MARKER: delo-zhivet-frontend-bin
+       ;; TODO: заменить на реальный GitHub release asset URL.
+       (uri "https://github.com/OWNER/REPO/releases/download/TAG/frontend-1.0.0.tar.gz")
+       ;; HASH-MARKER: delo-zhivet-frontend-bin
        (sha256 (base32 "0000000000000000000000000000000000000000000000000000"))))
     (build-system copy-build-system)
     (arguments
      `(#:install-plan '(("." "share/delo-zhivet-frontend/"))))
-    (synopsis "Frontend static files for delo-zhivet")
+    (synopsis "Frontend static files for delo-zhivet (pre-built)")
     (description "Frontend static files for delo-zhivet. Pre-built via NPM.")
-    (home-page "https://example.com")
-    (license agpl3)))
+    (home-page "https://github.com/OWNER/REPO")
+    (license license:agpl3)))
