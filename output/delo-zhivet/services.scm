@@ -165,17 +165,6 @@
               (format (current-error-port) "Error reading env file.~%")
               (exit 1)))
 
-          ;; Validate required secrets based on allowlist
-          ;; (Assuming PG_PASSWORD is required for both, TELEGRAM_BOT_TOKEN for bot)
-          (when (member "PG_PASSWORD" allowed)
-            (unless (getenv "PG_PASSWORD")
-              (format (current-error-port) "Error: Required variable PG_PASSWORD is missing.~%")
-              (exit 1)))
-          (when (member "TELEGRAM_BOT_TOKEN" allowed)
-            (unless (getenv "TELEGRAM_BOT_TOKEN")
-              (format (current-error-port) "Error: Required variable TELEGRAM_BOT_TOKEN is missing.~%")
-              (exit 1)))
-
           ;; Run Java
           (apply execl #$java
                  (list #$java "-jar" #$jar))))))
